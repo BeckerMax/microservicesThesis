@@ -1,0 +1,467 @@
+\chapter{Architectural Qualities}
+\label{qua:architecturalQua}
+This and the following Chapter~\ref{qua:qualitiesRating} focus on understanding the following:
+\begin{itemize}
+\item What is a quality attribute in the context of software architecture?
+\item What is a way to systematically find and express quality attributes for software systems?
+\item Which architectural qualities are achieved particularly well in systems built out of microservices?
+\item For which use cases should microservices be considered -- and for which not?
+\end{itemize}
+
+Each of those four questions are connected step-by-step, trying to give a recommendation in which scenarios to use microservices.
+This chapter starts by defining quality attributes for software systems and how they are enabled or inhibited by software architecture (\ref{qua:qualityAttributes}).
+Then the ISO standard 25010 is introduced as a way to categorize quality attributes (\ref{qua:qualityScenarios}).
+Afterwards, for each architectural relevant quality attribute a scenario is formulated (\ref{qua:selectedQualityScenarios}).
+
+In the following Chapter~\ref{qua:qualitiesRating}, these scenarios are then evaluated for how well they can be achieved with the microservices and the three-tier architectural style. 
+A summary of the evaluation is presented in Section~\ref{quaRating:conclusion}.
+
+\section{Quality attributes and software architecture}
+\label{qua:qualityAttributes}
+Systems are created to serve business goals \citep[p. 49]{Bass2012}.
+The architecture forms a bridge between the mostly abstract business goals and the concrete product \citep[p. 3]{Bass2012}.
+A more technical and detailed representation of business goals are quality attribute requirements.
+Quality attribute requirements are deeply entangled with the architecture of a system in the following ways \citep[p. 40]{Bass2012}:
+Firstly, an architecture is a conceptual decision, which inhibits or enables the achievement of a system's quality attributes.
+Secondly, by studying its architecture it is possible to predict many aspects of a system's qualities.
+The following paragraphs elaborate these points in more detail.
+
+To reiterate, business goals are the main driver for creating software systems \citep[p. 49]{Bass2012}.
+The link between the organization's business goals and the resulting system is the \textit{software architecture} \citep[p. 3]{Bass2012}.
+Software architecture is expressed as a set of structures, which comprise software elements and relations among them \citep[p. 4]{Bass2012}.
+These combined structures form an architectural blueprint for building a system \citep[p. 4]{Bass2012}.
+
+Software architecture is driven by requirements encompassing the following categories \citep[p. 64]{Bass2012}:
+\begin{itemize}
+\item \textit{Functional requirements} describe what the system must do or how it should behave to stimuli.
+\item \textit{Quality attribute requirements} are qualifications of the functional requirements or the overall product.
+\item \textit{Constraints} are already made design decisions, which leave their footprint in the architecture. For example not being able to train staff in a new programming language.
+\end{itemize}
+
+While functional requirements influence the architecture they do not determine it.
+Functionality is achieved by assigning responsibilities to architectural elements independent of any particular structure \citep[p. 65]{Bass2012}.
+Therefore, the thesis does not use functional requirements to evaluate the microservice architectural style but rather focuses on organizational constraints and quality attribute requirements.
+
+A quality attribute is defined as ``a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders \citep[p. 63]{Bass2012}''.
+As an example, a business goal might be to provide an \ac{IaaS}-agnostic deployment and thus differentiating from the competition.
+While this business goal definitely has an influence on the software architecture it is rather high level.
+That is why many business goals will be manifested as quality attribute requirements before being realized in an architecture \citep[p. 49]{Bass2012}.
+In this case the quality attribute requirement might be \textit{modifiability}.
+The according scenario: In one week a customer should be able to redeploy and run the fully-functional software on any of the following \ac{IaaS} providers: \ac{AWS}, Microsoft Azure or \ac{GCP}.
+
+For every software system a set of driving quality attributes exist, if not explicitly than implicitly.
+The architecture is one of the main drivers for quality, though not the only one.
+Downstream design or implementation decisions will for example also heavily affect system quality \citep[p. 25]{Bass2012}.
+Therefore, an architecture is necessary, but not sufficient, to ensure quality \citep[p. 26]{Bass2012}.
+Because an architecture is necessary to ensure quality, can one predict a system's qualities by studying its architecture?
+
+According to Bass et. al., it is possible to predict many aspects of a system's qualities by studying its architecture \citep[p. 40]{Bass2012}.
+Achieving a certain quality attribute requires an adequate reflection in the architecture.
+For example, if you care about reusability in a system you need to restrict inter-element coupling, so that if an element is extracted it does not come with too many attachments to its current environment \citep[p. 26]{Bass2012}.
+
+This section boils down to the following points:
+\begin{itemize}
+\item ``An architecture will inhibit or enable the achievement of a system's quality attributes \citep[p. 40]{Bass2012}'.'
+\item ``You can predict many aspects of a system's qualities by studying its architecture \citep[p. 40]{Bass2012}.''
+\end{itemize}
+Building on that in the upcoming chapters architectural styles, namely microservices and three-tier architecture, will be evaluated on how well they enable selected quality attributes.
+
+\section{Specifying quality attributes}
+\label{qua:qualityScenarios}
+\subsection{Quality attribute scenarios}
+As discussed in \ref{qua:qualityAttributes} quality attribute requirements are defined as ``a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders \citep[p. 63]{Bass2012}''.
+To ensure that formulated quality attribute requirements are testable and unambiguous Brass et al. propose to specify them in a standardized form, introducing \textit{quality attribute scenarios}.
+
+A quality attribute scenario consists of six parts \citep[p. 68]{Bass2012}, which are also depicted in figure \ref{qualities/qualityAttributes}:
+\begin{itemize}
+	\item \textit{Source of stimulus:} Can be any actuator, i.e., a human or a computer system.
+	\item \textit{Stimulus:} A condition that requires a response from the system. For example a user request or security incident.
+	\item \textit{Environment:} The environmental conditions under which the stimulus happened. This could be system under normal operation or a period in which an availability zone of the \ac{IaaS} provider is down.
+	\item \textit{Artifact:} The artifact that is stimulated, could be a large distributed system or a specific software component.
+	\item \textit{Response:} The activity undertaken following the stimulus, like transactions are processed or component is scaled.
+	\item \textit{Response measure:} A reproducible measurement of the response to make the requirement testable. I.e., no downtime or average latency of two seconds.
+\end{itemize}
+
+\bildH{qualities/qualityAttributes}{14cm}{Six parts of quality attribute scenarios}{Six parts of quality attribute scenarios \citep[p. 70]{Bass2012}}
+
+
+Quality attribute scenarios are used throughout this thesis, whenever a quality attribute needs to be specified.
+Section~\ref{qua:selectedQualityScenarios} holds a list of all quality attribute scenarios used in this thesis.
+
+\subsection{ISO 25010}
+\label{qua:ISO}
+ISO/IEC 25010:2011 is a standard created by the \ac{ISO} and the \ac{IEC}. 
+The standard presents a \textit{product quality model} for software systems.
+This model consists of quality characteristics which can be used to derive software or computer system requirements and their criteria for satisfaction.
+The product quality model is divided into eight characteristics and each characteristic is composed of a set of related subcharacteristics \cite{ISO25010}. The characteristics are depicted in figure \ref{fig:productQualityModel}.
+
+
+\begin{figure}[h]
+  \centering
+\newcolumntype{C}[1]{>{\centering}p{#1}}
+\begin{forest}
+for tree={
+  if level=0{align=center}{% allow multi-line text and set alignment
+    align={@{}C{45mm}@{}},
+  },
+  grow=east,
+  draw,
+  font=\sffamily\bfseries,
+  edge path={
+    \noexpand\path [draw, \forestoption{edge}] (!u.parent anchor) -- +(5mm,0) |- (.child anchor)\forestoption{edge label};
+  },
+  parent anchor=east,
+  child anchor=west,
+  l sep=10mm,
+  tier/.wrap pgfmath arg={tier #1}{level()},
+  edge={ultra thick, rounded corners=2pt},
+  fill=white,
+  rounded corners=2pt,
+  drop shadow,
+}
+[System/ Software \\ Product Quality
+  [Portability]
+  [Maintainability]
+  [Security]
+  [Reliability]
+  [Usability]
+  [Compatibility]
+  [Performance efficiency ]
+  [Functional Suitability]
+]
+\end{forest}
+  \caption[The eight quality characteristics comprised in the product quality model from ISO/IEC 25010.]{The eight quality characteristics comprised in the product quality model from ISO/IEC 25010:2011.}
+  \label{fig:productQualityModel}
+\end{figure}
+
+This thesis uses characteristics from the product model to evaluate software architectures.
+More exactly, it uses relevant subcharacteristics to evaluate trade-offs between microservice and three-tier architectures.
+
+In this chapter it is discussed which of the presented characteristics from the ISO standard were used to rate and evaluate architectural styles.
+To give an example, some characteristics are highly dependent on the choice of the architectural style, like modifiability.
+Microservices allow to modify the schema or even technology of a database freely while only touching the one microservice consuming the database.
+In contrast, a three-tier architecture does not come with this kind of modifiability guarantee.
+Different functional parts are often integrated over one database and therefore dependent on a schema or technology.
+A different example is a characteristic like functional completeness.
+Whether the software is functionally working as expected is highly implementation and requirement specific and is not or little influenced by the choice of a general architectural style.
+
+\section{Selected quality scenarios}
+\label{qua:selectedQualityScenarios}
+This section lists quality attribute scenarios for a subset of the quality characteristics presented in \cite{ISO25010}.
+Each characteristic of the ISO standard is systematically discussed and quality attribute scenarios are created for selected categories.
+The scenario selection lends towards exposing the advantages and disadvantages of a microservice system in contrast to a more monolithic system.
+Each of the created scenarios is evaluated whether they enable or inhibit microservices.
+The evaluation is going to be discussed in the following Chapter~\ref{qua:qualitiesRating}.
+The scenarios are numbered in order to refer to them more easily across the thesis.
+
+\subsection*{Functional suitability}
+\textit{Functional suitability} is defined as ``the degree to which a product or system provides functions that meet stated and implied needs when used under specified conditions \citep[p. 10]{ISO25010}''.
+
+\begin{figure}[H]
+  \centering
+\begin{forest}
+for tree={%
+    edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+}
+[Functional suitability, calign=child,calign child=2
+	[Functional completeness]
+	[Functional correctness]	  
+	[Functional appropriateness]
+]
+\end{forest}
+  \caption[Subcharacteristics of functional suitability according to ISO/IEC 25010]{Subcharacteristics of functional suitability according to ISO/IEC 25010}
+  \label{fig:functSuitability}
+\end{figure}
+
+Functional suitability and its subcharacteristics are not used in this thesis for evaluating architectural styles.
+Functional suitability refers to the absence of programming errors, which is more dependent on the implementation than the systems design.
+% architecture provides the boundaries in which the functionality is placed.
+%But the choice of architecture does not determine whether the implementation is functionally correct or complete \citep[p.41]{Bass2012}.
+As elaborated in Section~\ref{qua:qualityAttributes} functionality does not determine architecture\footnote{The definition of functional requirements is still eluding, as a function can often only be provided if other qualities, like time behavior or availability are met. A discussion of that topic can be found in \citep[p. 66]{Bass2012}.} \citep[p. 65]{Bass2012}.
+Therefore, rating functional suitability for a software system can not be sufficiently done looking solely on the architecture.
+
+\subsection*{Performance efficiency}
+\textit{Performance efficiency} is defined as ``performance relative to the amount of resources used under stated conditions \citep[p. 11]{ISO25010}''.
+
+\begin{figure}[H]
+  \centering
+\begin{forest}
+for tree={%
+    edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+}
+  [Performance efficiency, calign=child,calign child=2
+    [Time behavior]
+    [Resource utilization]
+    [Capacity]
+  ]
+\end{forest}
+  \caption[Subcharacteristics of performance efficiency according to ISO/IEC 25010]{Subcharacteristics of performance efficiency according to ISO/IEC 25010}
+  \label{fig:functSuitability}
+\end{figure}
+
+Performance is about the software's ability to meet timing requirements \citep[p. 131]{Bass2012}.
+All software systems have timing requirements, whether explicitly or implicitly declared.
+Performance has been one of the major driving factors in system architecture \citep[p. 131]
+{Bass2012}.
+Making it an important influence on architectural decisions.
+
+Following with two examples in which high-level architectural decisions influence performance in a system: 
+Inter-component communication in a distributed system is more time-costly than in a monolithic system because network calls are more expensive than in-memory calls.
+This leads to timing constraints because a network call being orders of magnitudes slower than an in-memory function call. 
+%Ensuring that a ressource or functionaliy is available and free.
+Another example, if a system is designed to consist of smaller individual parts, these small parts can be scaled individually.
+In contrast if the system is designed in a monolithic way scaling to meet varying request numbers is mainly limited to vertical scaling.
+This already indicates that some performance requirements can be linked intimately with scalability, which is going to be discussed in \ref{qua:modifiability}.
+
+A performance scenario starts with an event or a number of distributed events arriving at the system.
+The \textit{response} is the processing of the arriving events.
+The \textit{response measure} can be latency, throughput or some other kind of measurable time or resources constraint.
+\citep[p. 134]{Bass2012}
+
+The following performance scenarios are used in this thesis are the following:
+
+\subsubsection{Time behavior scenario}		
+\textit{1.} A user request is initiated which involves different components of the system to communicate. Under normal operations the latency of communication between two components is less than a millisecond.
+
+\subsubsection{Resource utilization scenarios}
+\textit{2.} Users initiate varying requests over the day to the system. The requests distribution varies around 10x of the average request count. The system elastically adapts the used hardware resources to the varying load.
+
+\textit{3.} Users initiate a constant amount of requests per minute. 99.9\% of all requests are answered in under 300 ms with as little hardware resources (as little compute and storage) as possible.
+
+\subsubsection{Capacity scenario}
+\textit{4.} Users initiate requests when the system is at its maximum capacity. The system automatically provisions new hardware and scales its internal components elastically according to the need.	
+
+\subsection*{Compatibility}
+\textit{Compatibility} is defined as the ``degree to which a product, system or component can exchange information with other products, systems or components, and/or perform its required functions, while sharing the same hardware or software environment'' \citep[p. 11]{ISO25010}.
+
+\begin{figure}[H]
+  \centering
+\begin{forest}
+for tree={%
+    edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+}
+  [Compatibility, calign=center
+    [Interoperability]
+    [Co-existence]
+  ]
+\end{forest}
+  \caption[Subcharacteristics of compatibility according to ISO/IEC 25010]{Subcharacteristics of compatibility according to ISO/IEC 25010}
+  \label{fig:compatibility}
+\end{figure}
+
+Compatibility consists of \textit{interoperability} and \textit{co-existence}, as seen in figure \ref{fig:compatibility}.
+Interoperability is about two or more systems wanting to exchange useful information via an interface.
+Co-existence in contrast, is about two or more systems wanting to be isolated from each other while sharing a common environment.
+Interoperability could for example be achieved by creating interfaces for connecting to existing systems or by creating generic \ac{API}s so that future products can inter-operate.
+Design for co-existence can for example be achieved by letting components run in their own isolated environments.
+
+
+\subsubsection{Interoperability scenarios}
+%TODO scenario or solution? Sounds more like a solution.
+\textit{5.} A component wants to access data or functionality from another component.
+The only way for the components to interoperate is through an explicit API declared by the providing component.
+
+\textit{6.} A new system needs to communicate with a legacy system that is written in a different programming language. The two systems are able to communicate and work together.
+
+\subsubsection{Co-existence scenarios}
+\textit{7.} An internal component crashes during normal operations. The other components of the same system stay running and responsive.
+
+\textit{8.} One component of a system wants to consume excessive memory, storage or CPU. The other components on the same system are not affected in their functionality by the resource consumption of one component.
+
+\subsection*{Usability}
+\textit{Usability} is defined as the``degree to which a product or system can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use \citep[p. 12]{ISO25010}''.
+
+In other words, usability describes how easy it is for the user or another stakeholder to accomplish a desired task \citep[p. 175]{Bass2012}.
+It heavily depends on the specific implementation and requirement of the specific user.
+But still the architecture plays a role in enabling or inhibiting the achievement of usability.
+
+This section emphasizes on scenarios regarding the \textit{operatibility} of a system. 
+Which is defined as the ``degree to which a product or system has attributes that make it easy to operate and control \citep[p. 12]{ISO25010}''.
+
+\subsubsection{Operatibility Scenarios}
+\textit{9.} An operator attempts to determine all the software components the system consists of.
+The operation environment provides the currently running software components and their version.
+
+%TODO too fluffy
+\textit{10.} A user experiences a problem which has the root in a malfunction of the system. It takes in average less than one hour to trace down and isolate the function, which causes the error.
+
+\subsection*{Reliability}
+\textit{Reliability} is the ``degree to which a system, product or component performs specified functions under specified conditions for a specified period of time \citep[p. 13]{ISO25010}''.
+
+\begin{figure}[H]
+  \centering
+\begin{forest}
+for tree={%
+    edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+}
+[Reliability, calign=center
+    [Maturity]
+    [Availability]
+    [Fault tolerance]
+    [Recoverability]
+]
+\end{forest}
+  \caption[Subcharacteristics of reliability according to ISO/IEC 25010]{Subcharacteristics of reliability according to ISO/IEC 25010}
+  \label{fig:reliability}
+\end{figure}
+
+Reliability, as seen in fig \ref{fig:reliability} is consisting of maturity, availability, fault tolerance and recoverability.
+Requirements coming from reliability with its subcategories are heavily influencing architectural decisions.
+A basic example would be the trade-off between availability and consistency. 
+According to the CAP-theorem, if the architect chooses to design a distributed system he can no longer satisfy both full availability and strong consistency in case of a network partition \citep[p. 522]{Bass2012}.
+Therefore, the architectural decision of choosing a distributed system influences the availability (or consistency) guarantees a system can make.
+
+The following scenarios relate to the subcategories of reliability:
+
+\subsubsection{Maturity scenario}
+\textit{11.} Two users initiate a request with the same input at the same time under normal operations both users consistently receive the same answer.
+
+\subsubsection{Availability scenario}
+\textit{12.} A component of the application crashes. Under average load the system is fault-tolerant and the functionality of the component stays available.
+
+\subsubsection{Fault tolerance scenario}
+\textit{13.} An internal component crashes during normal operations. The system continues to be responsive providing limited functionality.
+
+\subsubsection{Recoverability scenario}
+\textit{14.} Part of an internal system crashes during a transactional operation. The error is recorded and the system as a whole goes back to a consistent state. During no time the system is available and in an inconsistent state.
+
+\subsection*{Security}
+Security is defined as the ``degree to which a product or system protects information and data so that persons or other products or systems have the degree of data access appropriate to their types and levels of authorization \citep[p. 13]{ISO25010}''
+
+\begin{figure}[H]
+  \centering
+\begin{forest}
+for tree={%
+    edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+}
+[Reliability,  calign=child,calign child=3
+    [Confidentiality]
+    [Integrity]
+    [Non-repudiation]
+    [Accountability]
+    [Authenticity]
+]
+\end{forest}
+  \caption[Subcharacteristics of reliability according to ISO/IEC 25010]{Subcharacteristics of reliability according to ISO/IEC 25010}
+  \label{fig:reliability}
+\end{figure}
+
+Architectural decisions heavily influence security attribute requirements.
+For example whether HTTPS\footnote{https://tools.ietf.org/html/rfc2818\# section-2} is used for network communication inside a distributed system is an architectural decision.
+
+A complete discussion of security topics is out-of-scope of this thesis.
+The scenario here is rather to be seen as a glimpse into the challenges of security in an architecture.
+It tries to point out differences in microservices and the three-tier architecture.
+
+\subsubsection*{Confidentiality}
+%Probably not a good NFR
+\textit{15.} An attacker tries to access sensitive data within the system after gaining control of a relatively uncritical part of the system. The system denies access to more sensitive data and logs the attempt.
+
+\subsection*{Maintainability}
+\label{qua:modifiability}
+Maintainability being defined as the ``degree to which a system or computer program is composed of discrete components such that a change to one component has minimal impact on other components \citep[p. 14]{ISO25010}''
+
+\begin{figure}[H]
+  \centering
+\begin{forest}
+for tree={%
+    edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+}
+[Maintainability,  calign=child,calign child=3
+    [Modularity]
+    [Reusability]
+    [Analysability]
+    [Modifiability]
+    [Testability]
+]
+\end{forest}
+  \caption[Subcharacteristics of reliability according to ISO/IEC 25010]{Subcharacteristics of reliability according to ISO/IEC 25010}
+  \label{fig:reliability}
+\end{figure}
+
+Maintainability carries a lot of architectural relevant and intertwined characteristics under its umbrella.
+\textit{Modifiability} being one of the key qualities discussed in this thesis:
+
+Making a system modifiable is about managing and embracing change.
+The goal of modifiability is to invest time  right now to reduce the impact of change in the future.
+A lot of architectural patterns revolve around isolating the faster changing parts of a software from the more constant parts.
+%Abstractions and layers producing modularity help in achieving modifiability.
+Usually, the parts of software that change independently from others are in some form encapsulated from the rest.
+The challenge is to identify in advance which parts are going to change and how frequently they will change.
+
+The following maintainability scenarios are provided:
+
+\subsubsection{Modularity scenario}
+\textit{16.}  A developer wants to deploy a code change (no interface changes) affecting a single component on a productively running system. The change is tested and pushed into production in less than a day. Other components of the system do not need to be redeployed.
+
+\subsubsection{Reusability scenario}
+\textit{17.} Another project wants to reuse a logical component which is implemented in the system. The component can be reused in different contexts or programs.
+
+\subsubsection{Modifiability scenarios}
+\textit{18.} A development team wishes to change a component with the best of breed in the given area. Technology stack and programming language should not be limiting factors for the choice. It will take less than one week to test and deploy the change into production.
+
+\textit{19.} A developer wishes to change the database technology which stores data for one functional area from a relational database to a graph database. It will take less than one week to change the database and to deploy it into production.
+
+\subsubsection{Testability scenarios}
+\textit{20.} A developer wants to perform a load test for a single component. The component can be tested individually.
+
+\textit{21.} A developer wants to tests the entire system from an end-user perspective. He is reliably able to run end-to-end tests for each new release of the system.
+
+\subsection*{Portability}
+\label{qua:portability}
+\textit{Portability} is defined as the ``degree of effectiveness and efficiency with which a system, product or component can be transferred from one hardware, software or other operational or usage environment to another \citep[p. 15]{ISO25010}''.
+
+\begin{figure}[H]
+  \centering
+\begin{forest}
+for tree={%
+    edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+}
+  [Portability, calign=child,calign child=2
+    [Adaptability]
+    [Installability]
+    [Replaceability]
+  ]
+\end{forest}
+  \caption[Subcharacteristics of portability according to ISO/IEC 25010]{Subcharacteristics of portability according to ISO/IEC 25010}
+  \label{fig:functSuitability}
+\end{figure}
+
+%TODO the cloud platform independence would hold an interesting scenario here.
+
+Portability is a special form of modifiability \citep[p. 186]{Bass2012}.
+It deals with the effort involved in moving software from one operational or usage environment to another.
+One way to achieve portability is by minimizing platform dependencies in the software.
+Portability can be measured by time or effort it takes to move a component to a new platform \citep[p. 186]{Bass2012}.
+
+\subsubsection{Adaptability scenario}
+\textit{22.} An algorithm wishes to scale a productively running component according to varying incoming request load. Without human interaction the system scales the component horizontally and it takes less than 5 minutes until it is scaled.
+
+\subsubsection{Installability scenario}
+\textit{23.} A customer wants to decide whether he deploys the system on premise. The system can be deployed on the local infrastructure of the customer.
+
+\section{Organizational Requirements}
+As elaborated in \textit{organizational characteristics of microservices} (Section~\ref{bac:organisationalCharacteristics}), architectural styles demand organizational prerequisites.
+This section turns it around and articulates requirements coming from organizations.
+The following scenarios are all potentially influencing architectural decisions but they did not arise from quality scenarios.
+Instead, they are representing organizational styles or regulations which can influence architectural decisions.
+
+Some kind of development or organizational philosophy exists in every company: ``We always did it this way''.
+While these philosophies probably had good reasons to be built up in the first place they might collision with organizational characteristics needed for certain architectural styles.
+As Conways Law suggests an architecture can never be detached from the organization that builds it \citep{Conway1968}.
+Therefore, the following organizational requirements are a small subset of companies habits, which can greatly inhibit or enable certain architectural styles independently from quality scenarios.
+They are numbered from O1 to O4 to consistently refer to them through the thesis.
+
+\textit{O1. Developer Velocity and Continuous Delivery} - 
+The organization demands that the cycle-time is less than a day. Meaning that a code change (no interface changes) affecting a single component is automatically deployed, tested and run into production in less than a day.
+
+\textit{O2. Quality-gates} - 
+The organization requires to review every software change through a thorough (>1week) quality process before it goes into production.
+
+\textit{O3. Technical teams} -
+The organization demands to organize teams around technical qualification leading to pure \ac{UI}, deployment or operation teams.
+
+\textit{O4. Explicit interfaces} - 
+All communication between different components (internal or external) is only allowed over explicitly defined \ac{API}s. No other way of communication between components is possible (for example over a database).
+
+%TODO shouldn't there be different org styles to compare with?

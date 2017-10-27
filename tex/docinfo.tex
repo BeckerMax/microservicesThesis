@@ -1,0 +1,62 @@
+% -------------------------------------------------------
+% Daten für die Arbeit
+% Wenn hier alles korrekt eingetragen wurde, wird das Titelblatt
+% automatisch generiert. D.h. die Datei titelblatt.tex muss nicht mehr
+% angepasst werden.
+
+\newcommand{\hsmasprache}{en} % de oder en für Deutsch oder Englisch
+
+% Titel der Arbeit auf Deutsch
+\newcommand{\hsmatitelde}{Diskussion der Vor- und Nachteile von auf Microservices basierenden Softwaresystemen}
+
+% Titel der Arbeit auf Englisch
+\newcommand{\hsmatitelen}{Are Microservices for You?  \\ Discussing Trade-offs of Microservice-based Software Systems}
+
+% Weitere Informationen zur Arbeit
+\newcommand{\hsmaort}{Mannheim}    % Ort
+\newcommand{\hsmaautorvname}{Max} % Vorname(n)
+\newcommand{\hsmaautornname}{Becker} % Nachname(n)
+\newcommand{\hsmadatum}{30.09.2017} % Datum der Abgabe
+\newcommand{\hsmajahr}{2017} % Jahr der Abgabe
+\newcommand{\hsmafirma}{SAP SE, Walldorf} % Firma bei der die Arbeit durchgeführt wurde
+\newcommand{\hsmabetreuer}{Prof. Thomas Smits, Hochschule Mannheim} % Betreuer an der Hochschule
+\newcommand{\hsmazweitkorrektor}{Dr. Michele Mancioppi, SAP SE} % Betreuer im Unternehmen oder Zweitkorrektor
+\newcommand{\hsmafakultaet}{I} % I für Informatik
+\newcommand{\hsmastudiengang}{IM} % IB IMB UIB IM MTB
+
+% Zustimmung zur Veröffentlichung
+\setboolean{hsmapublizieren}{true}   % Einer Veröffentlichung wird zugestimmt
+\setboolean{hsmasperrvermerk}{false} % Die Arbeit hat keinen Sperrvermerk
+
+% -------------------------------------------------------
+% Abstract
+
+
+% Background factual information
+% method, general aim and the specific aim of the study
+% summarize methodology
+% indicate achievement/result
+% indicate implications of the study (Show how the study contributes to knowledge and information in this area) 
+
+%1. Einleitung/Problem
+%2. Forschungsziel
+%3. Methode
+%4. Befunde
+%5. Implikationen
+
+
+% Kurze (maximal halbseitige) Beschreibung, worum es in der Arbeit geht auf Deutsch
+\newcommand{\hsmaabstractde}{Microservices sind ein architektureller Ansatz zur Modularisierung von verteilten Softwaresystemen.
+Die vorliegende Masterarbeit evaluiert, für welche Typen von Softwaresystemen Microservices ein geeigneter Ansatz sind.
+Hierzu werden systematisch ausgewählte Qualitätssze\-narien bewertet.
+Das Ergebnis zeigt, dass Microservices gut geeignet sind, um die Zeit von Entwicklung zur Produktion von 
+Features in großen Projekten zu verkürzen, hohe Verfügbarkeit in verteilten Systemen zu erreichen und on-demand Ressourcen effizient zu nutzen.
+Hingegen sind Microservices eher ungeeignet, wenn die abzubildende Fachdomäne unklar ist, Fähigkeiten zum Entwickeln und Betreiben von verteilten Systemen gering sind oder Daten-/ Transaktionskonsistenz über verschiedene Geschäftsbereiche garantiert werden soll.
+}
+% Kurze (maximal halbseitige) Beschreibung, worum es in der Arbeit geht auf Englisch
+
+\newcommand{\hsmaabstracten}{The need to innovate large web scale systems faster has brought about microservices, an emerging architectural concept that decouples the life-cycle of components in a distributed software system.
+This thesis uses systematically selected quality attribute scenarios to evaluate which types of software systems stand to gain the most from microservices.
+Furthermore, it presents a trade-off discussion that can be applied to specific use cases.
+As the evaluation shows, microservices should be considered for use cases where high development velocity, high availability in large scale distributed systems and excellent utilization of on-demand hardware are important.
+In contrast, one should not consider microservices if the domain of the project is not fully known, team skills concerning designing, developing and operating distributed systems are not high or data need to be consistent across multiple business areas.}

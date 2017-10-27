@@ -1,0 +1,111 @@
+% Preambel mit Einstellungen importieren
+\input{preambel}
+
+% Dokumenteninfos importieren
+\input{docinfo.tex}
+
+\begin{document}
+\frontmatter
+
+% Römische Ziffern für die "Front-Matter"
+\setcounter{page}{0}
+\changefont{ptm}{m}{n}  % Times New Roman für den Fließtext
+\renewcommand{\rmdefault}{ptm}
+
+% Frontpage
+\input{frontpage}
+
+% Inhaltsverzeichnis erzeugen
+\cleardoublepage
+\pdfbookmark{\contentsname}{Contents}
+\tableofcontents
+
+% Korrigiert Nummerierung bei mehrseitigem Inhaltsverzeichnis
+\cleardoublepage
+\newcounter{frontmatterpage}
+\setcounter{frontmatterpage}{\value{page}}
+
+% Arabische Zahlen für den Hauptteil
+\mainmatter
+
+% Den Hauptteil mit vergrößertem Zeilenabstand setzen
+\onehalfspacing
+
+% ------------------------------------------------------------------
+% Hauptteil der Arbeit
+
+% maybe turn concrete and abstract way around. Cause in reality you first see the abstract requirements and then decide to tackle it with a practical design.
+% On the other hand Hr. Paulus told us that beginning with a practical example helps the understanding
+
+\input{text/1_introduction}
+\input{text/2_background}
+\input{text/3_qualities}
+\input{text/4_tradeoffsDiscussion}
+\input{text/5_questionnaire}
+\input{text/6_conclusion}
+
+% ------------------------------------------------------------------
+
+\label{lastpage}
+
+% Neue Seite
+\cleardoublepage
+
+% Backmatter mit normalem Zeilenabstand setzen
+\singlespacing
+
+% Römische Ziffern für die "Back-Matter", fortlaufend mit "Front-Matter"
+\pagenumbering{roman}
+\setcounter{page}{\value{frontmatterpage}}
+
+% List of abbreviations
+\input{abbreviations}
+
+% Tabellenverzeichnis erzeugen
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of tables}
+\listoftables
+
+% Abbildungsverzeichnis erzeugen
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of figures}
+\listoffigures
+
+% Listingverzeichnis erzeugen
+%\cleardoublepage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{List of sourcecode}
+%\lstlistoflistings
+
+% Protocol:
+% First I changed bibliogrpahystyle from dinat to alpha because multiple authors were connect with "und" not "and". Then I received: Package natbib Error: Bibliography not compatible with author-year citations. 
+% I found the solution by a) making sure all my bib entries had years and b) changing  square to numbers. This could be made the default behaviour for english work..
+%\usepackage[square]{natbib}       % Literaturverzeichnis nach DIN mit eckigen Klammern bei \citep
+%\usepackage[numbers]{natbib}
+
+% Literaturverzeichnis erzeugen (nach DIN)
+\begin{flushleft}
+%\bibliographystyle{dinat} % Literatur nach DIN
+%\bibliographystyle{abbrv} % Zitate mit [1], [2] etc.
+\bibliographystyle{alpha} % Zitate mit [Kor01], [Vix99] etc.
+\bibliography{literature}   % BibTeX-Datei mit Literaturquellen einbinden
+\end{flushleft}
+
+% Appendix erzeugen
+%\cleardoublepage
+%\begin{appendices}
+
+%\end{appendices}
+
+% Index ausgeben
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+\appendix
+\input{text/questionnaireAppendix}
+
+\end{document}

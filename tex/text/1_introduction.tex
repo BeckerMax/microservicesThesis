@@ -1,0 +1,122 @@
+\chapter{Introduction}
+
+\section{Motivation}
+\label{intro:motivation}
+\begin{chapquote}{Marc Andreessen, Wall Street Journal, 2011}
+``Software is eating the world.''
+\end{chapquote}
+
+In recent years, formerly stable industries have been disrupted by companies with software at their core.
+The worlds largest bookseller is Amazon.
+The worlds largest video service is Netflix.
+The worlds largest direct marketing platform is Google.
+As a result, companies that formerly had their core business outside of software now need to become software companies to stay competitive. \cite{Andreessen2011}
+
+The growing importance of software has lead to new requirements for software systems.
+Speed of innovation and continuous availability on the internet have become competitive advantages for numerous business fields.
+Cloud computing, defined as on-demand network access to computing resources, emerged as an answer to some of these new requirements \cite{DefCC2011}. 
+
+The need to innovate large web scale systems faster has lead to \textit{microservices}, an emerging architectural concept that decouples the life-cycle of components in a software system.
+Microservices rely on a conglomerate of software technologies and organizational and software-development practices that enables small teams responsible for single components or business units to innovate independently from the remainder of large systems.
+
+There are several books, talks and articles concerning the definition and characteristics of microservices.
+Mainly, the existing definitions are based on successful flagship implementations in the industry.
+Also, voices of reason are slowly becoming louder as some teams got burned by being too eager in embracing microservices and stumbling over the complexity therein \cite{FowlerMSPremium2014}.
+
+Even with the available resources, a question arises: are microservices a good choice for the system you are working on?
+Fowler answers with ``it depends'' \cite{FowlerMSPremium2014}.
+And the same does this thesis.
+What this thesis contributes, however, is an investigation of what it \textit{depends on} whether microservices are a good architectural choice for one case.
+
+\section{Research goal}
+\label{intro:goal}
+
+Measured by its recent popularity, microservices appear to be a promising architectural style.
+Multiple large web-based applications such as Amazon and Netflix successfully use it in production today.
+However, such amazingly popular and large-scale applications are not necessarily the proof that microservices are fit for every use case.
+Thus, whether microservices are the right style for a concrete business scenario in a given organization is an extremely compelling question.
+This thesis aims at demystifying microservices by systematically discussing their trade-offs, which leads to the problem definition:
+
+\begin{addmargin}[2em]{2em}
+Given a concrete application use case, how to decide whether the application is better built with microservices or with an alternative, possibly more monolithic style?
+\end{addmargin}
+
+This problem definition relies on defining how to evaluate software architectures in general.
+Under the assumptions that \citep[p. 40]{Bass2012}:
+\begin{enumerate}
+\item An architecture will inhibit or enable the achievement of a system's quality attributes.
+\item One can predict many aspects of a system's qualities by studying its architecture.
+\end{enumerate}
+This thesis is built on the assumption that, since one can use quality attributes to assess software architectures, the same are applicable to microservice architectures as well.
+A challenge with quality attributes is that they are usually created for a specific business or application scenario.
+Thus, one of the goal of this thesis is to evaluate whether quality attributes can be used to provide general architectural guidance.
+
+Embracing the problems outlines above, this thesis aims at accomplishing the following main goal:
+\begin{addmargin}[2em]{2em}
+\textit{To provide guidance in terms of under which circumstances, including quality as well as organizational requirements, microservices are a well suited -- or undesirable -- architectural choice.}
+\end{addmargin}
+
+\section{Research questions}
+\label{intro:questions}
+The problem statement outlined in Section \ref{intro:goal} can be broken down in the following research questions:
+
+\paragraph{What are the main characteristics of microservices?}
+Is there a general definition of microservices?
+What are the main technical characteristics?
+What are the main organizational characteristics?
+How do microservices compare to more monolithic architectures?
+%What are prerequisites
+
+\paragraph{How well can quality attributes of different categories be achieved in systems built out of microservices?}
+What is a quality attribute in the context of software architecture?
+What is a way to systematically find and express quality attributes for software systems?
+How do microservices compare to more monolithic architectural styles, like a 3-tier architecture in regard to selected quality attributes?
+
+\paragraph{Which software systems are particularly well suited to be build with microservices?}
+Which application scenarios benefit from being built with microservices -- and which not?
+What are the technical and organizational challenges when implementing and operating a microservice architecture?
+Is it possible to give a general decision guidance for when to use microservices?
+
+\section{Research approach}
+\label{ther}
+The approach for answering the research questions presented in Section~\ref{intro:questions} is discussed here.
+
+\textit{Question}: What are the main characteristics of microservices?
+
+\textit{Approach}:
+In order to better understand the trade-offs of microservices, it is necessary to investigate the characteristics.
+As microservices are a relatively new topic, the thesis will not solemnly rely on literature research but also use conference talks, blog entries and podcasts to form a definition.
+In addition current microservice based software systems, like the Amazon online shop or Netflix are analyzed.
+
+\textit{Question}: How well can quality attributes of different categories be achieved in systems built out of microservices?
+
+\textit{Approach}:
+This thesis adopts quality attribute scenarios to evaluate for which software systems microservices are a fitting choice.
+Quality attribute scenarios emerged before microservices were popularized, and are used for assessing whether a software system will have a set of desired qualities \cite{BarbacciQualityAttribute2003}.
+Using the ISO standard 25010, relevant quality attributes are systematically listed and written down as scenarios.
+The scenarios are evaluated by researching literature and other sources, like conference talks or articles and putting this information into context. 
+In addition, an empirical evaluation is presented, which uses a questionnaire for evaluation of quality scenarios.
+
+\textit{Question}: Which software systems are particularly well-suited to be build with microservices?
+
+\textit{Approach}:
+Through the discussion of quality attributes a general recommendation is given for which quality requirements microservices are suitable.
+Also organizational factors are discussed and their influence on the decision of using microservices.
+In addition, the questionnaire is designed so that participants order quality attributes by importance for different application scenarios.
+Then, by mapping quality attributes, guidance should be given in which of the selected application scenarios microservices are a well-suited approach.
+%Guidance should be given, whether microservices are a favorable approach to achieve the qualities, which are important for the application scenario.
+
+\section{Thesis structure}
+
+Chapter~\ref{bac} defines microservices on a technical and organizational level.
+
+Chapter~\ref{qua:architecturalQua} discusses quality attribute scenarios in general and uses a structured approach to create relevant quality attribute scenarios for the evaluation of microservices.
+
+Chapter~\ref{qua:qualitiesRating} presents the main discussion of this thesis.
+The given quality scenarios were rated based on literature research, which leads to a trade-off discussion of microservices on technical and organizational levels.
+
+Chapter~\ref{que:empiricalEvaluation} presents an empirical evaluation of the results from Chapter~\ref{qua:qualitiesRating}.
+This chapter also introduces a questionnaire which was used to have microservice practitioners rate a subset of the quality scenarios rated in Chapter~\ref{qua:qualitiesRating}. 
+Section~\ref{res:overview} discusses the outcomes of the questionnaire rating and the literature-based rating are compared.
+
+Chapter~\ref{con} concludes this thesis by reflecting on the research goals and discussing future work.

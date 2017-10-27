@@ -1,0 +1,737 @@
+\chapter{Background}
+\label{bac}
+The goal of the present chapter is to provide the preliminaries that are necessary for discussing trade-offs of microservice-based software systems compared to more monolithic software systems.
+
+This chapter is structured as follows:
+Section~\ref{bac:microservices} provides a definition of microservices including further explanation of the key characteristics.
+Section~\ref{bac:ddd} introduces \ac{DDD} as a preliminary for the next section.
+Section~\ref{bac:mssizing} discusses influencing factors on the sizing of microservices.
+Section~\ref{bac:cc} touches on Cloud Computing and its service models.
+
+
+\section{Microservices}
+\label{bac:microservices}
+Defining a newly named architectural concept naturally brings some uncertainty with it.
+There does not yet exist a commonly accepted definition of microservices and there might even never be one, the way it happened with the predecessor of microservices: \ac{SOA}.
+
+While the term \textit{microservice} first emerged to prominence in 2012 \citep[Footnote 1]{Fowler2014}, its tenets harken back to the UNIX design philosophy \citep[p. 76]{Hunt2000}, \citep[p. 2]{Wolff2016}:
+\begin{itemize}
+  \item Each program is supposed to do one thing and do it well
+  \item Programs are supposed to work together
+  \item Programs communicate by using a common underlying format; in UNIX these are text streams
+\end{itemize}
+
+In terms of granularity, microservices equate to UNIX programs.
+This level of granularity is also reflected in the definition of microservices provided by Martin Fowler:
+
+\begin{quote}
+The microservice architectural style is an approach to developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms, often an \acs{HTTP} resource \acs{API}.
+These services are built around business capabilities and independently deployable by fully automated deployment machinery.
+There is a bare minimum of centralized management of these services, which may be written in different programming languages and use different data storage technologies \cite{Fowler2014}.
+\end{quote}
+
+This working definition will serve as a starting point for this chapter and its different aspects are going to be discussed in detail.
+In addition to Fowler \cite{Fowler2014}, the thesis mainly uses Wolff and Newman \cite{Wolff2016, Newman2015} to complement its introduction to microservices.
+
+\subsection{Overview}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If possible every paragraph is structured in the following way:
+%
+%- comprehension of the main ideas
+%- how the situation it is
+%- issues with it
+%- question that needs answereing 
+%- answer to the questions and issues
+%- solution in detail
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{background:characteristics}
+According to Fowler, microservices-based software systems tout the following characteristics  \cite{Fowler2014}. 
+Here they are grouped in technical and organizational characteristics, which is a slightly modified version of Fowler's list:
+\begin{itemize}
+	\item Technical characteristics
+	\begin{itemize}
+		\item \hyperref[bac:ComponentizationViaServices]{Componentization via services}
+		\item \hyperref[bac:businessCapability]{Services organized around business capabilities}
+		\item \hyperref[bac:endpoints]{Smart endpoints and dumb pipes}
+		\item \hyperref[bac:decentralizedDataManagement]{Decentralized data management}
+		\item \hyperref[bac:infraAutomation]{Infrastructure automation}
+		\item \hyperref[bac:DesignForFailure]{Design for failure}
+	\end{itemize}
+	\item Organizational characteristics
+	\begin{itemize}
+		\item \hyperref[bac:teamsBusinessCapabilities]{Teams organized around business capabilities}
+		\item \hyperref[bac:productsNotProjects]{Products, not projects}
+		\item \hyperref[bac:decentralizedGovernance]{Decentralized governance}
+	\end{itemize}
+\end{itemize}
+
+In the remainder, the categorization above is used as a starting point, to be broadened with information from other sources.
+
+%\subsubsection{Technical characteristics}
+\subsection{Technical characteristics}
+\label{bac:TechnicalCharacteristics}
+
+\paragraph{Componentization via services}
+\label{bac:ComponentizationViaServices}
+Microservice architectures thrive for \textit{low coupling} \citep[p. 314]{Larman2004} between components by using services as components.
+Services are independently deployable out-of-process components, which communicate over the network through explicit interfaces \cite{FowlerComponentization2014} \citep[p. 3]{Wolff2016} \citep[p. 179]{Wolff2016}. 
+
+There are different ways on how to separate a software system into components:
+\textit{Libraries} could be used, which are defined as components that are linked into a program and called with in-memory function calls \cite{FowlerComponentization2014}. 
+\textit{Services} on the other hand are out-of-process components that communicate for example via remote procedure calls or messaging \cite{FowlerComponentization2014}.
+Microservice architectures primary way of componentizing is by breaking their software into services \cite{FowlerComponentization2014}.
+Communication between services predominantly either is based on the concept of \ac{REST} and uses \ac{HTTP} as a protocol or relies on messaging \cite{FowlerSmartEndpoints2014}.
+
+Services are preferred over libraries because the components in microservice architectures are supposed to fulfill two qualities.
+They need to be \cite{FowlerComponentization2014}:
+\begin{itemize}
+\item independently replaceable
+\item independently upgradeable
+\end{itemize}
+This requires a component to be \textit{independently deployable}.
+
+Services can be independently deployable because they run \textit{out-of process}.
+In contrast, if an application consists of multiple libraries in a single process, the entire application must be redeployed for a change in a single library.
+A software system, which is decomposed into multiple services, usually only requires the single changed service to be redeployed.
+
+There are reasons why services are sometimes not independently deployable.
+Mainly, if the service interface changes, this might affect other services.
+The aim of good service design is to minimize the potentially hurtful effects of service interface changes by using cohesive service boundaries (see \ref{bac:cuttingMSDDD}), consumer-driven contract tests \citep[p. 233]{Wolff2016} and evolution mechanisms in the service contracts.
+\cite{FowlerComponentization2014}
+
+Another consequence of using services as components are more \textit{explicit interfaces}.
+Most programming languages do not have a good way of separating components from another.
+Often, only documentation and discipline prevents developers from breaking a component's isolation \cite{FowlerComponentization2014}.
+Breaking the isolation would lead to tightly-coupled components, which significantly lowers the productivity over time \citep[p. 3]{Wolff2016}.
+By using explicit remote call mechanisms, services make it easier to retain low coupling between components \cite{FowlerComponentization2014}.
+Therefore, explicit interfaces in microservices enforce strong encapsulation, helping to build sustainable software \citep[p. 3]{Wolff2016}.
+%see page 30 Newman for an explanation of low coupling and high cohesion
+
+Finally, using services as the componentization technique comes with downsides:
+Distributed communication over the network involves significant performance restraints due to latency and marshaling \citep[p. 32]{Wolff2016}.
+Compared to in-memory calls, network calls can fail, which adds more complexity \citep[p. 32]{Wolff2016}.
+Changing the responsibilities between components is harder to do when crossing process boundaries, especially if different teams are involved building the services \cite{FowlerComponentization2014}.
+There are concepts to lower the impact of these downsides, which are discussed in following chapters:
+performance and resilience in distributed systems is discussed in paragraph \hyperref[bac:DesignForFailure]{Design for failure}.
+How to select the right boundaries for microservices is described in Chapter~\ref{bac:cuttingMSDDD}.
+
+\paragraph{Services organized around business capabilities}
+\label{bac:businessCapability} 
+Instead of organizing large software systems primarily around layers, like presentation, domain logic, and technical services, microservices architectures thrive to organize their services around business capabilities equating to business areas. 
+%TODO Example for business area would be helpful.
+This leads to faster innovation and more technological freedom for each individual business area. 
+But it also comes with obligations for team structure and organization \citep[p. 5, p. 21]{Wolff2016} \cite{FowlerFowlerBusinessCap2014}.
+
+The logical architecture of most large software systems is organized in \textit{layers}.
+A layer is a very coarse-grained logical grouping that has cohesive responsibility for a major aspect of the system \citep[p. 199 f.]{Larman2004}.
+Layers are coordinated in a way that ``higher'' layers call on ``lower'' layers but not vice versa \citep[p. 199 f.]{Larman2004}.
+The three primary layers for building enterprise applications from top to bottom include \citep[p. 19 f.]{Fowler2002}:
+\begin{enumerate}
+\item \textit{Presentation layer}: handling the interaction between the user and the software.
+\item \textit{Domain logic layer}: incorporating the business logic of the system.
+\item \textit{Data source layer}: communicating with other systems, like databases or messaging systems, that carry out tasks.
+\end{enumerate}
+
+The goal of layering is to reduce coupling and dependencies by encapsulating technical complexity, improving cohesion and reuse potential, especially for low-level services.
+There is a separation between high and low-level components, between application-specific and general components.
+\citep[p. 204 f.]{Larman2004}
+
+The given layers encapsulate technical responsibilities well but fail at encapsulating other things.
+A change to one business capability can propagate to all layers leading to cascading changes \citep[p. 18]{Fowler2002}.
+The classic example of this is ``adding a field that needs to display on the \ac{UI}, must be in the database, and thus must be added to every layer in between \citep[p. 18]{Fowler2002}''.
+
+This business area agnostic layering leads to problems:
+\begin{itemize}
+\item If one business capability needs to change independently and fast, this is hardly possible because it involves several layers to coordinate their work often resulting in a time and budget consuming endavour \cite{FowlerFowlerBusinessCap2014}.
+\item Teams are formed around the given layers, which results in cross-team coordination for changes on a business capability level. 
+This often results in teams solving problems in their own layers leading to business logic not only in the domain layer but everywhere \cite{FowlerFowlerBusinessCap2014}. This ultimately leads to hardly maintainable code. 
+\item Technological decisions are discussed on a layer level. 
+For example, which database is decided on the database layer for all business cases.
+This neglects the fact that different business areas could benefit from different technological solutions \citep[p. 5]{Wolff2016}.
+\end{itemize}
+
+In contrast, organizing a software system primarily around business capabilities is a different approach than organizing it around layers.
+In this case each service in a microservices architecture is implementing one business area, including user-interface, persistant storage, and any external collaborations \cite{FowlerFowlerBusinessCap2014}.
+A layering with \ac{UI}, domain logic, and database can still exist, but it is always encapsulated in a business area \citep[p. 42]{Wolff2016}.
+This results in the following advantages:
+\begin{itemize}
+\item  New features, relating to one business area and therefore one service, can be developed without having to coordinate them with other services as long as the interface of the service stays stable \citep[p. 21]{Wolff2016}. 
+This is guaranteed because each business capability is encapsulated in a service, which can be deployed independently.
+\item Technological decisions can be discussed on a business capability level.
+New technology can be tested without much risk for other services.
+The databases or even programming languages that satisfy the needs of the business area can be selected \citep[p. 5]{Wolff2016}.
+\item Team organization will need to follow the grouping around business capabilities.
+Therefore, a single team is responsible for one business area.
+This results in faster innovation for a single business capability because less cross-teams communication is necessary.
+\end{itemize}
+
+Creating a software system around business capabilities can only be successful, when the team organization follows the software architecture. The team relevant indications are discussed in paragraph \textit{\hyperref[bac:teamsBusinessCapabilities]{Teams organized around business capabilities}}.
+
+\paragraph{Smart endpoints and dumb pipes}
+\label{bac:endpoints}
+Microservices embrace implementing smarts into the services, not into the middleware.
+All business logic is supposed to be in services that connect through relatively simple pipes \cite{FowlerSmartEndpoints2014}.
+
+Communication and protocol negotiation is done decentralized and directly between the microservices.
+For synchronous communication, simple protocols like \ac{HTTP} with the \ac{REST} paradigm or binary protocols like Protobuf\footnote{https://github.com/google/protobuf} are common \citep[p. 182]{Wolff2016}.
+For asynchronous communication simple messaging solutions are used;
+simple as in acting as a lightweight message router only.
+\cite{FowlerSmartEndpoints2014}
+
+In summary, inter-service communication should be handled in a direct and simple approach with no complex middleware involved. Each service aims to be as decoupled and cohesive as possible.
+They act as filters in the classical UNIX sense: ``receiving a request, applying logic as appropriate and producing a response \cite{FowlerSmartEndpoints2014}''.
+
+\paragraph{Decentralized data management}
+\label{bac:decentralizedDataManagement}
+In microservice systems the responsibility which type of data storage and data schema should lie by the team creating the service \citep{FowlerDecentralizedData2014}.
+It comes with the upside of being able to evolutionary improve your database schema and technological freedom regarding database technology \citep{FowlerDecentralizedData2014} \cite[p. 187]{Wolff2016}.
+But it also involves downsides like having to deal with eventual consistency between services \cite{FowlerDecentralizedData2014}.
+
+Monolithic applications prefer a single logical database \cite{FowlerDecentralizedData2014}.
+Enterprises often even prefer a single database across a range of applications \cite{FowlerDecentralizedData2014}.
+This commonly results in integration of different parts of the application or enterprise on the data layer \citep[p. 187]{Wolff2016}.
+
+% Disadvantages of integrating on the data level
+However, integrating applications or components on the data level comes with drawbacks.
+Mainly, it creates a very strong coupling between the integrated applications, especially if they all use the same database schema. 
+This has the following implications:
+\begin{itemize}
+\item A single application cannot change the database schema independently because multiple applications depend on the same schema  \cite[p. 187f.]{Wolff2016}. 
+\item Different fitting database technologies cannot be used for different parts of the software system.
+Instead, there has to be agreement on one database technology and schema to use.
+\item Database refactoring becomes unpractical and therefore the database schema will become more complex and expensive to maintain \cite{FowlerEvolutionDatabase2015} \cite[p. 187]{Wolff2016}.
+\item Agile development of features with continuous deployment is made nearly impossible, if it involves changes to the database schema \cite[p. 187]{Wolff2016}.
+\end{itemize}
+
+Microservices architectures attack these problems by decentralizing data storage decisions \cite{FowlerDecentralizedData2014}.
+Each service team manages its own data representation.
+This results in two aspects:
+Firstly, each team gets the responsibility to decide which type of database is most beneficial for the business capability they are in charge of \cite{FowlerDecentralizedData2014}.
+This often leads to a variety of different data storage technologies used in one software system.
+A so called \textit{polyglot persistence}\footnote{http://www.martinfowler.com/bliki/PolyglotPersistence.html}.
+Secondly, services can do changes to their database schema independently from other services.
+This leads to faster release cycles and potentially better maintainable databases \cite[p. 187]{Wolff2016}.
+
+Decoupling services on the data level is a central aspect to produce low coupling between services.
+Werner Vogels from Amazon underlines this by saying that service-orientation means that ``data is encapsulated with the business logic that operates on the data. No direct database access is allowed from outside the service, and there’s no data sharing among the services.'' \cite{Vogels2006}  
+
+Decentralizing the data management also comes with downsides.
+The main trade-off here is that without major effort, consistency cannot be guaranteed between services.
+Distributed transactions, might help with consistency, but are notoriously difficult to implement \cite{FowlerDecentralizedData2014}.
+Therefore, microservice architectures emphasize transactionless coordination between services.
+This explicitly accepts eventual consistency and problems which come from compensating operations \cite{FowlerDecentralizedData2014}.
+
+\paragraph{Infrastructure automation}
+\label{bac:infraAutomation}
+Microservices-based software systems significantly benefit from \textit{Infrastructure Automation} during deployment, as well as in an operational landscape.
+Vice versa, concepts like \ac{CD} and \ac{CI} profit from microservices, as they are more easy to establish and maintain with small, independent deployment artifacts.
+For a lot of microservice users enabling \ac{CD} even is one of the main reason for using microservices 
+\citep[p. 5]{Wolff2016}.
+
+Infrastructure automation is already common in a lot of projects.
+Here it refers to \acl{CI} and \acl{CD}.
+
+\textit{\acl{CI}} describes a software development practice where changes to the codebase are integrated quickly into the mainline -- usually multiple times per day.
+Each integration is verified by an automated build including tests.
+The goal is to detect errors quickly, and locate them more easily \cite{FowlerCI2011} \citep[p. 104]{Newman2015}.
+
+\textit{\acl{CD}} uses an easily reproducible process to release software into production.
+This is achieved with a continuous delivery pipeline.
+This pipeline consists of consecutive steps involving compilation, testing and releasing \citep[p. 63]{Wolff2016}.
+
+One challenge with large monolithic software systems is that they are usually deployed through large monolithic builds. 
+Deploying even small changes results in deployment and verification of a large build artifact, which involves a considerable amount of time \citep[p. 105]{Newman2015}.
+This impacts the \textit{cycle time}, the speed at which a single change can be moved from development to live in production \citep[p. 105]{Newman2015}.
+Large deployment artifacts increase the cycle-time for a new feature.
+This acts as a blocker for innovation and lean product development, which revolves around small releases with short cycle times in order to gain feedback and quickly responding to it \citep[p. 30-32]{Poppendieck2006}. 
+An accompanying challenge is that even small changes can break the build for the whole monolith. 
+No other change can be deployed until that break is fixed \citep[p. 105]{Newman2015}.
+In summary, large build artifacts, which are often found in monolithic applications, result in complex deployment processes.
+Complex large deployment processes make implementing \ac{CD} harder and rise the cycle-time.
+
+Microservice enables \acl{CD} \citep[p. 5]{Wolff2016}.
+Each service is small and can be deployed independently. 
+This comes with the following implications:
+\begin{itemize}
+\item Creating and maintaining the pipelines gets much easier with smaller deployment artifacts. Instead of one large build pipeline multiple small \ac{CD} pipelines should be created  -- one for each microservice \citep[p. 5]{Wolff2016} .
+\item Each service has a significantly reduced cycle time compared to a large monolithic system. This enables lean development and faster innovation. One service being built by one team around one business capability is able to introduce new features into production faster.
+\item Small changes to a single service can be tested and deployed independently from other services, which gives fast feedback about possible problems with the code \citep[p. 63]{Wolff2016}. % Does this lead to less errors in total ? Should check it
+\item Deployment strategies, like \textit{blue/green deployment}, \textit{canary releasing} or running multiple versions of a microservice in production are more easy to realize, because the size of the deployment artifact is significantly smaller compared to a deployment monolith \citep[p. 259f.]{Wolff2016}.
+\end{itemize}
+
+Having multiple small deployable units also comes with challenges:
+While internal changes to a microservice can be deployed independently, it needs to be guaranteed that a change does not break the integration with other services.
+This becomes increasingly complicated if the provider of a service does not know all its consumers.
+One strategy to tackle this is to use \textit{consumer-driven contract tests}.
+A contract defines what the consumer expects from the interface.
+He formulates the contract in tests, which are ideally part of the \ac{CD} pipeline of the providing service \citep[p. 233ff.]{Wolff2016}.
+
+Changing the perspective from deployment towards operation reveals that the operational landscape can be strikingly different between monoliths and microservices. 
+Therefore, a lot of teams use Infrastructure Automation when managing microservices in production \citep{FowlerInfrastructureAuto2014}.
+Wolff states that it is practically impossible to release all microservices of a product into production manually \citep[p. 63f.]{Wolff2016}.
+Each microservice runs on its own virtual environment, usually a container \citep[p. 124f.]{Newman2015}.
+It is impractical to create and provision all these virtual environments by hand for hundreds of services.
+This part would become a major bottleneck in releasing new services if not done automatically \citep[p. 64]{Wolff2016}.
+
+\paragraph{Design for failure}
+\label{bac:DesignForFailure}
+Microservice based software systems are distributed systems, which introduces complexity on various levels. In order to stay reliable and performant it is common to use sophisticated logging and monitoring setups, as well as mainly asynchronous communication between services \cite{FowlerDesignForFailure2014}.
+Certain architectural patterns exist, which allow creating Reactive Systems \citep{Reactive2014} \citep[p. 207-209]{Wolff2016}.
+
+As elaborated in paragraph \ref{bac:ComponentizationViaServices}, microservice architectures mainly use services for componentization.
+Therefore using distribution to improve modularity \cite{FowlerTradeoffsDistribution2015}.
+While this comes with the advantage of low coupling between components, it also has a major disadvantage, which is that distributed systems add a lot of complexity \cite{FowlerTradeoffsDistribution2015}.
+
+%TODO repition maybe remove
+Challenges of a distributed system show in various ways:
+\begin{itemize}
+\item Performance: remote calls are slow compared to in-memory calls. They involve latency, marshalling and unmarshalling of data. 
+If a request involves the interaction of a lot of services the response times will add up and produce high latency \cite{FowlerTradeoffsDistribution2015}.
+\item Reliability: which is defined by IEEE as:
+``The ability of a system or component to perform its required functions under stated conditions for a specified period of time''. \cite{Rosenberg1998}.
+A microservice system relies on remote calls between services to produce its required function.
+But remote calls can fail at any time.
+Therefore, every microservice call is a potential for failure either due to unavailability of the supplier or network issues, which challenges reliability \cite{FowlerDesignForFailure2014}.
+\item Further challenges are security in network calls, bandwidth limitations and even more\footnote{http://www.rgoarchitects.com/Files/fallacies.pdf}, which are not covered here.
+\end{itemize}
+
+While the added complexity is undeniable there are ways to mitigate the described problems.
+
+Performance can be gained by:
+\begin{itemize}
+\item reducing the number of calls by increasing the granularity of the calls. Alternatively, create larger sized microservices to reduce the amount of inter-service communication, as discussed in \ref{bac:sizingPerformance}.
+\item using asynchrony for inter-service communication \cite{FowlerDesignForFailure2014}.
+Though this is common in microservice systems, it introduces more complexity for programming and debugging \cite{FowlerDesignForFailure2014}.
+\end{itemize} 
+
+Reliability can be improved in microservices system by:
+\begin{itemize}
+\item detecting failures quickly and, if possible, automatically restoring a service. An elaborate monitoring system, which collects infrastructure information and business relevant metrics is indispensable \cite{FowlerDesignForFailure2014}.
+\item designing software so that it can tolerate the failure of services. In case of unavailability of the supplier or lost network calls, the client has to respond as gracefully as possible \cite{FowlerDesignForFailure2014}. 
+\end{itemize}
+
+The \textit{Reactive Manifesto} gives guidelines for a distributed software system to be reliable in the sense of ensuring availability and fast response time.
+It describes that a system, in order to fulfill these demands, should be designed as being \textit{responsive}, \textit{resilient}, \textit{elastic} and \textit{message driven} \citep{Reactive2014}.
+
+\textit{Responsive} means that the system always responds in a timely manner if at all possible. A responsive system always tries to provide rapid and consistent response times with reliable upper bounds. This consistent behavior simplifies error handling and encourages interaction with the service \citep{Reactive2014}.
+%Helping patterns:  Fail Fast
+
+A \textit{resilient system} stays responsive in the case of failure. 
+The goal is to contain failures within each component. 
+Therefore ensuring that parts of a system can fail and recover without compromising the system as a whole. 
+The recovery is delegated to another (external) component \citep{Reactive2014}. 
+%Helping patterns: Bulkhead, circuit breaker, Containerization.
+
+\textit{Elastic systems} stay responsive under varying workload. 
+This implies automatically adjusting the resources allocated to the requests.
+Also systems need to be designed to replicate components and distribute inputs among them without allowing central bottlenecks or resource contention \citep{Reactive2014}.
+
+A \textit{message driven} system relies on asynchronous message-passing to establish a boundary between components that ensures loose coupling, isolation and location transparency. The communication is non-blocking meaning that components only consume resources while active, leading to less system overhead \citep{Reactive2014}.
+
+Certain patterns have emerged which help fulfilling these qualities in distributed systems. Widely spread are Circuit Breaker, Bulkhead, Timeout and Fail Fast \citep[p. 207-209]{Wolff2016} \citep{Netflix2012}. 
+Also containerization helps isolating failures and therefore providing resilience.
+
+%\subsubsection{Organizational characteristics}
+\subsection{Organizational characteristics}
+\label{bac:organisationalCharacteristics}
+
+\paragraph{Teams organized around business capabilities}
+\label{bac:teamsBusinessCapabilities}
+As the nature of teams that develop microservices is very different than the traditional vertical team structure, this poses a significant organizational challenge.
+Indeed, the separation of concerns in the software design must also be reflected in the organization, otherwise the implementation will drift away from the design.
+It is a commonly accepted fact that ``any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure'' \citep{Conway1968}.
+Thus, to succeed at implementing a software system modularized following the structure of business capabilities, the implementing teams must be organized around the same business capabilities \citep[p. 41]{Wolff2016}.
+
+As discussed in \ref{bac:ComponentizationViaServices} the architecture of a lot of large software systems is organized around layers.
+The team management usually follows this technological separation, leading to \ac{UI} teams, server-side logic teams, and database teams \cite{FowlerFowlerBusinessCap2014}.
+This comes with the advantage of each team consisting of an expert group for a technological field, i.e., \ac{UI} or database topics.
+The experts can benefit from the technical knowledge of each other and the organizational structure is straight-forward \citep[p. 40]{Wolff2016}.
+
+Practice has shown that on the long run this form of organization comes with downsides:
+
+Firstly, when teams are separated around these layers, simple changes in one business area can lead to cross-team projects involving time and budgetary approval \cite{FowlerFowlerBusinessCap2014}.
+This happens because a typical feature involves changes at the \ac{UI}, backend and the database \citep[p. 40]{Wolff2016}.
+In practice this could look like the following scenario \citep[p. 40]{Wolff2016}:
+First, the person driving the feature has to talk to the UI, backend and the database team.
+Then, the teams need to coordinate their work and possibly create new interfaces.
+The database team starts with the changes, then the backend team implements the logic and then the \ac{UI} team follows.
+Additionally, prioritization of the new feature might differ between the teams, which can lead to further delays.
+In the end, this approach leads to a lot of coordination and communication effort, which costs time and budget \citep[p. 41]{Wolff2016}.
+
+Secondly, to circumvent the effort of coordination, teams will start to implement business logic in the area they are working in.
+This ultimately leads leads to logic in all layers, which destroys the main reason for using a layered architecture in the first place, as explained in the paragraph \textit{services organized around business capabilities} in Section~\ref{bac:TechnicalCharacteristics}.
+
+To tackle these problems companies developing microservices organize their teams around business capabilities.
+For the implementation this means: each business area is implemented in one service, which is managed by one team.
+Teams, on the other hand may be responsible for multiple services.
+This translates into \acs{UI}s, logic and data layers of one service being all managed by one team. 
+As a result teams must be \textit{cross-functional.} meaning they include the complete range of skills required for the development including user-experience, database, and project management \citep{Fowler2014}. 
+
+This enables a sense of \textit{service ownership} in the team.
+The ownership extends to ``all aspects of the service, from sourcing requirements, building, deploying and maintaining the application \citep[p. 194]{Newman2015}''.
+It leads to increased autonomy and speed of delivery \citep[p. 194]{Newman2015}. 
+Additionally, it enables feature development with less cross-team communication and effort, since most features will be implemented by only one team \citep[p. 42]{Wolff2016}.
+
+The fact that microservices are built and operated by the a single team controvert the traditional distinction between development and operation. 
+This organizational style is embodied by the DevOps methodology.
+DevOps originated from development and operational teams realizing that a lot of their problems can be solved by working more closely together.
+Mutually understanding each other would simplify and ease their work \cite[5:00]{RadioDevOps}.
+Surveys underline this advantageous connection between faster deployment time and increase in product quality as well as faster recovery of failures \cite[p. 4]{devopsReport2015}.
+
+The idea of cross-functional teams and DevOps was famously articulated by Amazon, one of the earliest adopters of what is today considered microservices: 
+Each service has a team associated with it that is ``completely responsible for the service — from scoping out the functionality, to architecting it, to building it, and operating it.' \citep{Vogels2006}'.
+Or more succinct: ``You build it, you run it.'' \citep{Vogels2006}.
+
+\paragraph{Products, not projects}
+\label{bac:productsNotProjects}
+Currently, most application development efforts is based on a \textit{project-based model}:
+The goal of the project is to deliver software, which is afterwards considered to be completed.
+On completion it is handed over to another organizational unit, which is responsible for maintenance and the project team is disbanded \cite{FowlerProductProjects2014}.
+
+In microservice based systems such a project-based model tends to be avoided.
+Instead the responsibility of a team developing services does not end with the delivery of working software. 
+It also involves owning and operating the resulting \textit{product} over its full lifetime.  
+Consequently, teams creating microservices, see their work in the context of the whole product.
+This product mentality, ties in with the linkage to business capabilities.
+A team is not looking at the software as a set of functionality \cite{FowlerProductProjects2014}.
+Rather, there is a on-going relationship over the product life-cycle, where the question is: ``how can software assist its users to enhance the business capability'' \cite{FowlerProductProjects2014}.
+
+There is no reason that the same approach could not work in monolithic systems as well.
+But the small granularity of services can make it easier to create the relationship between service developers and their users \cite{FowlerProductProjects2014}.
+
+\paragraph{Decentralized governance}
+\label{bac:decentralizedGovernance}
+\textit{Governance} here refers to the decision-making power in a software organization for technological and organizational questions.
+This for example includes decisions about programming language, database technologies and standardization \cite{FowlerDecentralizedGov2014}.
+
+Centralized governance has the tendency to standardize on single technology platforms.
+This approach can be constricting and the technology stack, for example the programming language, might not be a well fitted one for every use cases of the software system \cite{FowlerDecentralizedGov2014}.
+
+Organizations building microservices tend to shift the responsibility towards decentralized governance favoring technology freedom and independence on a product team level.
+This especially relates to decisions regarding programming language and data management which are usually made inside the service-developing team  \cite{FowlerDecentralizedGov2014} \citep[p. 274]{Wolff2016}.
+
+Fowler argues that the approach of decentralized governance results in a different approach to standardization \cite{Fowler2014}.
+Rather than writing down standards, teams tend to produce tools that other developers with similar problems can later use.
+This results in a variety of battle-tested code shared between teams.
+Netflix is a company famous for creating these tools and sharing them publicly\footnote{https://github.com/Netflix}.
+
+However, decentralized governance also comes with its trade-offs.
+According to Wolff \citep[p. 273-275]{Wolff2016} there exists an area of conflicting priorities between both:
+\begin{itemize}
+\item Freedom of technology versus standardization and
+\item Teams working independently versus absence of redundancy
+\end{itemize}
+
+Therefore, even in microservice systems it is practical to introduce centralized governance in certain areas, i.\,e. using standardization.
+This often includes providing incentives for integration of monitoring, logging or authentication and other common infrastructure tools \citep{Vogels2006}.
+
+\section{Domain-driven design}
+\label{bac:ddd}
+\begin{chapquote}{Eric Evans, \cite[p. 4]{Evans2004}}
+``The hearth of software is its ability to solve domain-related problems for its user.''
+\end{chapquote}
+
+\ac{DDD} in its essence is a way of using models to create software \cite[5:00]{RadioDDD2015}.
+These models are used as a foundation for understanding and communicating about complex domain logic in a software project.
+Understanding the domain holds relevance because the most significant complexity in software often lies in the domain itself \cite[p. xxi]{Evans2004}.
+Software projects that neglect the complexity of the domain risk irrelevance \cite[p. 5]{Evans2004}.
+Therefore, \ac{DDD} puts domain modeling in the center of software design.
+
+According to Evans, a software design must systematically deal with the complexity of the domain or it will not succeed \citep[p. xxi]{Evans2004}.
+He popularized an approach, called \acl{DDD} to handle this complexity.
+In his book he introduces the two central premises of \ac{DDD} \cite[p. xxi]{Evans2004}:
+\begin{itemize}
+\item For most software projects, the primary focus should be on the domain and domain logic.
+\item Complex domain designs should be based on a model.
+\end{itemize}
+
+The following section describes a selection of basic concepts of \ac{DDD}.
+They form a basis for the discussion about forming microservices in \ref{bac:cuttingMSDDD} .
+
+\paragraph{Domain model}
+The \textit{domain model} is an organized and selective abstraction of the domain logic \citep[p. 3]{Evans2004}.
+It is supposed to be at the center of design decisions while being understood by both the domain experts and the technical team \citep[p. 32]{Evans2004}.
+
+The three basic uses of the domain model are \citep[p. 3f.]{Evans2004}:
+\begin{itemize}
+\item  It is intimately linked with the implementation.
+Therefore, the knowledge gathered in the model supports the implementation and maintenance of the final product.
+\item It is the backbone of a language used by all team members.
+Developers understand the model because the implementation is based on it.
+Domain experts understand the model because it is expressed in the domain language they already use.
+%The model is a mean of communication that connects the technical with the domain world.
+\item It is distilled team knowledge. 
+It expresses the teams agreed-upon way of thinking about the domain.
+Because it evolves side-by-side with the implementation, early feedback to the implementation will help the modeling process.
+\end{itemize}
+
+The third bullet point empathizes clearly: the model to Evans is not the result of a long-drawn upfront design.
+Instead it is an ever-evolving abstraction of the currently agreed-on structure of the domain.
+Like the implementation, the model evolves constantly.
+
+\paragraph{Ubiquitous language}
+\label{bac:ublanguage}
+In order to create a model that is understood by both the domain experts and the technical team it needs to be created in a language known to both \citep[p. 32]{Evans2004}, called the \textit{ubiquitous language}.
+
+Evans states, that a project faces serious problems when its language is fractured between the technical and the domain world. 
+This is evident, when the domain experts use their domain-specific jargon, while the development uses a different language to discuss the domain in terms of design.
+Even inside the technical team the terminology of daily communication differs from the terminology embedded in code.
+Inevitably translations need to occur between the different languages, which blunts communication and loses information. \citep[p. 25]{Evans2004}
+A solution for this linguistic separation is to introduce a commonly understood language, which forms the basis of the domain model.
+
+\paragraph{Bounded context}
+Coming up with only one domain model for the whole organization is usually counterproductive \cite[9:00]{RadioDDD2015}. %?? citation time not sure.
+Instead, in large projects multiple models are in play \citep[p. 336]{Evans2004}.
+In order to show in which context a particular model is consistent \textit{bounded contexts} are defined
+\citep[p. 511]{Evans2004}.
+
+A bounded context is an explicitly set boundary in a domain model.
+It separates different semantic worlds.
+The inside world holds a consistent vocabulary, building blocks are associated with each other and rules apply.
+Team organization and physical manifestations, such as code bases and database schemas are explicitly set inside the boundary \citep[p. 336]{Evans2004}.
+The outside might consist of other known bounded concepts or even territory with unknown rules and languages, i.\,e. an external system.
+Separating the contexts gives team members a clear understanding of what has to be kept consistent and what can develop independently \citep[p. 551]{Evans2004}.
+
+To illustrate the idea of Bounded Contexts an example around an online shop is provided \cite[11:00]{RadioDDD2015}. %?? citation time not sure..
+An online shop with basic functionality handles buying and shipping of items.
+The item exists in at least these two contexts: the ordering and the shipping context.
+In the ordering context attributes like the amount bought and prize are important.
+The shipping context rather focuses on attributes like how the item is selected to be shipped or whether the item is shipped together with a larger order.
+In this small scenario the item appears in two different \textit{bounded contexts}, each having a different perspective on the item.
+\cite[13:00]{RadioDDD2015}
+
+\paragraph{Aggregates}
+An \textit{Aggregate} adds life-cycle information to a domain model \citep[p. 123f.]{Evans2004}.
+It is a cluster of associated objects that is treated as a unit for the purpose of data changes. 
+It consists of a root and a boundary.
+
+The \textit{root} is a single entity contained in the aggregate.
+It forms an explicit interface for the outside world.
+External references to the aggregate can only be hold via the root.
+
+The \textit{boundary} defines what is inside the aggregate.
+It encloses multiple entities, marking off the scope within which \textit{invariants} have to be maintained at every stage of the life cycle \citep[p. 126]{Evans2004}.
+Invariants are consistency rules, which will be enforced with the completion of each transaction \citep[p. 128]{Evans2004}.
+In essence, what happens inside an Aggregate is transactionally safe, meaning that data is consistent \citep[p. 126]{Evans2004}.
+
+An example for an aggregate is given in figure \ref{background/Aggregate}.
+In this model the black surrounding line indicates the boundary of the aggregate. 
+The entity \textit{Car} is the root and functions as the only access to the aggregate.
+Each car is identified by a unique identifier.
+It exposes the function \textit{rotate} to the outside.
+In this example the rotation history of each tire is tracked through the four wheel positions.
+Execution of the rotate method will start a transaction.
+Before the transaction is completed the invariants need to be resolved:
+The individual tire mileage and the wheel positions are updated.
+When all invariants are satisfied, meaning the update is finished the transaction ends.
+The aggregate went from one consistent state to another.
+\citep[p. 127]{Evans2004}
+
+\bildH{background/Aggregate}{14cm}{Example of an Aggregate \cite{Evans2004}}{Example of an Aggregate \citep[p. 128]{Evans2004}}
+
+\section{Microservices sizing}
+\label{bac:mssizing}
+Microservices have a description of size in their name.
+But how big is ``micro'' exactly?
+
+This chapter focuses on answering this question by summarizing common knowledge of microservice practitioners.
+An accepted approach is to use the concept of \ac{DDD} \citep[p. 34]{Newman2015}, \citep[p. 44]{Wolff2016}.
+%An introduction to \ac{DDD} was given in section \ref{bac:IntroDDD}.
+How to use \ac{DDD} to shape microservices is discussed in Section~\ref{bac:cuttingMSDDD}.
+The last section \ref{bac:addFactors} explores other factors which could also influence the size of services.
+This includes run-time relevant qualities, like performance and consistency.
+
+\subsection{Cutting microservices with domain driven design}
+\label{bac:cuttingMSDDD}
+\begin{chapquote}{Martin Fowler}
+``A microservice should be smaller than a bounded context and no smaller than an aggregate.'' 
+%SAP talk minute 26
+\end{chapquote}
+
+Evans uses the concept of scoped languages to summarizes the relationship between \ac{DDD} and microservices:
+%An interesting concept is the sharing of a language. 
+On different levels of the system different languages are spoken and understood.
+A bounded context forms a boarder of understood language.
+Inside the context the language and rules that apply are very clear and consistent \cite[24:10]{RadioDDD2015}.
+A bounded context is realized by one or usually a cluster of microservices, which share a language \citep[27:00]{RadioDDD2015}.
+For example an order line item has a certain meaning in the context, which might differ in other contexts \citep[23:50]{RadioDDD2015}.
+
+To elaborate this in more detail:
+Microservices are organized around business areas, as discussed in \ref{bac:businessCapability}.
+Each business area has its own conceptual model of the domain \citep{FowlerDecentralizedData2014}.
+This becomes obvious when integrating software across a large enterprise.
+For example the sales view of a customer will differ from the support view.
+Therefore, many conceptual models exist in a microservice system and they are shaped in a decentralized manner. 
+In addition to the conceptual model microservices also decentralize data storage decisions.
+While monolithic applications prefer a single database for the whole system, microservices prefer each service to manage its own database. \citep{FowlerDecentralizedData2014}
+
+This leads to the following questions when designing microservices:
+\begin{itemize}
+\item How to divide a domain into consistent conceptual models and respectively business capabilities?
+\item Which parts of the system should be sharing a database because they need guaranteed data consistency?
+\end{itemize}
+\ac{DDD} with the concept of bounded contexts and aggregates provides the methodology to answer these questions.
+
+A bounded context provides a set of business capabilities  to the rest of the domain.
+For example, a warehouse context may provide the capability to get a current stock list or a finance context may let you set up payrolls.
+This maps well to the microservice world.
+Each bounded context is supposed to be modeled as one or more microservices.
+The business capabilities will then become the key operation which are exposed by these microservices.
+Consequently, a microservice should be no larger that a bounded context.
+\citep[p. 34]{Newman2015}
+
+Aligning microservices with bounded contexts comes with organizational implications:
+One bounded context, mapping to one or a cluster of microservices, should be implemented by only one team \citep[p. 52]{Wolff2016}.
+Most feature requests and changes to a system only involve changes to one business area.
+Therefore having only one team being responsible for one context results in new features to be developed fast and independently with minimal cross-team interaction, as explained in \ref{bac:teamsBusinessCapabilities}.
+
+\ac{DDD} also addresses modeling the relationship between different bounded contexts.
+Evans presents \textit{context maps} in which the type of relationship between bounded contexts can be explicitly defined.
+This helps organizing the relationship between different microservices \citep[p. 48]{Wolff2016}.
+Examples are the \textit{customer/supplier} or \textit{anti-corruption layer} pattern \citep[p. 367]{Evans2004}.
+
+Aggregates also serve a special role in shaping the boundaries of microservices.
+An Aggregate is transactionally safe, meaning that data is guaranteed to always be consistent inside.
+Changes therefore need to be serialized after each transaction.
+Because consistency cannot be guaranteed over the boundaries of microservices an aggregate cannot be split between two or more microservices.
+Consequently, a microservice should be no smaller than an aggregate.
+\citep[p. 46]{Wolff2016}
+
+\paragraph{Premature decomposition}
+Because shifting functionality between existing microservices is costly, it is adviced to start with fewer microservices or even a monolith. Then over the course of the project continue with the decomposition into smaller services \citep[p. 34]{Newman2015} \cite[p. 121ff.]{Wolff2016}. 
+This is especially relevant if the team is new to the domain \citep[p. 34]{Newman2015}.
+
+With \ac{DDD} an approach is presented to derive the boundaries of microservices from the domain.
+However, as Evan states, the domain model is not static but rather evolving in a process of \textit{continuous learning} \citep[p. 15]{Evans2004}.
+The software design will inevitably change with the evolving model \citep[p. 3]{Evans2004}.
+Meaning, it is very likely that responsibility will shift between bounded contexts especially in the early stages of the project.
+The question arises how easy it is to refactor a microservice system in order to deal with the changes.
+The answer is, it depends on the scope of the change:
+
+Refactoring inside the boundaries of a microservice comes with relatively low effort.
+Mainly, because the refactoring involves only one team, which can organize its own schedule around it.
+Every service has its own \ac{CD} pipeline to push the refactored code independently through tests into production.
+\cite[p. 33]{Wolff2016}
+
+In contrast to that, shifting functionality from one service to another imposes significant organizational and technical challenges. 
+Usually, it involves that a new team takes on the responsibility from the old team, which involves extensive cross-team communication.
+In addition, the other service might be written in a different language, which would result in a complete reimplementation of the functionality
+\cite[p. 33]{Wolff2016}.
+
+Therefore, premature decomposition into services is costly especially if you are new to the domain.
+To circumvent this, Newman recommends to start with a monolithic application, where shifting functionality over module boundaries is much more easy.
+Then after the domain is better known the codebase can be split into smaller microservices \citep[p. 34]{Newman2015}.
+
+\subsection{Additional factors}
+\label{bac:addFactors}
+While \ac{DDD} gives guidance on how to cut microservice along the contexts of the domain, other factors can become relevant which question the initial sizing.
+This could include requirements like consistency guarantees over multiple contexts or performance concerns.
+
+\paragraph{Transactions and data consistency}
+As explained in Chapter~\ref{bac:decentralizedDataManagement} \textit{decentralize data storage}, microservice systems allow no direct database access from outside the service, and there is no data sharing among services \citep[p. 36]{Wolff2016}.
+However, from a domain perspective a transaction might involve multiple business areas; or data consistency is supposed to be guaranteed between business domains.
+This leads to a challenging situation, which is holding data consistent between multiple nodes of a distributed system.
+
+This challenge can be circumvented by either merging microservices from different domains together into one large service or by reshaping the boundaries of the domain model so that consistency guarantees do not span across different business areas [Wol16, p. 35f.].
+On the downside, merging different business domains together diminishes the advantages of having one microservice represent one business area, as explained in Section~\ref{bac:cuttingMSDDD}.
+Therefore, the leading approach seems to be to not merge different business areas together if possible.
+
+\paragraph{Team size}
+Since a service is never supposed to be managed by more than one team, the team size influences the amount of functionality that can be implemented in one service \citep[p. 34]{Wolff2016}.
+There are different approaches to how big a team developing a microservice is supposed to be.
+An upper bound are the two pizza teams, made famous by Amazon.
+This notion describes a whole team developing a microservice must be fed by two American pizzas, meaning no larger than 10 people
+\cite{FowlerHowBigIsAMicroservice2014}.
+
+By fixating the upper bound of the team size per service certain implications follow:
+Small team sizes lead to smaller services overall, which leads to easy replacement but also to potentially more chatty relationships between services.
+The decision on the right team-size varies on a project basis.
+Varying team sizes in the industry show that it is too early to recommend a best practice team sizing yet.
+What is agreed upon is that a microservice team should be no larger than about 10 people \citep[p. 34]{Wolff2016}.
+
+\paragraph{Performance}
+\label{bac:sizingPerformance}
+Performance-wise, the question of size of a microservice represents a clear trade-off between latency and scaling.
+The smaller the services, the more fine-grained parts can be scaled independently.
+The larger the services, the less communication between the services will happen.
+Larger services will result in more intra-process calls instead of network calls.
+Resulting in less latency, due to less network calls \citep[p. 32]{Wolff2016}.
+
+\clearpage
+
+\section{Cloud computing}
+\label{bac:cc}
+% From Smits: First provide the NIST definition, then give your interpretation and what is important for you.
+Cloud computing is the on-demand network access to a shared pool of configurable computing resources.
+This includes access to compute power, database storage, applications, or other IT resources, which can be rapidly provisioned and autonomously released with minimal management effort.
+The provider delivers these resources via the internet and consumers are billed according to use.
+\citep[p. 2]{DefCC2011} \cite[p. 17]{Hassan2014}
+
+Referring to the \acl{NIST} \cite{DefCC2011}, Cloud Computing is composed of five characteristics:
+\begin{itemize}
+\item A consumer can provision computing capabilities using \textit{on-demand self-service}, which means there is no necessity of human interaction in between.
+\item Computing capabilities are \textit{available over the network} and can be accessed through heterogeneous client platforms, i.\,e. mobile phones or laptops.
+\item \textit{Resource pooling} is used, i.\,e., the provider’s computing resources are ``pooled to serve multiple consumers using a multi-tenant model. The various physical and virtual resources get dynamically allocated, assigned, and reassigned according to consumers demands \citep[p. 2]{DefCC2011}''.
+The consumer is agnostic of infrastructure details of the provided resources, like the exact location of the underlying hardware or how many other consumers are currently also requesting resources.
+Though in reality, different consumers do not run in isolation and might interfere with each other, i.\,e., due to the overall limitation of resources.
+\item Computing capabilities can be elastically provisioned and released to scale with the consumers demand.
+\item Cloud systems contain components which automatically control and \textit{measure} the use of resources at some level of abstraction (e.g., storage, processing, bandwidth or active user accounts).
+\end{itemize}
+\subsection{Infrastructure}
+\label{bac:CCInfra}
+Cloud Computing is built out of the four following layers \citep[p. 2]{DefCC2011}:
+\begin{etaremune}
+	\item Application layer: with executable, deployable artifacts
+	\item Platform layer: with an execution runtime and possibly backing services
+	\item Infrastructure layer: with virtual machines, storage, and networking
+	\item Hardware layer: with physical machines
+\end{etaremune}
+
+The four layers are illustrated in figure~\ref{background/CloudComputing}. 
+These layers directly influence the provided service models. 
+
+\bildH{background/CloudComputing}{14cm}{Four main layers of cloud computing \cite{Zhang2010}}{The four main categories of cloud computing \citep[p. 9]{Zhang2010}}
+
+\subsection{Service models}
+\label{bac:ccServiceModels}
+Cloud Computing is provided in three major service models \citep[p. 1]{DefCC2011}:
+\begin{itemize}
+\item \acf{SaaS}
+\item \acf{PaaS}
+\item \acf{IaaS}
+\end{itemize}
+
+Every service model abstracts from some of the layers shown in figure~\ref{background/CloudComputing} and provides an interface for the consumer to access some of these resources. 
+The level of abstraction provided, regarding the four layers, varies with the service model.
+
+\paragraph{\acl{SaaS}}
+\ac{SaaS} encapsulates all four layers. 
+
+The provider manages the infrastructure, platform and application.
+The consumer is provided with access to the running application over the network, usually via heterogeneous devices.
+Additionally the consumer may have access to limited userspecific application configuration settings.
+Other than that the consumer is agnostic to the underlying cloud infrastructure\footnote{Cloud Infrastructure refers to the collection of hardware and software that enables the five essential characteristics of cloud computing from \ref{bac:cc}} including network, servers, operating systems, storage, or even individual application capabilities  \citep[p. 2]{DefCC2011}.
+
+\paragraph{\acl{PaaS}}
+\ac{PaaS} encapsulates the first, second and third layer.
+
+The provider exposes a set of \acs{API}s for deploying applications on a cloud infrastructure.
+The consumer pushes the application code together with configuration settings, like the number of instances, through the given \acs{API}.
+It is the consumer's responsibility to make sure that the application can scale horizontally \citep[p. 79]{Teixeira2014}.
+The applications are then deployed, monitored, provisioned and scaled by the platform.
+Programming languages, libraries, services, and tools are supported by the provider \citep[p. 3]{DefCC2011}.
+Additionally, a \ac{PaaS} often provides backing services, i.\,e., regarding persistence or messaging, that can be connected to and used by the deployed applications of the consumer.
+Examples for \ac{PaaS} systems are Cloud Foundry\footnote{https://www.cloudfoundry.org/platform/} or Heroku\footnote{https://www.heroku.com/}.
+
+\paragraph{\acl{IaaS}} 
+\ac{IaaS} hides away the concrete hardware and provides an interface to layer two, consisting of virtual machines, storage and networking.
+
+This service allows the consumer to spawn a virtual infrastructure, including processing, storage and networks \citep[p. 3]{DefCC2011}.
+These resources are requested over an interface, usually a web service.
+The provider then creates the requested resources by partitioning physical resources using virtualization technologies.
+It is an on-demand service, as the resources can grow or shrink with the load fluctuations \citep[p. 9]{Zhang2010}.
+Only the provider has access to the underlying physical hardware.
+The consumer, however, is able to deploy and run arbitrary software on the provided infrastructure, which can include operating systems and applications \citep[p. 3]{DefCC2011}.
+Therefore, it is the consumers responsibility to manage the software stack and making the application scalable with the addition of new nodes \citep[p. 79]{Teixeira2014}.
+Real world examples for \ac{IaaS} are Amazon Web Services\footnote{https://aws.amazon.com} or Google Cloud Platform\footnote{https://cloud.google.com/compute/}.

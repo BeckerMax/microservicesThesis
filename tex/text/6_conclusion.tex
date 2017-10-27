@@ -1,0 +1,99 @@
+\chapter{Conclusion}
+\label{con}
+%TODO a little to retrospective
+
+\section{Summary}
+Prior work on the topic of the microservice architectural style mainly covers general overviews \cite{Newman2015,Wolff2016}. 
+As there is no common definition of the relatively new term microservices, different sources draw different, coarse pictures of its characteristics.
+Many refer to the successful flagship implementations in the industry, like Netflix or Amazon.
+But, there is no thorough trade-off discussion of microservices, as well as no explicit decision guidance for which application scenarios to use microservices known to the author of the thesis.
+
+The thesis used quality attribute scenarios to systematically discuss trade-offs of microservices.
+A list of quality scenarios relevant for the evaluation of microservices was created (Section~\ref{qua:architecturalQua}).
+Each quality scenario was assessed and discussed in regard to whether microservice or the three-tier architectural style is more suitable to achieve the scenario (Section~\ref{quaMicro:rating}).
+In addition, organizational factors and their influence on using microservices were discussed (Section~\ref{quaMicro:tradeoffOrgRequirements}).
+This evaluation was based on research from literature, conference talks and analysis of industry examples of microservice architectures. 
+A subset of the scenarios was empirically evaluated by interviewing microservice practitioners through a questionnaire (Chapter~\ref{que:empiricalEvaluation}).
+
+During the evaluation of the quality attributes it became clear that giving a general guidance in which application scenarios to use microservices cannot be achieved by this thesis.
+Firstly, a high-level description of an application scenario is too vague to be reliably assessed regarding quality attributes. 
+Secondly, the decision which architectural style to use is dependent on many factors (quality attributes are just one of them) and they cannot all be covered here.
+% in order to give a realistic decision guidance.
+Trade-offs on several layers contribute to the decision of using microservices or not.
+
+However, what this thesis presents is a discussion of different trade-offs of microservices in comparison to more monolithic styles, like a three-tier architecture.
+Not a definite decision guideline, but a discussion starter is presented based on the condensed knowledge of several microservice practitioners.
+In addition to quality attributes, also organizational factors are discussed, which play a major role in the decision for or against microservices.
+
+Summarizing the findings from the quality rating in Section~\ref{quaRating:conclusion} microservices should be considered for the following use cases (related quality scenario numbers in brackets):
+
+\begin{itemize}
+\item High development velocity, meaning continuous innovation in large projects consisting of several teams (\hyperref[quaMicro:s16]{16} and organizational scenarios \hyperref[quaMicro:so1]{1}, \hyperref[quaMicro:so2]{2}).
+\item High availability for large scale distributed systems, especially if eventual consistency can be accepted (\hyperref[quaMicro:s12]{12}, \hyperref[quaMicro:s13]{13}).
+\item Excellent utilization of on-demand hardware through fine-grained auto-scaling of load. For example \textit{pay for service} (\hyperref[quaMicro:s2]{2}, \hyperref[quaMicro:s4]{4}, \hyperref[quaMicro:s22]{22}). 
+\end{itemize}
+
+On the contrary, one should rather not consider microservices if:
+
+\begin{itemize}
+\item The domain of the project is not fully known (see \textit{\hyperref[quaMicro:modifiabilityDiscussion]{modifiability discussion}} in \ref{quaMicro:modifiabilityDiscussion}).
+\item The organization does not have or is not ready to heavily invest in competence to develop and operate complex, distributed systems (\hyperref[quaMicro:s9]{9}, \hyperref[quaMicro:s10]{10} and see \textit{\hyperref[quaMicro:distributedSystemDownsides]{distributed system discussion}} in \ref{quaMicro:distributedSystemDownsides}).
+\item ACID conform transactions spanning over multiple business areas are needed (\hyperref[quaMicro:s11]{11}).
+\end{itemize}
+
+For most other quality attributes, microservices in comparison to three-tier architectures have up- and downsides.
+Section~\ref{quaMicro:distributedSystemDownsides} holds a discussion of these trade-offs ordered by quality attributes.
+An empirical evaluation through a questionnaire support the results of this evaluation (Section~\ref{res:overview}).
+
+\section{Outlook and future work}
+Microservices are another tool in the architectural toolkit that need to be chosen appropriately.
+They will not replace monolithic applications in the near future.
+Instead, they present themselves as an alternative to other architectural styles.
+To conclude the thesis, this section discusses promising fields for future work on microservices.
+
+\paragraph{Adoption of microservices}
+At this moment it is too early to provide a final judgment of how effective microservices actually are. 
+Most microservices applications are still rather young and how modifiable a system is will be evident after years.
+As Fowler states, it is likely that the success of microservices is dependent on many factors in the surrounding environment, both political and technological \cite{FowlerMSOverview}.
+For example, the skill of developers to handle the challenges of a distributed system might play an important role in how successful the style will be in a concrete use case.
+
+Because most microservices-based applications are still rather young this thesis comes with a caveat. 
+It uses information from the early adopters of microservices, which are probably not representative for all companies.
+Only the future will tell whether the later adopters will be successful with microservices.
+This will decide whether microservices can emerge from being a hyped topic to becoming an established and widely adopted architectural style.
+Future work will have to constantly validate the currently known trade-offs of microservices with the growing evidence coming from teams sharing their experiences.
+Also researching anti-patterns from failed microservice adoptions would be interesting.
+
+\paragraph{Organizational implications of microservices}
+This thesis offers a glimpse on the organizational implications of microservices.
+Apparently, system design is inherently connected with the organizational structure of a company \citep[p. 201]{Newman2015}.
+For example, microservices are frequently associated with the inverse Conway Maneuver (for Conways Law see \ref{bac:organisationalCharacteristics}).
+The idea is to let the system design influence the team structure, instead of the other way around \citep[p. 201]{Newman2015}.
+For microservices, this would mean that the teams follow the separation of services into business capabilities.
+Reorganizing teams in an established organization into small independent teams is a large investment and future work could give examples and provide support on how to do that.
+
+Another team related concept touched in this thesis is cross-functional teams.
+Following the Amazon.com example, a microservice should be built and operated by one single team.
+This team is ``completely responsible for the service -- from scoping out the functionality, to architecting it, to building it, and operating it \cite{Vogels2006}''.
+This underlines the point that the decision for microservices has implications for team structure and organization.
+It seems that a discussion about the organizational implications of microservices is underrepresented in the current literature, especially in relation to its importance.
+Further researching the organizational implications of microservices seems to be interesting and highly relevant.
+
+\paragraph{Patterns and strategies for implementing microservices}
+With microservices, the complexity rises in fields like operation, deployment or programming.
+The fact that microservices decouple the lifecycles of components enables innovation but acts as a complexity booster \cite{FowlerTradeoffsDistribution2015}.
+Certain patterns and strategies are described as de facto standards for microservice architectures.
+A few of them are:
+\begin{itemize}
+\item Tactics for reliability, like Bulkhead
+\item Automated deployment with \ac{CD} and automated infrastructure provisioning
+\item Sophisticated monitoring and logging setups
+\item Simulating failure in production
+\item Service interface versioning strategies
+\item Patterns to implement network communication between services
+\item Strategies to deal with partial failures and indeterminacy in a distributed system \cite{Kendall1994}.
+\end{itemize}
+These strategies did not necessarily evolve with microservices but they are inherently important for them, or arguably any large scale distributed system.
+An approach that researches these strategies and patterns in order to give concrete guidance on how to handle the complexity and challenges of microservices appears useful and promising.
+
+% Kerniger Schlusssaz, ein kerniges Statement zu meinen Erkenntnissen und oder was weitere Forschung hinzufügen kann.

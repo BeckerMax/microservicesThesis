@@ -1,0 +1,141 @@
+\select@language {english}
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Research goal}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Research questions}{3}{section.1.3}
+\contentsline {paragraph}{\nonumberline What are the main characteristics of microservices?}{3}{section*.5}
+\contentsline {paragraph}{\nonumberline How well can quality attributes of different categories be achieved in systems built out of microservices?}{3}{section*.6}
+\contentsline {paragraph}{\nonumberline Which software systems are particularly well suited to be build with microservices?}{3}{section*.7}
+\contentsline {section}{\numberline {1.4}Research approach}{3}{section.1.4}
+\contentsline {section}{\numberline {1.5}Thesis structure}{4}{section.1.5}
+\contentsline {chapter}{\numberline {2}Background}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Microservices}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Overview}{6}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Technical characteristics}{7}{subsection.2.1.2}
+\contentsline {paragraph}{\nonumberline Componentization via services}{7}{section*.10}
+\contentsline {paragraph}{\nonumberline Services organized around business capabilities}{8}{section*.13}
+\contentsline {paragraph}{\nonumberline Smart endpoints and dumb pipes}{10}{section*.15}
+\contentsline {paragraph}{\nonumberline Decentralized data management}{10}{section*.16}
+\contentsline {paragraph}{\nonumberline Infrastructure automation}{11}{section*.17}
+\contentsline {paragraph}{\nonumberline Design for failure}{13}{section*.20}
+\contentsline {subsection}{\numberline {2.1.3}Organizational characteristics}{15}{subsection.2.1.3}
+\contentsline {paragraph}{\nonumberline Teams organized around business capabilities}{15}{section*.21}
+\contentsline {paragraph}{\nonumberline Products, not projects}{17}{section*.22}
+\contentsline {paragraph}{\nonumberline Decentralized governance}{17}{section*.23}
+\contentsline {section}{\numberline {2.2}Domain-driven design}{18}{section.2.2}
+\contentsline {paragraph}{\nonumberline Domain model}{18}{section*.24}
+\contentsline {paragraph}{\nonumberline Ubiquitous language}{19}{section*.25}
+\contentsline {paragraph}{\nonumberline Bounded context}{19}{section*.26}
+\contentsline {paragraph}{\nonumberline Aggregates}{20}{section*.27}
+\contentsline {section}{\numberline {2.3}Microservices sizing}{21}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Cutting microservices with domain driven design}{21}{subsection.2.3.1}
+\contentsline {paragraph}{\nonumberline Premature decomposition}{23}{section*.29}
+\contentsline {subsection}{\numberline {2.3.2}Additional factors}{24}{subsection.2.3.2}
+\contentsline {paragraph}{\nonumberline Transactions and data consistency}{24}{section*.30}
+\contentsline {paragraph}{\nonumberline Team size}{24}{section*.31}
+\contentsline {paragraph}{\nonumberline Performance}{24}{section*.32}
+\contentsline {section}{\numberline {2.4}Cloud computing}{26}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Infrastructure}{26}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Service models}{27}{subsection.2.4.2}
+\contentsline {paragraph}{\nonumberline \acl {SaaS}}{27}{section*.37}
+\contentsline {paragraph}{\nonumberline \acl {PaaS}}{28}{section*.38}
+\contentsline {paragraph}{\nonumberline \acl {IaaS}}{28}{section*.39}
+\contentsline {chapter}{\numberline {3}Architectural Qualities}{29}{chapter.3}
+\contentsline {section}{\numberline {3.1}Quality attributes and software architecture}{29}{section.3.1}
+\contentsline {section}{\numberline {3.2}Specifying quality attributes}{31}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Quality attribute scenarios}{31}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}ISO 25010}{32}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Selected quality scenarios}{33}{section.3.3}
+\contentsline {subsubsection}{\nonumberline Time behavior scenario}{35}{section*.50}
+\contentsline {subsubsection}{\nonumberline Resource utilization scenarios}{35}{section*.51}
+\contentsline {subsubsection}{\nonumberline Capacity scenario}{36}{section*.52}
+\contentsline {subsubsection}{\nonumberline Interoperability scenarios}{36}{section*.56}
+\contentsline {subsubsection}{\nonumberline Co-existence scenarios}{37}{section*.57}
+\contentsline {subsubsection}{\nonumberline Operatibility Scenarios}{37}{section*.59}
+\contentsline {subsubsection}{\nonumberline Maturity scenario}{38}{section*.62}
+\contentsline {subsubsection}{\nonumberline Availability scenario}{38}{section*.63}
+\contentsline {subsubsection}{\nonumberline Fault tolerance scenario}{38}{section*.64}
+\contentsline {subsubsection}{\nonumberline Recoverability scenario}{39}{section*.65}
+\contentsline {subsubsection}{\nonumberline Modularity scenario}{40}{section*.71}
+\contentsline {subsubsection}{\nonumberline Reusability scenario}{40}{section*.72}
+\contentsline {subsubsection}{\nonumberline Modifiability scenarios}{41}{section*.73}
+\contentsline {subsubsection}{\nonumberline Testability scenarios}{41}{section*.74}
+\contentsline {subsubsection}{\nonumberline Adaptability scenario}{42}{section*.77}
+\contentsline {subsubsection}{\nonumberline Installability scenario}{42}{section*.78}
+\contentsline {section}{\numberline {3.4}Organizational Requirements}{42}{section.3.4}
+\contentsline {chapter}{\numberline {4}Trade-offs with microservice architectures}{45}{chapter.4}
+\contentsline {section}{\numberline {4.1}Evaluation of quality scenarios}{45}{section.4.1}
+\contentsline {paragraph}{\nonumberline Microservices use case}{46}{section*.79}
+\contentsline {paragraph}{\nonumberline Three-tier architecture use case}{46}{section*.80}
+\contentsline {subsection}{\numberline {4.1.1}Performance efficiency}{47}{subsection.4.1.1}
+\contentsline {paragraph}{\nonumberline Scenario 1 - time behavior}{47}{section*.82}
+\contentsline {paragraph}{\nonumberline Scenario 2 - resource utilization}{48}{section*.83}
+\contentsline {paragraph}{\nonumberline Scenario 3 - resource utilization}{49}{section*.84}
+\contentsline {paragraph}{\nonumberline Scenario 4 - capacity}{50}{section*.86}
+\contentsline {subsection}{\numberline {4.1.2}Compatibility}{50}{subsection.4.1.2}
+\contentsline {paragraph}{\nonumberline Scenario 5 - interoperability}{50}{section*.87}
+\contentsline {paragraph}{\nonumberline Scenario 6 - interoperability}{51}{section*.88}
+\contentsline {paragraph}{\nonumberline Scenario 7 \& 8 - co-existence}{51}{section*.90}
+\contentsline {subsection}{\numberline {4.1.3}Usability}{52}{subsection.4.1.3}
+\contentsline {paragraph}{\nonumberline Scenario 9 - operatibility}{52}{section*.92}
+\contentsline {paragraph}{\nonumberline Scenario 10 - operatibility}{53}{section*.93}
+\contentsline {subsection}{\numberline {4.1.4}Reliability}{54}{subsection.4.1.4}
+\contentsline {paragraph}{\nonumberline Scenario 11 - maturity / data consistency}{54}{section*.94}
+\contentsline {paragraph}{\nonumberline Scenario 12 \& 13 - availability}{56}{section*.95}
+\contentsline {paragraph}{\nonumberline Scenario 14 - recoverability / transactional consistency}{57}{section*.97}
+\contentsline {subsection}{\numberline {4.1.5}Security}{59}{subsection.4.1.5}
+\contentsline {paragraph}{\nonumberline Scenario 15 - confidentiality / network and data segregation}{59}{section*.98}
+\contentsline {subsection}{\numberline {4.1.6}Maintainability}{60}{subsection.4.1.6}
+\contentsline {paragraph}{\nonumberline Scenario 16 - modularity}{60}{section*.99}
+\contentsline {paragraph}{\nonumberline Scenario 17 - reusability}{61}{section*.100}
+\contentsline {subsubsection}{\nonumberline Modifiability}{62}{section*.101}
+\contentsline {paragraph}{\nonumberline Scenario 18 - modifiability}{63}{section*.102}
+\contentsline {paragraph}{\nonumberline Scenario 19 - modifiability}{63}{section*.103}
+\contentsline {paragraph}{\nonumberline Scenario 20 - testability}{64}{section*.104}
+\contentsline {paragraph}{\nonumberline Scenario 21 - testability}{65}{section*.105}
+\contentsline {subsection}{\numberline {4.1.7}Portability}{66}{subsection.4.1.7}
+\contentsline {paragraph}{\nonumberline Scenario 22 - adaptability}{66}{section*.106}
+\contentsline {paragraph}{\nonumberline Scenario 23 - installability}{66}{section*.107}
+\contentsline {section}{\numberline {4.2}Organizational Requirements}{67}{section.4.2}
+\contentsline {paragraph}{\nonumberline O1 - developer velocity and continuous delivery}{67}{section*.108}
+\contentsline {paragraph}{\nonumberline O2 - quality-gates}{68}{section*.109}
+\contentsline {paragraph}{\nonumberline O3 - technical teams}{69}{section*.110}
+\contentsline {paragraph}{\nonumberline O4 - explicit interfaces}{69}{section*.111}
+\contentsline {section}{\numberline {4.3}Findings}{70}{section.4.3}
+\contentsline {paragraph}{\nonumberline Performance efficiency}{71}{section*.113}
+\contentsline {paragraph}{\nonumberline Compatibility}{72}{section*.115}
+\contentsline {paragraph}{\nonumberline Usability}{73}{section*.117}
+\contentsline {paragraph}{\nonumberline Reliability}{73}{section*.119}
+\contentsline {paragraph}{\nonumberline Security}{74}{section*.121}
+\contentsline {paragraph}{\nonumberline Maintainability}{74}{section*.123}
+\contentsline {paragraph}{\nonumberline Portability}{75}{section*.125}
+\contentsline {chapter}{\numberline {5}Empirical Evaluation}{77}{chapter.5}
+\contentsline {section}{\numberline {5.1}Questionnaire}{77}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Structure}{77}{subsection.5.1.1}
+\contentsline {subsubsection}{\nonumberline Architectural qualities}{78}{section*.127}
+\contentsline {subsubsection}{\nonumberline Organizational requirements}{78}{section*.129}
+\contentsline {subsubsection}{\nonumberline Application scenario rating}{79}{section*.131}
+\contentsline {subsection}{\numberline {5.1.2}Evaluation process}{80}{subsection.5.1.2}
+\contentsline {paragraph}{\nonumberline Dropping the application scenarios for evaluation}{81}{section*.133}
+\contentsline {subsection}{\numberline {5.1.3}Limitations}{82}{subsection.5.1.3}
+\contentsline {paragraph}{\nonumberline Low number of participants}{82}{section*.134}
+\contentsline {section}{\numberline {5.2}Results}{83}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Architectural qualities}{83}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Organizational qualities}{86}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Discussion}{88}{section.5.3}
+\contentsline {paragraph}{\nonumberline Questionnaire results support literature-based evaluation}{88}{section*.138}
+\contentsline {paragraph}{\nonumberline Application scenario rating failed}{88}{section*.139}
+\contentsline {paragraph}{\nonumberline Researching the obvious}{88}{section*.140}
+\contentsline {chapter}{\numberline {6}Conclusion}{91}{chapter.6}
+\contentsline {section}{\numberline {6.1}Summary}{91}{section.6.1}
+\contentsline {section}{\numberline {6.2}Outlook and future work}{92}{section.6.2}
+\contentsline {paragraph}{\nonumberline Adoption of microservices}{92}{section*.141}
+\contentsline {paragraph}{\nonumberline Organizational implications of microservices}{93}{section*.142}
+\contentsline {paragraph}{\nonumberline Patterns and strategies for implementing microservices}{93}{section*.143}
+\contentsline {chapter}{List of abbreviations}{vii}{chapter*.144}
+\contentsline {chapter}{List of tables}{ix}{section*.145}
+\contentsline {chapter}{List of figures}{xi}{section*.147}
+\contentsline {chapter}{\nonumberline Bibliography}{xiii}{chapter*.149}
+\contentsline {chapter}{Index}{xix}{section*.150}
+\contentsline {chapter}{\numberline {A}Questionnaire}{xix}{appendix.A}

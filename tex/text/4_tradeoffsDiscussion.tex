@@ -1,0 +1,1111 @@
+\chapter{Trade-offs with microservice architectures}
+\label{qua:qualitiesRating}
+
+%This chapter was originally designed to give a definite decision guidance for when to use microservices and when not.
+%Despite how nice it would be to give this definite guidance, this chapter, and honestly, the thesis fails at doing that.
+%Instead, it presents a discussion of trade-offs by using condensed knowledge of several microservice practitioners.
+%This is not a decision guide, this is a discussion starter.
+
+It is a delusion to think that certain application scenarios can \textit{only} be realized well with microservices.
+Instead, microservices are a collection of best practices.
+Some of them have proven to be very useful for certain use cases.
+For example Amazon split up their organization in smaller teams to enable faster innovation of individual business units \cite{Vogels2006}.
+Other companies chose different approaches.terepODO t sgeatetionthe c
+Etsy.com serves 500 requests per second with a 3-tier architecture\footnote{https://www.similarweb.com/website/etsy.com\#overview from September 2017}.
+They guarantee fast team based innovation with feature flags.
+Which one is better?
+It depends.
+And what it depends on can only be decided after considering the up- and downsides that come with microservices.
+
+The question answered in this chapter is not whether microservices work for specific use case or application.
+They quiet possibly will and so will other architectural styles.
+The question is how costly it will be to use microservices and will the benefits outweigh the costs in the specific organization and use case.
+To decide on that, it is thus essential to know the costs and benefits, which are discussed next.
+
+\section{Evaluation of quality scenarios}
+\label{quaMicro:rating}
+
+This section discusses all quality scenarios introduced in Section~\ref{qua:qualityAttributes}.
+Each of the scenarios is evaluated in regard to:
+\textit{Rate whether the microservices or three-tier architectural style is more suitable to achieve the given quality scenario.}
+A summary of the results, including references back to relevant scenarios is presented in Section~\ref{quaRating:conclusion}.
+
+This is not an absolute rating.
+Nearly all scenarios can be achieved with both architectural styles.
+The evaluation should rather show a tendency which style enables the quality better.
+This usually comes down to one of the two architectural styles taking less time or effort to achieve the quality scenario.
+
+Every scenario discussion is formatted in the same way consisting of 
+\textit{scenario number}, \textit{name}, \textit{rating}, \textit{summary} and  \textit{explanation}.
+
+To make the architectural styles more tangible two example applications are provided, one for microservices and one for a three-tier architecture. 
+These example applications are going to be used as exemplary cases for their respective style.
+In the discussion of the quality scenarios the architectures of these applications will often be referenced.
+Independent from the example applications, the insights gained should be applicable to other applications with similar architectures as well.
+
+\paragraph{Microservices use case}
+The basic characteristics of microservices are defined in the background Section~\ref{bac:microservices}. In this evaluation microservices refers to a system like the online shop Amazon.com. The system consists of a suite of small services, each running in its own process and communicating with lightweight mechanisms over explicitly declared \ac{API}s. No direct database access is allowed from outside the service, and there's no data sharing among the services. Each service has a team with up to 10 people associated with it, and that team is completely responsible for the service — from scoping out the functionality, to architecting, to building, and operating it. 
+Loading the Amazon.com gateway page involves interaction with more than 100 services which are used to collect data and construct the site. \cite{Vogels2006}
+
+\paragraph{Three-tier architecture use case}
+A definition for three-tier architecture is provided in the paragraph \textit{\hyperref[bac:businessCapability]{Services organized around business capabilities}} in \ref{bac:TechnicalCharacteristics}.
+When evaluating a three-tier architecture this chapter refers to a system like SAP NetWeaver. 
+It consists of three distinct layers, also depicted in figure \ref{qualities/netweaver_layers}:
+\begin{itemize}
+\item Presentation layer: handling interacting with the user.
+\item Application layer: handling the business logic and consisting of one or more application servers. Each application server can serve multiple \ac{UI}s.
+\item Database layer: holding all the data in one central database. Attached to one database can be multiple application servers.
+\end{itemize}
+\bild{qualities/netweaver_layers}{10cm}{Architectural overview of SAP Netweaver}{Architectural overview of SAP Netweaver \cite{netweaverPic}}
+Application servers and G\acs{UI}s can be scaled horizontally.
+
+\subsection{Performance efficiency}
+\label{quaMicro:performance}
+\paragraph{Scenario 1 - time behavior} A user request is initiated which involves different components of the system to communicate. Under normal operations the latency of communication between two components is less than a millisecond.
+\label{quaMicro:s1}
+
+\textit{Rating}: Three-tier architecture +
+
+\textit{Summary}:
+In microservice architectures all communication between services happen via network calls \citep[p. 3]{Newman2015}.
+In a three-tier architecture communication between components inside an application server is mainly done via in-memory function calls.
+Communication over the network is significantly slower than in memory function calls \citep[p. 5]{Kendall1994}.
+This makes component to component communication in microservice architectures significantly slower than in three-tier architectures.
+
+\textit{Explanation}:
+Tracing a user request in the two architectural styles shows similar steps from a top-level view:
+First, a user initiates the request through some kind of \ac{UI}. 
+Then a layer of business logic will interpret the request and react with some defined logic. 
+This step might involve interacting with different parts of the business logic and/or interacting with other systems like a database.
+The difference between the two architectural styles becomes significant when different components in the business logic tier communicate.
+A three-tier architecture will mainly rely on in-memory calls or maybe calls to worker threads to process the request.
+A microservice architecture will rely on network calls for component to component communication.
+
+Network calls are expensive.
+The difference between a local object invocation and an operation on a remote object is four or five orders of magnitude in latency  \citep[p. 5]{Kendall1994}.
+%TODO still valid as from 1994 ?
+This discrepancy is created due to the physical travel time through a network as well as through marshalling and unmarshalling of data \citep[p. 32]{Wolff2016}.
+For example a call from Europe to US and back takes about 150 ms \cite{Dean2012}.
+
+While that remains true, there are several mechanisms to reduce latency for the user, also in a microservice system. 
+%There exist strategies like caching to reduce the amount of network calls needed.
+For example data can be replicated so that the travel time is reduced or caching can be used.
+The amount of network calls can also be lowered by reducing the amount of cross microservice calls \citep[p. 32]{Wolff2016}.
+
+\paragraph{Scenario 2 - resource utilization} Users initiate varying requests over the day to the system. The requests distribution varies around 10x of the average request count. The system elastically adapts the used hardware resources to the varying load.
+\label{quaMicro:s2}
+
+\textit{Rating}: Microservices + (with auto-scaling infrastructure)
+
+\textit{Summary}:
+Microservice architectures have better ways to adapt to varying load patterns in comparison to three-tier architectures \citep[p. 152f.]{Wolff2016}.
+Therefore, microservices are more suited to benefit from the advantages of on-demand infrastructure provisioning from an \ac{IaaS} \citep[p. 12]{Stine2015}.
+Adapting the infrastructure resources dynamically to incoming load leads to more efficient hardware usage.
+But, if the infrastructure does not provide auto-scaling then microservices do not hold an advantage over three-tier architectures in regard to resource efficiency, which is further explained in scenario 3.
+
+\textit{Explanation}:
+Whether hardware can adapt to varying load is not an architectural but an infrastructure property.
+In a scenario where the request distribution varies with up to 10 times of the average load, hardware efficiency depends on whether the hardware is elastically scalable.
+Two different extremes in this case are an \ac{IaaS} and a private data center.
+\ac{IaaS}, as explained in \ref{bac:CCInfra} is an on-demand service, which provides an API to grow or shrink resource utilization dynamically with load fluctuations.
+In contrast, owning a set of physical machines as a company means that adapting this hardware to load is way more rigid.
+A prediction about the coming load or request count will lead to extending or shrinking the hardware to serve the maximum load.
+In times where the maximum load is not appearing the hardware stays idle.
+
+To harvest the advantages of an \ac{IaaS} Microservice architectures are more suited than three-tier architectures.
+Each microservice is an independently deployable unit.
+If load exceeds the current capacity of a certain component then this component can be scaled independently and hardware is provisioned for it on demand.
+More monolithic applications, like a three-tier architecture are not elastically scalable to that extend.
+Firstly, the units of deployment are much larger and take longer to create and tear down.
+Secondly, the scaling is more coarse-grinded, as the whole application server is scaled in comparison to a specific component that is under load in microservice architectures \citep[p. 11]{Stine2015}.
+
+
+\paragraph{Scenario 3 - resource utilization} Users initiate a constant amount of requests per minute. 99.9\% of all requests are answered in under 300 ms with as little hardware resources (as little compute and storage) as possible.
+\label{quaMicro:s3}
+
+\textit{Rating}: Three-tier architecture +
+
+\textit{Summary}: If the request amount is stable, a three-tier architecture in theory can utilize hardware more efficiently. 
+This is possible because microservices consist of many individual parts each deployed in its own environment. 
+The high number of these virtual environments, as well as their orchestration requires additional resources.
+
+\textit{Explanation}:
+This is an extension to the previous scenario with the modification that the request amount stays stable.
+As a result auto-scaling features from an \ac{IaaS} are not needed in this scenario.
+When just comparing the resource consumption of a microservices based system with a three-tier architecture based system the latter probably uses less hardware resources to provide the same functionality.
+While this thesis does not have evidence in numbers it follows the arguments that through more individual parts and more abstraction layers a microservice system needs more resources.
+%TODO what about optimal technology for a certain part of the system. Does this not reduce the resource overhead?
+
+Microservice systems rely on a lot of small independently deployable parts each coming with overhead created through virtualization. 
+Looking at for example Amazon.com one call to the front page invokes about 100 services to create the page \citep{Vogels2006}. 
+Each service runs in its own virtual environment, usually a \ac{VM} or more likely a container.
+Each container has its own libraries installed. 
+If, i.e., 100 containers all use Java then each of these have a JVM running with all the additional libraries needed.
+There also needs to be some sort of container orchestration tooling.
+All this overhead is not needed in the deployment model of a typical three-tier architecture, running for example Linux on bare-metal.
+Even in the case that a three-tier architecture uses virtualization for the different parts of the application, still it consists of less individual parts therefore producing less overhead and needing less resources (compute and storage) for a constant amount of load.
+
+\paragraph{Scenario 4 - capacity} Users initiate requests when the system is at its maximum capacity. The system automatically provisions new hardware and scales its internal components elastically according to the need.	
+\label{quaMicro:s4}
+
+\textit{Rating}: Undecided
+
+\textit{Summary}:
+Whether new hardware can be provisioned is more an infrastructure property than it is an architectural property, as elaborated in scenario 2.
+In the case that the infrastructure supports auto-scaling, both architectural styles are able to elastically scale components.
+
+\textit{Explanation}:
+Both architectural styles are able to scale horizontally in order to react to higher load.
+Under the assumption that the implementation supports it, a three-tier architecture based system can scale application server instances.
+In comparison microservices based systems can scale service instances horizontally according to need.
+
+Having automated deployment and provisioning of services is a prerequisite of microservices \cite{FowlerPrerequisites2014}. 
+This includes automated spinning up of virtual environments and starting the service.
+This helps if the system needs to elastically scale internal components according to need.
+But there is no reason why a three-tier architecture should not also be able to automatically provision new application server instances on demand.
+For example Etsy relying on a three-tier architecture uses Chef\footnote{https://github.com/chef} to automatically provision and create their application servers \cite{Etsy2014}.
+
+\subsection{Compatibility}
+\label{quaMicro:compatibility}
+\paragraph{Scenario 5 - interoperability} A component wants to access data or functionality from another component.
+The only way for the components to interoperate is through an explicit \ac{API} declared by the providing component.
+\label{quaMicro:s5}
+
+\textit{Rating}: Microservices +
+
+\textit{Summary}: Microservices enforce low coupling and the use of explicit \ac{API}s between components by deploying each component as a separate out-of process service.
+While strong module boundaries can theoretically be achieved in any architectural style, microservices enforce it by decoupling the components over the network \cite{FowlerTradeoffsBoundaries2015}. 
+This also leads to significant downsides, like having to deal with a distributed system, which is going to be discussed in \ref{quaMicro:distributedSystemDownsides}.
+
+\textit{Explanation}:
+In theory there is no reason why microservices should have clearer module boundaries than a monolithic system \cite{FowlerTradeoffsBoundaries2015}.
+Component communication over explicit \ac{API}s could be achieved in both architectural styles.
+In microservices though the barrier to circumvent using the declared \ac{API}s is higher than in a three-tier architecture\cite{FowlerTradeoffsBoundaries2015}.
+Services are no longer allowed to be integrated through a database because microservice systems rely on decentralized data management, meaning each microservice manages its own database and hides it behind its \ac{API}.
+Deploying components as different out-of process services makes the boundary clearer and therefore enforces interoperation between components over explicit \ac{API}s (see also \textit{componentization via services} \ref{bac:ComponentizationViaServices}).
+
+\paragraph{Scenario 6 - interoperability} 
+A new system needs to communicate with a legacy system that is written in a different programming language. The two systems are able to communicate and work together.
+\label{quaMicro:s6}
+
+\textit{Rating}: Undecided
+
+\textit{Summary}:
+Both styles are probably equally capable of integrating with legacy systems.
+
+\textit{Explanation}:
+Microservices would mainly use messaging or \ac{HTTP} with the \ac{REST} paradigm for communicating with a legacy system \cite{FowlerSmartEndpoints2014}.
+A lot of sources write about how to systematically replace a legacy system service by service with a microservices system \citep[p. 127]{Wolff2016}.
+One could argue, that microservices by nature communicate mostly asynchronous over the network making it a natural fit to integrate legacy systems as just another service providing an \ac{API}.
+
+A three-tier architecture could also use messaging or \ac{HTTP} with \ac{REST}.
+Additionally, shared databases or \ac{RPI} are described in literature as possible methods of integration \citep[p. xxx]{Messaging2004}.
+
+In general, most methods for integrating systems are universal and not bound to a specific architectural style.
+Both styles are probably equally able to integrate legacy systems.
+
+\paragraph{Scenario 7 \& 8 - co-existence}
+An internal component crashes during normal operations. The other components of the same system stay running and responsive.
+\label{quaMicro:s7}
+\label{quaMicro:s8}
+
+One component of a system wants to consume excessive memory, storage or CPU. The other components on the same system are not affected in their functionality by the resource consumption of one component.
+
+
+\textit{Rating for scenario 7 \& 8}: Microservices +
+
+\textit{Summary}:
+One concept of resilience is to contain a failure within the failing component to prevent cascading failures  \citep{Reactive2014}.
+Microservices naturally provide resilience by running each service in its own virtual environment \citep[p. 5]{Newman2015}.
+A three-tier architecture does not provide the same level of isolation.
+There a failing service might lead to the whole application server instance crashing.
+The same arguments apply regarding resources isolation between components.
+
+\textit{Explanation}:
+Both scenarios can be answered with the same arguments which resolve around process and \ac{OS} isolation on a component level.
+
+A resilient system stays responsive in the case of failure  \citep{Reactive2014}.
+A key concept promoting resilience is the \textit{Bulkhead} \citep[p. 5]{Newman2015}. 
+It aims at preventing of cascading failures, meaning if one component fails the rest of the system should be able to carry on working.
+
+In microservice architectures service boundaries become the bulkhead \citep[p. 5]{Newman2015}. 
+Each component runs in its own virtual environment.
+If the service or the operating system fails then the error will be contained in the specific instance.
+The same applies to resource consumption.
+Compute and storage are managed and restricted for each \ac{VM} or container by a managing instance.
+
+A three-tier architecture in comparison does not have the same component level isolation.
+If a service in an application server instance fails then the whole instance might stop working.
+The same applies if the \ac{OS} crashes then the whole application server fails.
+To make it worse a lot of application servers are stateful, meaning that additional data might be lost with an instance crash.
+
+A factor, which challenges the resilience of microservices is that they consist of many more individual parts and a lot of parts are under constant change.
+Failure happens at distributed systems and the rate of failures are proportional to the amount of changes and the amount of scaled machines \citep[29:30]{NetflixMSAtScale2016}.
+Therefore in microservice systems in general the total number of failures go up in comparison to a more monolithic system\citep[p. 66]{Wolff2016}.
+Also, the distributed nature of microservices provokes network failures, which imposes challenges to resilience \citep[p. 5]{Newman2015}.
+
+\subsection{Usability}
+\label{quaMicro:usability}
+\paragraph{Scenario 9 - operatibility}
+An operator attempts to determine all the software components the system consists of. The operation environment provides the currently running software components and their version number.
+\label{quaMicro:s9}
+
+\textit{Rating}: Three-tier architecture +
+
+\textit{Summary}: Operating a microservice system imposes additional operational complexity in comparison to a three-tier architecture based system.
+Microservice architectures consist of more individually changing parts with no central integration point.
+In a three-tier architecture it can be easier to get a clear picture of the currently running components of a system because an application server is deployed as one large build artifact.
+
+\textit{Explanation}:
+When comparing a running microservice system with a three-tier based system one difference often described is that microservice systems consist of more small individually deployed parts.
+With more distributed parts the operational complexity rises \citep[p. 241]{Wolff2016}.
+As there is no central coordinating unit in a microservice system it gets surprisingly hard to understand the whole system \cite{Cockcroft2014}.
+When each team can push into production independently it gets harder to determine all currently deployed services and information about them, like the version number.
+
+Organizations building microservices tend to shift the responsibility towards decentralized governance, meaning decisions for one service are delegated to the team level.
+Each service innovates individually and independently from other teams and services constantly change at runtime \citep[28:20]{NetflixMSAtScale2016}.
+Since there is no centralized integrating unit it gets hard to determine all individual currently deployed service versions.
+
+For a three-tier architecture the deployed version is usually easier to determine.
+It is clearer, what code is currently running because the different business logic components are bundled together at compile time and deployed as a large build artifact.
+
+\paragraph{Scenario 10 - operatibility}
+A user experiences a problem which has the root in a malfunction of the system. It takes in average less than one hour to trace down and isolate the function, which causes the error.
+\label{quaMicro:s10}
+
+\textit{Rating}: Three-tier architecture +
+
+\textit{Conclusion}:
+Distributed systems are harder to debug and monitor in comparison to more monolithic systems \citep[p. 155]{Newman2015}.
+Microservices in comparison to three-tier architectures consist of smaller, more ephemeral parts that run in different processes.
+%In addition the service setup constantly changes 28:40, which makes error finding harder.
+%An operator mainly needs to rely on runtime analysis as the service setup constantly changes .
+In general, a three-tier architecture consists of less changing out-of-process components making it easier to debug and trace down errors.
+
+\textit{Rating}: Three--tier architecture +
+
+\textit{Explanation}:
+Choosing between a monolithic and a distributed system, judging solely by ease of debugging and error analysis, would in general favor the more monolithic system.
+
+Microservice systems consist of more individually deployed artifacts compared to a three-tier architecture. 
+Each of these parts are running out-of-process and communicating over the network.
+This creates additional hurdles for identifying the root of failures:
+\begin{itemize}
+\item Number of logs increase \citep[p. 158]{Newman2015}.
+\item Overviewing the whole systems health state gets harder \citep{Cockcroft2014}.
+\item Network partitions becoming more likely as a source of error \citep[p. 65]{Wolff2016}.
+\item Following and debugging a request chain gets harder \citep[p. 162]{Newman2015}.
+\item Ephemerality of service instances complicates error analysis \citep{Cockcroft2014}.
+\end{itemize}
+
+As each service instance produces logs they add up quickly.
+Netflix creates over 20 million metrics per second \citep[27:00]{NetflixMSAtScale2016}.
+Microservices introduce additional challenges for log analysis and failure detection. 
+Next to log analysis overviewing the systems health gets harder. 
+There are simply more individual changing parts to monitor.
+
+Each microservice instance runs in its own process, which makes debugging of a request chain harder.
+While a three-tier architecture might also use asynchronous calls, asynchronicity is more central to microservice architectures due to their the distributed nature.
+In a three-tier architecture one might stop an application server instance and debug through in-memory calls.
+The same is not possible in a microservice system, as it is divided into several out-of-process components.
+
+At last, microservice instances tend to be more ephemeral than application server instances \cite{Cockcroft2014}.
+This results in complicating error analysis in microservice systems.
+The instance throwing the error often does not even exits anymore when an operator tries to analyze the error.
+Meaning that only logs remain which makes finding an error harder.
+
+\subsection{Reliability}
+\label{quaMicro:reliability}
+\paragraph{Scenario 11 - maturity / data consistency} Two users initiate a request with the same input at the same time under normal operations both users consistently receive the same answer. 
+\label{quaMicro:s11}
+
+\textit{Rating}: 3-tier architecture +
+
+\textit{Summary}:
+Microservices being a distributed system and relying on decentralized data management impose a significant challenge for keeping different services fully data consistent \citep[p. 36]{Wolff2016}.
+As a consequence, a lot of microservice systems rely on eventual consistency models, sacrificing full consistency \citep[p. 235f.]{Newman2015}.
+While three-tier architectures don't entirely avoid inconsistency problems, they suffer less from them, particularly when they are smaller \cite{FowlerTradeoffsConsistency2015}.
+
+\textit{Explanation}:
+Examining the two architectural styles regarding data storage: microservices using decentralized data management versus three-tier architectures relying on centralized data management, like SAP Netweaver \citep{FowlerDecentralizedData2014} \cite[p. 187]{Wolff2016}.
+Decentralized meant in the sense that each service uses its own data storage technology and hides it behind its \ac{API}.
+Centralized meant in the sense that the whole system uses one single database (or cluster of databases) which holds data sovereignty.
+
+The scenario above describes a case where two users potentially at different locations consistently read the same data.
+This implies that the systems relies on a strong consistency model, meaning all nodes see the same data at the same time \cite{Takada2013Abstractions}.
+
+For a three-tier architecture with a single database this is straight forward\footnote{In a real scenario caching can still lead to inconsistencies as explained later}.
+Single-copy consistency can be retained due to one database which always holds the single copy of truth.
+Two users requesting a read at the same time will consistently receive the same answer from the database.
+If a cluster of databases exist then the problem of holding consistency is delegated to the database, i.e., a MySQL Cluster.
+The important point is that a designated data layer exists, taking responsibility for consistency. 
+This is different in microservice architectures.
+
+Microservices by definition are a distributed system. 
+Inside one microservice data consistency can be guaranteed \citep[s.36]{Wolff2016}.
+If multiple services need to be held consistent they need to somehow replicate their data as their data storages are split.
+There are two types of replication methods \cite{Takada2013Replication}:
+\begin{itemize}
+\item Replication methods preventing divergence (single-copy systems)
+\item Replication methods risking divergence (multi-master systems)
+\end{itemize}
+The scenario states that consistency should always be guaranteed.
+Therefore, a replication method preventing divergence should be selected.
+There are several methods or protocols, which achieve a single-copy consistency in a distributed system (2 Phase Commit, Raft\footnote{https://raft.github.io/} or Paxos \cite{Takada2013Replication}).
+All come with the cost of neglecting availability in the event of a network partition.
+Leading to a consistent and partition tolerant system but sacrificing availability, called a CP-system, referring to the CAP-theorem \citep[p. 233]{Newman2015} \citep[p. 522f.]{Bass2012} \cite{Brewer2012}.
+
+However, a three-tier architecture, especially if the systems grows, is not free of consistency problems. 
+For example the company \textit{Etsy} is running a large scale three-tier architecture based system and they do face several consistency challenges.
+They rely on a MySQL\footnote{https://www.mysql.com/} database cluster, which in itself is a distributed system.
+Guaranteeing data integrity in replicating writes is particularly difficult for them \citep[14:50]{EtsyInterview2016}.
+A separate challenge is that Etsy for performance reasons relies on several layers of caching \citep[19:00]{EtsyInterview2016}.
+To prevent consistency problems like stale reads, cache invalidation is needed, which is a hard challenge for itself \citep[20:00]{EtsyInterview2016}.
+
+\paragraph{Scenario 12 \& 13 - availability}
+A component of the application crashes. Under average load the system is fault-tolerant and the functionality of the component stays available.
+\label{quaMicro:s12}
+\label{quaMicro:s13}
+
+An internal component crashes during normal operations. The system continues to be responsive providing limited functionality.
+
+\textit{Rating for scenario 12 \& 13}: Undecided
+
+\textit{Summary}:
+Microservices are a valid approach for achieving high availability if eventual consistency can be accepted.
+Services can be held redundant, spread out to different failure domains and service boundaries form a natural bulkhead.
+A three-tier architecture also has techniques to provide \ac{HA}.
+Microservices seem to have an edge when it comes to providing \ac{HA} but also come with downsides.
+Which style is better suitable to achieve \ac{HA} can not be answered in general and depends on the specific use case.
+
+\textit{Explanation}:
+Both scenarios can be achieved in a microservice system as well as in a three-tier system.
+Depending on the architectural style different \ac{HA} features would be used.
+Nevertheless, microservices have a few advantages over a three tier architecture considering fault tolerance, which are:
+\begin{itemize}
+\item Failure isolation through virtualization
+\item Finer granularity for failure domains
+\end{itemize}
+
+Microservices provide a better failure isolation in regard to the failing of one component instance.
+After \citep[p. 209]{Wolff2016} \textit{Bulkhead} is a resilience pattern for software systems that lends the meaning from actual bulkheads in ships, which form a water boundary in a partly flooded ship.
+Similar to the original meaning, the bulkhead pattern in software divides a system into different segments.
+A malfunction of one segment should be contained there and not spread to other segments.
+Microservice architectures implement the Bulkhead pattern by default because each service runs in its own virtual environment.
+If one service crashes its virtual machine then the failure is contained in the service instance.
+The same applies for resource consumption.
+If one service instance exceeds the maximum assigned memory of its virtual environment it will not influence other service instances negatively because the resource consumption is isolated on the virtualization layer.
+
+Another aspect are failure domains.
+Certain parts of the infrastructure or regions contain a potential for failing together.
+These are called failure domains.
+Since microservices are small, individually deployed artifacts they can be spread out to different failure domains.
+Therefore, if parts of the network fail, the system can continue to operate potentially with limited functionality.
+
+A three-tier architecture can not spread out the one large application server instance to different failure domains.
+Also, an application server instance is either fully functional or down, meaning a crashing component might bring the whole application server down.
+Tactics like \textit{exception handling} try to prevent this from happening \citep[p. 90]{Bass2012}.
+
+While this discussion indicates that microservices have advantages in regard to availability this might in reality not be the case.
+Maybe failures can be contained better but also they will probably also happen more often, which challenges availability:
+Firstly, a microservice system uses the network for all inter-service communication.
+Therefore, network failures and partitions are more likely than in a three-tier architecture.
+Secondly, programming distributed applications is not the same as programming non-distributed applications.
+The additional complexity could lead to more programming errors \citep[p. 5]{Kendall1994}.
+And thirdly, testing the system in it's entirety gets harder, as many services evolve at different paces.
+Therefore, recreating an environment in a consistent way for manual or automated testing gets harder, which leads to more outages in production challenging full availability \cite{Hoff2014}.
+
+\paragraph{Scenario 14 -  recoverability / transactional consistency}
+Part of an internal system crashes during a transactional operation. The error is recorded and the system as a whole goes back to a consistent state. During no time the system is available and in an inconsistent state.
+\label{quaMicro:s14}
+
+\textit{Rating}: Three-tier architecture +
+
+\textit{Summary}:
+If consistency and ACID transactions are an important business goal a three-tier architecture is the more natural choice over a microservice based architecture.
+In a three-tier architecture integration over the data layer leads to different applications sharing a database transaction, which is hardly possible with multiple databases \cite{FowlerDecentralizedData2014}.
+That being said there are ways to harness the benefits of transactions in microservice based systems.
+If the transaction is limited to one microservice this can naturally be guaranteed.
+If the transaction spans over multiple microservices then it requires distributed transactions, which are possible but very complex to implement and therefore might not be worth the investment \citep[p. 92]{Newman2015}.
+
+\textit{Explanation}: 
+A \textit{transaction} is a group of operations that have to be executed \textit{indivisibly}: Either all operations happen together, or none of them happens \citep[p. 289]{Haerder1983} \citep[p. 89]{Newman2015}.
+To achieve indivisibly a transaction must have four properties (ACID) \citep[p. 289f]{Haerder1983}:
+\begin{itemize}
+\item Atomicity: all operations happen or none of the operations happened.
+\item Consistency: each successful transaction preserves the consistency of the data.
+\item Isolation: operations inside a transaction must be hidden from other transactions running concurrently.
+\item Durability: once a transaction has completed the system must guarantee that the results survive any subsequent malfunctions.
+\end{itemize}
+
+In a single database scenario a single transaction guarantees the above properties.
+In a distributed scenario a \textit{distributed transaction} spans multiple transactions within them. 
+A distributed transaction tries to ensure the ACID-properties of a transaction across multiple different systems running in different processes, often communicating over the network \citep[p. 92]{Newman2015}.
+
+A three-tier architecture as described here relies on a single database. 
+This single database can ensure the ACID-properties for single transactions.
+For a microservice system the situation differs.
+Inside one microservice the situation is similar to a three-tier architecture.
+ACID properties can be guaranteed as each service holds its own database \citep[p. 35]{Wolff2016}.
+But, if a transaction spans across multiple microservices then distributed transactions are necessary bringing complexity with them.
+
+According to the CAP-theorem in a distributed system either consistency or availability can be guaranteed in the case of a network partition \citep{Takada2013Abstractions}.
+As consistency has to be guaranteed in a distributed transactions scenario a network partition here will inevitably lead to the sacrifice of full availability.
+There exist algorithms like Paxos or 2-Phase-Commit, which handle distributed transaction with the discussed guarantees but are not trivial to implement \cite{Chandra2007}.
+
+To conclude:
+\begin{itemize}
+\item Guaranteeing transactions over the boundary of one microservice is complex due to the likely possibility of network partitions or component failure.
+\item Implementing an algorithm that deals with this complexity in a distributed system is non-trivial and comes with sacrifices to other qualities, like availability.
+\item A three-tier architecture does not have to deal with this complexity as it relies on a single data source which handles the complexity of transactions.
+\end{itemize}
+
+Coming back to the scenario given at the start:
+The scenario requests full consistency and accepts limitations to availability in the case of the failure of a component.
+Both microservices and three-tier architecture based systems can in theory guarantee this.
+But microservices need to rely on distributed transactions, which are hard to get right and inhibit scaling \citep[p. 93]{Newman2015}.
+Though there are examples like \textit{Spanner}\footnote{https://cloud.google.com/spanner/}, which provide high availability, partition tolerance and consistency these systems are challenging to implement and need highly reliable infrastructure \cite{Brewer2017}.
+
+\subsection{Security}
+\label{quaMicro:security}
+\paragraph{Scenario 15 - confidentiality / network and data segregation}
+An attacker tries to access sensitive data within the system after gaining control of a relatively uncritical part of the system. The system denies access to more sensitive data and logs the attempt.
+\label{quaMicro:s15}
+
+\textit{Rating}: Undecided
+
+\textit{Summary}:
+There are pros and cons for both architectural styles regarding this scenario.
+One the one hand having a system decomposed into finer-grained services gives more options on how to segregate entities, like network or data in a system \citep[p. 188]{Newman2015}.
+On the other hand with the amount of options also complexity rises, which is an enemy of security \cite{Schneier2000}.
+
+\textit{Explanation}:
+The given scenario describes that an attacker gains partial control of a system and or data. 
+The system has somehow segregated the part which was compromised from other parts so that the attacker can not further exploit his intrusion.
+There are several tactics to resist such an attack, like authentication, authorization or limiting access \citep[p. 152f.]{Bass2012}. 
+This scenario focuses on the tactic of \textit{separating entities}, as it displays the trade-offs between microservices and three-tier architectures.
+
+Separating different entities in a system can happen on various layers, like physical separation, network separation, \ac{OS} separation and data separation \citep[p. 153]{Bass2012}.
+Generally, microservices are decomposed into finer grained components giving them more options in how separate their entities but also rising complexity.
+
+Regarding network separation, having a system decomposed into finer grained services gives more options on how to segregate the network. 
+As microservices communicate over the network they can be divided into different network segments, i.e., different subnets, to control or restrict communication.
+Within a more monolithic system these options are limited \citep[p. 183]{Newman2015}.
+
+Regarding data separation, microservices potentially provide an opportunity for fine-grained control of data that has different authorization needs \cite{FowlerTradeoffsDistribution2015}.
+For each microservice a policy can be defined which other microservices or roles are allowed to access it.
+This enables a finer grained control of data.
+
+As a microservice architecture provides more options with finer grained services, it also introduces more complexity.
+And a complex system tends to be harder to secure than simple system, which is an argument against microservices being more secure than a three-tier architecture \cite{Schneier2000}.
+
+\subsection{Maintainability}
+\label{quaMicro:modifiability}
+
+\paragraph{Scenario 16 - modularity}
+A developer wants to deploy a code change (no interface changes) affecting a single component on a productively running system. The change is tested and pushed into production in less than a day. Other components of the system do not need to be redeployed.
+\label{quaMicro:s16}
+ 
+\textit{Rating}: Microservices +
+
+\textit{Summary}:
+Systems build in either of the two architectural styles can achieve deployment cycles in under one day with \ac{CD} pipelines \cite{Cockcroft2014} \cite{Etsy2014}.
+An important difference is that components in microservices architectures are independently deployable.
+This lets the team developing the service individually decide when to ship new features without the overhead of coordination with other teams.
+Another differentiating factor is that the deployable artifacts in microservice architectures are smaller in size making it easier to introduce \ac{CD} \citep[p. 5]{Wolff2016}.
+
+\textit{Explanation}:
+The scenario requests two measurable requirements:
+First, every component needs to be independently deployable.
+Second, the time frame from the moment where the change is commited by the developer until it is deployed is less than one day.
+
+Components being independently deployable is a central characteristic of microservices.
+As stated in \ref{bac:TechnicalCharacteristics} each component in a microservice based system is supposed to be \cite{FowlerComponentization2014}:
+\begin{itemize}
+\item independently replaceable
+\item independently upgradeable
+\end{itemize}
+This requires a component to be independently deployable.
+
+A three-tier architecture can generally not provide these guarantees. 
+If a component in the application server changes then the whole server needs to be redeployed.
+As one application server consists of many components, an individual component is \textit{not} independently deployable.
+
+The second requirement, which is keeping the cycle time under one day, can be achieved with either microservices or a three-tier architecture.
+There are examples of both microservice architectures, like Amazon deploying every 11.6 seconds and three-tier architectures, like Etsy being deployed over 50 times a day with \ac{CD}  \cite{Jenkins2011} \cite{Etsy2014}.
+
+Wolff makes the point that microservices enable \ac{CD} because creating and maintaining the pipelines is more easy with smaller deployment artifacts \citep[p. 5]{Wolff2016}.
+Therefore, \ac{CD} and short cycle times are in general more easily achieved with microservices in comparison to three-tier architectures, especially with growing project size.
+
+\paragraph{Scenario 17 - reusability}
+Another project wants to reuse a logical component which is implemented in the system. The component can be reused in different contexts or programs.
+\label{quaMicro:s17}
+
+\textit{Rating}: Microservices +
+
+\textit{Summary}: 
+Microservices decouple the life-cycle of components from another.
+This leads to low coupling and strong abstractions, which is a good basis for creating reusable components \cite[p. 466]{Sommerville2015}.
+%Still, there needs to go a lot of effort into the systems design to qualify a microservice as being reusable.
+A three-tier architecture in comparison does not provide the same guarantees, as it couples components together at compile time.
+
+\textit{Explanation}:
+A component is an independent software unit that can be composed with other units to create a software system \cite[p. 467]{Sommerville2015}.
+Design principles of reusable components in component based software engineering have the following properties \cite[p. 466]{Sommerville2015}: 
+\begin{itemize}
+\item They are independent from other components and hide implementation details. 
+\item They communicate through well-defined interfaces. All dependencies are completely defined in public interfaces.
+\item Standard components are offered by component infrastructures.
+\end{itemize}
+
+In microservice architectures components equate to services. 
+A microservices is loosely coupled and independently deployable from other services.
+Each microservice hides its implementation details.
+Microservices communicate through well-defined \ac{API}s and the barrier to circumvent the \ac{API} is high.
+These points appear to qualify microservices as being reusable.
+
+On the other hand there is no established component infrastructure for offering microservices.
+Also, a lot of microservices are specifically designed for a business domain. 
+They try to solve one business capability. 
+The reuse factor is lowered if the component is not abstracted from the concrete use case \citep[p. 475]{Sommerville2015}.
+
+In addition, to create reusable components the application specific components need to be adapted to appear more generic.
+This adaptation has an associated cost, which can exceed the potential savings from reuse.
+Costs include, documentation, component validation, and making the component more generic.
+Sommerville discusses the costs in detail in \cite[p. 475]{Sommerville2015}.
+
+Microservices provide low coupling and strong abstractions which are a good basis for creating reusable components.
+However, this is alone does not guarantee microservices to be reusable.
+Instead, a lot of challenges for creating reusable components, especially regarding reuse across different companies remain to be solved.
+
+Three-tier architectures make it even harder to reuse components than microservice architectures.
+All the logic of a three-tier architecture lies in the application server.
+Components are not loosely coupled but bound together at compile time.
+Components do not communicate through explicit \ac{API}s as much, as discussed in \textit{\hyperref[quaMicro:s5]{scenario 5 - interoperability}}.
+Three-tier architectures being more monolithic makes it hard to break them into reusable and re-composable components \citep[p. 7]{Newman2015}
+
+\subsubsection{Modifiability}
+\label{quaMicro:modifiabilityDiscussion}
+To motivate the following evaluation the differences of a three-tier architecture and microservices in regard to modifiability are discussed.
+
+Modifiability is about the costs and risks of making changes \citep[p. 117f.]{Bass2012}.
+In anticipation what is going to change software architecture can take measures and abstract certain units from others.
+Bass et. al present the following tactics to control modifiability requirements \citep[p. 122]{Bass2012}: 
+\begin{itemize}
+\item Increase cohesion
+\item Reduce coupling
+\item Defer binding
+\item Reduce size of a module
+\end{itemize}
+
+It becomes clear that microservices embrace all these tactics on a service level:
+Every service has high cohesion in the sense of encapsulating business logic.
+Coupling is reduced by making services independently deployable and only communicating over the network using explicit \ac{API}s.
+Services are independently deployable which defers binding until runtime.
+The microservice architecture basically cuts services around business capabilities under the assumption that one business capability is likely to change individually.
+
+In contrast to these guarantees, if a responsibility needs to be assigned from one service to another this leads to significant costs.
+Microservices rely on creating highly cohesive services by organizing them around business units.
+If the business units were not adequately selected, potentially because the business domain was not fully known, this leads to high modification effort.
+
+From a top-level perspective three-tier architectures separate three layers from another.
+Each layer encapsulates technical responsibilities, like presentation, business logic and data sources.
+There is a separation of high from low-level components, and of application-specific from general components \citep[p. 204 f.]{Larman2004}.
+The presentation layer is lowly coupled to the domain logic layer.
+Making the presentation individually interchangeable.
+
+\paragraph{Scenario 18 - modifiability}
+A development team wishes to change a component with the best of breed in the given area. Technology stack and programming language should not be limiting factors for the choice. It will take less than one week to test and deploy the change into production.
+\label{quaMicro:s18}
+
+\textit{Rating}: Microservices +
+
+\textit{Summary}: Microservices enable modifiability on a component level better a more lose coupling of components \citep[p. 5]{Wolff2016}.
+Each service running in its own virtual environment enables technological heterogeneity \citep[p. 4]{Newman2015}.
+
+\textit{Explanation}:
+Microservice enable exchanging application logic components better than three-tier architectures.
+As explained above, the reduced coupling between components is the biggest distinguishing factor.
+Each service runs in its own virtual environment and communicates with other services using the network over explicit \ac{API}s.
+This makes microservice architectures better suited for modifications on a component level, especially if the technology stack should not be a factor.
+
+\paragraph{Scenario 19 - modifiability}
+A developer wishes to change the database technology which stores data for one functional area from a relational database to a graph database. It will take less than one week to change the database and to deploy it into production.
+\label{quaMicro:s19}
+
+\textit{Rating}: Microservices +
+
+\textit{Summary}: 
+Clearly this scenario favors microservice based systems.
+Microservices naturally split components in small functional units, which hide the concrete datasource implementation behind their \ac{API}.
+A change to the database might even be done without the need to change the \ac{API} of the service.
+In a microservice system the choice of database technology is local to the service.
+In contrast to that in a three-tier based system like SAP Netweaver the choice of database is globally taken for the entire system.
+Therefore, a change of database technology is costly and implementing the change in less than one week is unrealistic for any larger three-tier architecture.
+
+\textit{Explanation}:
+A three-tier architecture uses the database as a central point of integration.
+The database works as a large, shared API \cite[p. 41]{Newman2015}.
+Changing the database schema could be a breaking change for consumers.
+Each consumer of the database is tied to the specific technological choice of the database \cite[p. 41]{Newman2015}.
+Changing the database technology from a relational database to a graph database forces all database consumers to adapt.
+To make a three-tier architecture more modifiable, a separate schema for each functional area could be used.
+
+Regarding microservices, decoupling services on the data level is a central aspect to produce low coupling between them.
+Microservices rely on \textit{decentralizing data management}, which means that the responsibility which type of data storage and data schema to use, is decided by the team creating the service [LF14c].
+It comes with the upside of being able to evolutionary improve a database schema and technological freedom regarding database technology [LF14c] [Wol16, p. 187].
+It comes with the downsides of heavily complicating data replication between services, as discussed in \textit{\hyperref[quaMicro:s11]{scenario 11 - maturity / data consistency}}.
+
+\paragraph{Scenario 20 - testability}
+A developer wants to perform a load test for a single service. The service can be tested individually.
+\label{quaMicro:s20}
+
+\textit{Rating}: Microservices +
+
+\textit{Summary}:
+Testing an individual service is simplified in microservice architectures.
+Each service can naturally be deployed and tested independently from the rest of the system, which eases load testing \citep[p. 16f.]{Clemson2014}.
+In a three-tier architecture, services are less isolated from another as they run in the same application server, which makes isolated load testing of a component harder.
+
+\textit{Explanation}:
+A service test is a test with limited scope to a single service \cite{FowlerComponent2013}. 
+It does not test the whole system but instead focuses on manipulating the services through their \ac{API}s.
+To achieve isolated testing of services all external collaborators need to be stubbed out \citep[p. 134, 137]{Newman2015}.
+It uses test doubles to isolate the code under test from other components \citep[p. 16f.]{Clemson2014}.
+Tests are done through the perspective of a consumer of the \ac{API} of the service.
+
+In a microservice architecture, the service boundaries are exposed naturally.
+As each service is already an individual deployment unit it can be deployed into an environment where other services are stubbed out.
+The deployment artifact can remain unchanged with no need for any test specific logic \citep[p. 16f.]{Clemson2014}.
+This makes testing on a service level elegant.
+
+Another advantage of microservices is that they can be tested in isolation.
+Load testing of a single service is simplified by each service being independently deployable and exposing a clear \ac{API}.
+
+Testing a service in a three-tier architecture might mean testing a collection of classes that provide a service to the \ac{UI} \citep[p. 134]{Newman2015}.
+As these services are deployed in large application servers it is harder to test them individually and isolated.
+Results of a load test might be blurred because the service is not isolated from other parts of the application server which could influence the test.
+
+\paragraph{Scenario 21 - testability}
+A developer wants to tests the entire system from an end-user perspective. He is reliably able to run end-to-end tests for each new release of the system.
+\label{quaMicro:s21}
+
+\textit{Rating}: Three-tier architecture +
+
+\textit{Summary}: 
+The relationship of end-to-end tests and microservices are problematic.
+The disadvantages of end-to-end tests like being slow and harder to diagnose get worse when the system under tests consists of more frequently changing parts.
+Newman even suggests not relying on end-to-end tests in microservice environments if possible. \citep[p. 147]{Newman2015}
+
+\textit{Explanation}:
+End-to-end tests have an increased scope in comparison to service or unit tests.
+They simulate user interaction with the entire system \citep[p. 138]{Newman2015}.
+%In comparison to service or unit tests they tend to be slower and it is harder to diagnose failure .
+
+End-to-end tests have a lot of disadvantages that grow significantly with more moving parts the system under test consists of \citep[p. 147]{Newman2015}.
+End-to-end tests tend to be slower than tests with smaller scope  \citep[p. 138]{Newman2015}.
+They also make it harder to diagnose failure and tend to be less deterministic \citep[p. 138, 140]{Newman2015}.
+
+As microservices rely on speed of innovation through frequent and small changes, end-to-end tests should be avoided as much as possible.
+Instead more effort should be put into detecting issues faster in production \citep[p. 153]{Newman2015}.
+In contrast systems that consist of less moving parts, deploying less frequently, will suffer less from the downsides of end-to-end tests.
+More monolithic systems, like a 3-tier architecture tend to rely more on large build artifacts and therefore introducing less frequent changes to the system \citep[p. 105]{Newman2015}.
+
+Another problem in microservice architectures is the responsibility of who is going to write the tests.
+A designated team writing and maintaining the tests increases the cycle time for each release.
+The decentralized organization of microservices complicates writing end-to-end tests \citep[p. 141]{Newman2015}.
+
+\subsection{Portability}
+\label{quaMicro:portability}
+\paragraph{Scenario 22 - adaptability}
+An algorithm wishes to scale a productively running component according to varying incoming request load. Without human interaction the system scales the component horizontally and it takes less than 5 minutes until it is scaled.
+\label{quaMicro:s22}
+
+\textit{Rating}: Microservices +
+
+\textit{Summary}: Microservices are better suited to achieve this scenario than three-tier architectures because they consist of smaller, independently deployable units \citep[p. 5]{Wolff2016} \citep[p. 3]{Newman2015}. 
+Microservices can be scaled in a more fine-grained way and due to the small size the start up time of a service should in general lie under the start up time of an application server instance.
+
+\textit{Explanation}:
+This scenario is about the ability of a software system to elastically scale components.
+The functionality of a new component instance is requested to be started in under 5 minutes. 
+The scenario is an extension to \textit{scenario 4 - capacity}, which discussed a similar scenario but without the time constraint.
+
+Regarding the time constraint the size of the deployable units is crucial. 
+Microservice systems consist of small independently deployed units \citep[p. 3]{Newman2015}. 
+This makes scaling services instances ideal for being horizontally scaled, as new instance can be spun up fast.
+An additional advantage of microservices is that smaller deployment units are better suited for \ac{CD}, which is an enabler for automated provisioning of components and needed for automated scaling \citep[p. 5]{Wolff2016}.
+
+An application server instance is a larger deployment artifact than a microservice.
+Though, application server instances are also horizontally scalable they take more time to be started.
+If they in addition hold state, for example with sticky-sessions, this makes the up- and especially the down-scaling process more complicated.
+
+\paragraph{Scenario 23 - installability}
+A customer wants to decide whether he deploys the system on premise. The system can be deployed on the local infrastructure of the customer.
+\label{quaMicro:s23}
+
+\textit{Rating}: Three-tier architecture +
+
+\textit{Summary}: Systems based on microservices as well as on three-tier architectures are both suitable to be installed on premise.
+Key characteristics of microservice architectures make them less appealing to be deployed on-premise.
+These include operational complexity, short feedback cycles between development and production, as well as benefiting from auto-scalable infrastructure \citep[p. 12]{Stine2015}.
+
+\textit{Explanation}:
+Technically, systems based on microservices as well as on three-tier architectures can both be deployed on local infrastructure.
+However, microservices are less suited to be deployed on premise than three-tier architectures as elaborated below.
+
+Microservice systems in general are more complex to monitor than three-tier architectures.
+Many bugs of microservice systems will only appear in a production environment, as it is complex to test the system as a whole \citep[p. 147]{Newman2015}.
+Therefore sophisticated monitoring and logging is inevitable.
+In comparison to more a monolithic system monitoring a microservice-based systems is significantly more complex \citep[p. 155]{Newman2015}.
+This imposes additional challenges for customers who want to operate and monitor a microservice system on their own hardware.
+
+Microservices rely on DevOps as a central concept \cite{Cockcroft2014}.
+Services are meant to be developed and operated by the same full-stack team \cite{Vogels2006}.
+If the customer has the responsibility to operate the software this makes it more complicated.
+Even if the customer gives away the responsibility to operate it still complicates short feedback cycles.
+
+Microservices evolving with the cloud native paradigm come with the promise of being elastically scalable \citep[p. 7]{Stine2015} \cite{12FactorProcesses2012}.
+Microservices thrive on an \ac{IaaS} as the infrastructure can adapt elastically together with the services to incoming load.
+This leads to more efficient use of infrastructure resources as they can grow and shrink with demand \citep[p.203f]{Newman2015}, which is not achieved when deployed on-premise.
+
+\section{Organizational Requirements}
+\label{quaMicro:tradeoffOrgRequirements}
+Section~\ref{qua:selectedQualityScenarios} listed quality scenarios next to organizational requirements.
+The following scenarios are all potentially influencing architectural decisions but they did not arise from quality scenarios.
+Instead, they are representing organizational styles or regulations which can influence architectural decisions.
+Here, they are evaluated whether they rather fit the microservices or the three-tier architectural style.
+
+\paragraph{O1 - developer velocity and continuous delivery}
+The organization demands that the cycle-time is less than a day. Meaning that a code change (no interface changes) affecting a single component is automatically deployed, tested and run into production in less than a day.
+\label{quaMicro:so1}
+
+\textit{Rating}: Microservices +
+
+\textit{Summary}:
+Microservices enable short cycle times through decoupling the life cycle of components and smaller deployment artifacts, which enable \ac{CD}. 
+On the other hand, there exist systems based on three-tier architectures, which also enable continuous innovation through feature flags and the use of \ac{CD}.
+
+\textit{Explanation}:
+For a detailed discussion of this organizational scenario it is referred to \textit{ \hyperref[quaMicro:s16]{scenario 16- modularity}}, which covered the major points already.
+
+\paragraph{O2 - quality-gates}
+The organization requires to review every software change through a thorough (>1week) quality process before it goes into production.
+\label{quaMicro:so2}
+
+\textit{Rating}: Three-tier architecture +
+
+\textit{Summary}:
+Thorough quality testing can be implemented for both microservices as well as 3-tier architecture based systems.
+However, one of the main reasons for using microservices over more monolithic systems is speed of innovation \cite{Vogels2006}.
+This major advantage is countered by a thorough quality process prior to each release.
+Instead of a long quality process microservices use other techniques to ensure quality in production, like reducing the \textit{mean time to repair} \citep[p. 150]{Newman2015}. 
+
+\textit{Explanation}:
+A central aspect of microservices is decoupling the life-cycles of services.
+For each service changes can be pushed independently into production.
+A large thorough quality process creates an unnatural point of integration, which counterfeits one of the main benefits of microservices, being fast cycle-time and quick feedback \citep[p. 105]{Newman2015}\citep[p. 153]{Newman2015}.
+
+Instead of using a thorough quality process to ensure high quality standards in production, microservice system accept that even with testing there will be errors and try to keep the impact of these errors as low as possible.
+Therefore, microservices rely on reducing the \textit{mean time to repair} \citep[p. 150]{Newman2015}. 
+Techniques for ensuring high quality in microservice systems are \citep[p.148ff.]{Newman2015} \citep[p. 210]{Newman2015}:
+\begin{itemize}
+\item Blue/green deployment
+\item Canary releasing
+\item Simulating failure in production, i.e., Netflix Simian Army\footnote{https://github.com/Netflix/SimianArmy}
+\end{itemize}
+
+In a three-tier architecture components are bound together at compile time.
+That means that a natural point of integration exists before the software is deployed into production.
+This makes three-tier architectures more fitting for a centralized quality ensuring process.
+
+\paragraph{O3 - technical teams}
+The organization demands to organize teams around technical qualification leading to pure UI, deployment or operation teams.
+\label{quaMicro:so3}
+
+\textit{Rating}: Three-tier architecture +
+
+\textit{Summary}: One of the main pillars of microservices is that each service is built around one business capability and is built by an interdisciplinary team \cite{FowlerFowlerBusinessCap2014}. 
+An organization that requires teams to be separated by their technical responsibility contradicts this requirement of microservices.
+A three-tier architecture in contrast, naturally follows the separation around technical responsibilities and is therefore better suited for the given scenario \citep[p. 199f.]{Larman2004}.
+
+\textit{Explanation}:
+Three-tier architectures are organized around layers, like presentation, domain logic and technical services \citep[p. 199f.]{Larman2004} \cite{FowlerFowlerBusinessCap2014}.
+In contrast, microservice architectures primarily organize their services around business capabilities equating to business areas \citep[p. 42]{Wolff2016}.
+%A layering with User Interface (UI), domain logic and database can still exist, but it is always encapsulated in a business area  \citep[p. 42]{Wolff2016}.
+An organizational structure that consists of teams built around technical areas is constrained to produce designs which are copies of the communication structure of the organization itself \cite{Conway1968}.
+Therefore, the given organizational scenario will produce a design fitting to a three-tier architecture.
+
+In addition, decoupling operations from development, as described in the scenario, is a contradiction to one of the main characteristics of microservices.
+Microservices thrive with the concept of interdisciplinary teams and DevOps, as each service has a team associated with it that is “completely responsible for the service — from scoping out the functionality, to architecting it, to building it, and operating it.’ \cite{Vogels2006}.
+Therefore, the given organizational scenario is not suited for developing microservices.
+
+%TODO this is not really an organizational requirement.
+\paragraph{O4 - explicit interfaces}
+All communication between different components (internal or external) is only allowed over explicitly defined \ac{API}s. No other way of communication between components is possible (for example over a database).
+\label{quaMicro:so4}
+
+\textit{Rating}: Microservices +
+
+\textit{Summary}: 
+Communication over explicit interfaces is a way to decouple components.
+Both three-tier architectures, as well as microservices are in theory able to create strong component boundaries.
+Microservices enforce communication over explicit interfaces by separating components over the network \cite{FowlerTradeoffsBoundaries2015}.
+Three-tier architectures in general struggle more with restricting communication solely over explicit component \ac{API}s, as they also provide integration over the database.
+Using explicit \ac{API}s for communication is a major characteristic of microservice systems \cite{Vogels2006}.
+
+\textit{Explanation}:
+Producing low coupling between components by enforcing communication over explicit \ac{API}s was already discussed in \textit{\hyperref[quaMicro:s5]{scenario 5 -- interoperability}}.
+
+
+\section{Findings}
+\label{quaRating:conclusion}
+There is no clean recipe or decision tree for when to use microservices.
+Difficult trade-offs on several layers contribute to the decision of using microservices or not.
+Apart from quality attributes also organizational factors play a major role.
+
+In conclusion, microservices should be considered for the following use cases, the related quality and organizational scenario evaluations are referenced in brackets:
+
+\begin{itemize}
+\item High development velocity, meaning continuous innovation in large projects consisting of several teams (\hyperref[quaMicro:s16]{16}, \hyperref[quaMicro:so1]{O1}, \hyperref[quaMicro:so2]{O2}).
+\item High availability for large scale distributed systems, especially if eventual consistency can be accepted (\hyperref[quaMicro:s12]{12}, \hyperref[quaMicro:s13]{13}).
+\item Excellent utilization of on-demand hardware through fine-grained auto-scaling of load. For example \textit{pay for service} (\hyperref[quaMicro:s2]{2}, \hyperref[quaMicro:s4]{4}, \hyperref[quaMicro:s22]{22}). \end{itemize}
+
+On the contrary, one should rather not consider microservices if:
+
+\begin{itemize}
+\item The domain of the project is not fully known (see \textit{\hyperref[quaMicro:modifiabilityDiscussion]{modifiability discussion}} in \ref{quaMicro:modifiabilityDiscussion}).
+\item The organization does not have or is not ready to heavily invest in competence to develop and operate complex, distributed systems (\hyperref[quaMicro:s9]{9}, \hyperref[quaMicro:s10]{10}).
+\item ACID conform transactions spanning over multiple business areas are needed (\hyperref[quaMicro:s11]{11}).
+\end{itemize}
+
+\subsection*{Trade-offs overview}
+
+%Regarding other use cases than the ones mentioned above the answer is not so clear whether to use microservices or not.
+There are fine-grained differences as each quality attribute benefits in some ways and loses in others regarding microservices. 
+Basically, microservices in comparison to three-tier architectures bring up- and downsides for most quality attributes, as shown in this section.
+
+\label{quaMicro:distributedSystemDownsides}
+Ever present in the trade-off discussion of microservices are the complexity and dangers of building a distributed system.
+Distribution is agreed upon as a complexity booster \citep{FowlerDistributedObjects2014}.
+Choosing to develop a distributed system comes with challenges on both the operational and programming level.
+Major challenges concern the areas of latency, memory access, partial failure and concurrency \citep[p. 5]{Kendall1994}.
+The challenges will not be reiterated in detail here but further information can be found in the given sources \cite{Kendall1994}, \cite{FowlerTradeoffsDistribution2015} or \cite{Deutsch2006}.
+What is important is that microservices are a distributed system and come with all these downsides.
+Developers or operators are going to be faced with these challenges in their day to day work. 
+Large companies like Netflix spent years to cope with these challenges and created a massive amount of tooling around it \cite{Netflix2016}.
+The significant downsides of designing and operating a distributed system need to be part of every evaluation of microservices.
+
+Microservices in comparison to three-tier architectures bring the following advantages and disadvantages with them, the related quality scenario evaluations are referenced in brackets. Also a tabular reference of the discussed scenarios is provided:
+
+\paragraph{Performance efficiency} 
+\begin{itemize}
+\pro Better and more efficient ways to adapt to varying load patterns through fine-grained scaling on component level (\hyperref[quaMicro:s2]{2}, \hyperref[quaMicro:s4]{4}, \hyperref[quaMicro:s22]{22}).
+\pro More natural scaling with on-demand infrastructure provisioning (\hyperref[quaMicro:s2]{2}, \hyperref[quaMicro:s4]{4}, \hyperref[quaMicro:s22]{22}).
+
+\con Slower component-to-component communication because of reliance on network calls (\hyperref[quaMicro:s1]{1}).
+\con More resource overhead (storage and compute) needed to provision the higher number of virtual environments (\hyperref[quaMicro:s3]{3}).
+\end{itemize}
+
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.2}
+  \centering
+  \sffamily
+  \begin{footnotesize}
+    \begin{tabular}{l l p{10,2cm} p{2,1cm}}
+    \toprule
+    \textbf{\#} & \textbf{Subcategory} & \textbf{Description}& \textbf{Rating} \\
+    \midrule
+    \hyperref[quaMicro:s1]{1} & \hyperref[quaMicro:s1]{Time behavior} & A user request is initiated which involves different components of the system to communicate. Under normal operations the latency of communication between two components is less than a millisecond. & Three-tier architecture + \\  \\
+	\hyperref[quaMicro:s2]{2} & \hyperref[quaMicro:s2]{Resource utilization} & Users initiate varying requests over the day to the system. The requests distribution varies around 10x of the average request count. The system elastically adapts the used hardware resources to the varying load. & Microservices + \\ \\
+		\hyperref[quaMicro:s3]{3} & \hyperref[quaMicro:s3]{Resource utilization} & Users initiate a constant amount of requests per minute. 99.9\% of all requests are answered in under 300 ms with as little hardware resources (as little compute and storage) as possible. & Three-tier architecture + \\ \\
+		\hyperref[quaMicro:s4]{4} & \hyperref[quaMicro:s4]{Capacity} & Users initiate requests when the system is at its maximum capacity. The system automatically provisions new hardware and scales its internal components elastically according to the need. & Undecided \\ 
+    \bottomrule
+    \end{tabular}
+  \end{footnotesize}
+  \rmfamily
+  \caption[Overview of the evaluated performance efficiency scenarios.]{Overview of the evaluated performance efficiency scenarios.}
+  \label{quaMicro:tableOverview}
+\end{table}
+
+\paragraph{Compatibility}
+\begin{itemize}
+\pro Microservices enforce low coupling and the use of explicit \ac{API}s between components (\hyperref[quaMicro:s5]{5}, \hyperref[quaMicro:s18]{18}).
+\pro Failures are isolated on the service level because each service runs in its own virtual environment (\hyperref[quaMicro:s7]{7}, \hyperref[quaMicro:s8]{8}, \hyperref[quaMicro:s7]{12}, \hyperref[quaMicro:s7]{13}).
+\con Interface versioning for each component becomes more relevant but also more complex (\citep[p. 62ff.]{Newman2015} \citep[8:20]{Saleh2000}).
+\con Backward incompatible \ac{API} changes of components are hard to manage \citep[p. 64f.]{Newman2015}.
+\end{itemize}
+
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.2}
+  \centering
+  \sffamily
+  \begin{footnotesize}
+    \begin{tabular}{l l p{10,2cm} p{2,1cm}}
+    \toprule
+    \textbf{\#} & \textbf{Subcategory} & \textbf{Description}& \textbf{Rating} \\
+    \midrule
+				\hyperref[quaMicro:s5]{5} & \hyperref[quaMicro:s5]{Interoperability} & A component wants to access data or functionality from another component. The only way for the components to interoperate is through an explicit API declared by the providing component. & Microservices + \\ \\
+				\hyperref[quaMicro:s6]{6} & \hyperref[quaMicro:s6]{Interoperability} & A new system needs to communicate with a legacy system that is written in a different programming language. The two systems are able to communicate and work together. & Undecided \\ \\
+				\hyperref[quaMicro:s7]{7} & \hyperref[quaMicro:s7]{Co-existence} & An internal component crashes during normal operations. The other components of the same system stay running and responsive. & Microservices + \\ \\
+				\hyperref[quaMicro:s8]{8} & \hyperref[quaMicro:s8]{Co-existence} & One component of a system wants to consume excessive memory, storage or CPU. The other components on the same system are not affected in their functionality by the resource consumption of one component. & Microservices + \\
+    \bottomrule
+    \end{tabular}
+  \end{footnotesize}
+  \rmfamily
+  \caption[Overview of the evaluated compatibility scenarios.]{Overview of the evaluated compatibility scenarios.}
+  \label{quaMicro:tableOverview}
+\end{table}
+
+
+\paragraph{Usability}
+\begin{itemize}
+\con Operational complexity increases (\hyperref[quaMicro:s9]{9}, \hyperref[quaMicro:s10]{10}).
+\con An overview of the currently running code in the system gets harder because of individually changing parts  (\hyperref[quaMicro:s9]{9}, \hyperref[quaMicro:s10]{10}).
+\con Debugging and troubleshooting gets more complicated due to the distributed and ephemeral nature of services  (\hyperref[quaMicro:s10]{10}).
+%\con Having a consistent \ac{UI} with different teams working on services becomes more challgenging
+\end{itemize}
+
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.2}
+  \centering
+  \sffamily
+  \begin{footnotesize}
+    \begin{tabular}{l l p{10,2cm} p{2,1cm}}
+    \toprule
+    \textbf{\#} & \textbf{Subcategory} & \textbf{Description}& \textbf{Rating} \\
+    \midrule
+    \hyperref[quaMicro:s9]{9} & \hyperref[quaMicro:s9]{Operatibility} & An operator attempts to determine all the software components the system consists of. The operation environment provides the currently running software components and their version number. & Three-tier architecture + \\  \\
+	\hyperref[quaMicro:s10]{10} & \hyperref[quaMicro:s10]{Operatibility} & A user experiences a problem which has the root in a malfunction of the system. It takes in average less than one hour to trace down and isolate the function, which causes the error. & Three-tier architecture + \\
+   \bottomrule
+    \end{tabular}
+  \end{footnotesize}
+  \rmfamily
+  \caption[Overview of the evaluated usability scenarios.]{Overview of the evaluated usability scenarios.}
+  \label{quaMicro:tableOverview}
+\end{table}
+
+\paragraph{Reliability}
+\begin{itemize}
+\pro High availability for a scalable distributed system can be achieved if eventual consistency is acceptable (\hyperref[quaMicro:s12]{12}, \hyperref[quaMicro:s13]{13}).
+\pro Microservices are more easily spread out to different failure domains (\hyperref[quaMicro:s12]{12}, \hyperref[quaMicro:s13]{13}).
+\pro Service boundaries form a natural bulkhead (\hyperref[quaMicro:s7]{7}, \hyperref[quaMicro:s8]{8}, \hyperref[quaMicro:s12]{12}, \hyperref[quaMicro:s7]{13}).
+
+\con Guaranteeing data consistency between components is very challenging. In the case of a network partition full availability needs to be sacrificed for strong consistency (\hyperref[quaMicro:s11]{11}).
+\con Network related failures become more likely (\hyperref[quaMicro:s12]{12}, \hyperref[quaMicro:s13]{13}).
+\con Programming for a distributed system and network communication is more complex than local programming. The added complexity could lead to more programming errors (\hyperref[quaMicro:s12]{12}, \hyperref[quaMicro:s14]{13}).
+\con Transactional consistency can hardly be guaranteed if more than one microservice should be part of the transaction (\hyperref[quaMicro:s14]{14}).
+\con A distribute system imposes more failure modes as nodes can fail due to a failure in the node or a network partition. Partial failure requires that programs deal with indeterminacy \cite{Kendall1994}.
+\end{itemize}
+
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.2}
+  \centering
+  \sffamily
+  \begin{footnotesize}
+    \begin{tabular}{l l p{10,2cm} p{2,1cm}}
+    \toprule
+    \textbf{\#} & \textbf{Subcategory} & \textbf{Description}& \textbf{Rating} \\
+    \midrule
+    \hyperref[quaMicro:s11]{11} & \hyperref[quaMicro:s11]{Maturity} & Two users initiate a request with the same input at
+the same time under normal operations both users consistently receive the same answer.
+ & Three-tier architecture + \\  \\
+	\hyperref[quaMicro:s12]{12} & \hyperref[quaMicro:s12]{Availability} & A component of the application crashes. Under average load the system is fault-tolerant and the functionality of the component stays available. & Undecided \\ \\
+		\hyperref[quaMicro:s13]{13} & \hyperref[quaMicro:s13]{Availability} & An internal component crashes during normal operations. The system continues to be responsive providing limited functionality. & Undecided \\ \\
+		\hyperref[quaMicro:s14]{14} & \hyperref[quaMicro:s13]{Recoverability} & Part of an internal system crashes during a transactional operation. The error is recorded and the system as a whole goes back to a consistent state. During no time the system is available and in an inconsistent state. & Three-tier architecture + \\
+   \bottomrule
+    \end{tabular}
+  \end{footnotesize}
+  \rmfamily
+  \caption[Overview of the evaluated reliability scenarios.]{Overview of the evaluated reliability scenarios.}
+  \label{quaMicro:tableOverview}
+\end{table}
+
+\paragraph{Security}
+\begin{itemize}
+\pro Decomposition into finer-grained services gives more options on how to segregate entities, like network or data (\hyperref[quaMicro:s15]{15}).
+\con The complexity of the system rises and complexity is always a challenge in regard to security (\hyperref[quaMicro:s15]{15}).
+%\con Primarily monolithic systems can create separate services to handle sensitive data. (??cite maybe fowler?)
+\end{itemize}
+
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.2}
+  \centering
+  \sffamily
+  \begin{footnotesize}
+    \begin{tabular}{l l p{10,2cm} p{2,1cm}}
+    \toprule
+    \textbf{\#} & \textbf{Subcategory} & \textbf{Description}& \textbf{Rating} \\
+    \midrule
+    \hyperref[quaMicro:s15]{15} & \hyperref[quaMicro:s15]{Confidentiality} & An attacker tries to access sensitive data within the system after gaining control of a relatively uncritical part of the system. The system denies access to more sensitive data and logs the attempt.
+ & Undecided \\
+   \bottomrule
+    \end{tabular}
+  \end{footnotesize}
+  \rmfamily
+  \caption[Overview of the evaluated security scenarios.]{Overview of the evaluated security scenarios.}
+  \label{quaMicro:tableOverview}
+\end{table}
+
+\paragraph{Maintainability}
+\begin{itemize}
+\pro Low coupling between services leads to strong module boundaries (\hyperref[quaMicro:s5]{5}, \hyperref[quaMicro:s16]{16}, \hyperref[quaMicro:s18]{18}).
+\pro Independent deployment and well-defined interfaces are the first steps to enabling reusability of components (\hyperref[quaMicro:s17]{17}, \hyperref[quaMicro:s18]{18}).
+\pro Modifiability on a component level is eased due to loose coupling between components (\hyperref[quaMicro:s16]{16}, \hyperref[quaMicro:s18]{18}).
+\pro Technological heterogeneity is enabled in a system (\hyperref[quaMicro:s18]{18}, \hyperref[quaMicro:s19]{19}).
+\pro Component/service level testing is simplified (\hyperref[quaMicro:s20]{20}).
+
+\con No publicly known example that shows the actual reuse of microservice based components on a large scale or between companies (\hyperref[quaMicro:s17]{17}).
+\con Disadvantages of end-to-end tests grow significantly with microservices (\hyperref[quaMicro:s21]{21}).
+\con Shifting responsibilities between services is more costly than in more monolithic systems (see \textit{\hyperref[quaMicro:modifiabilityDiscussion]{modifiability discussion}} in \ref{quaMicro:modifiabilityDiscussion}).
+\end{itemize}
+
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.2}
+  \centering
+  \sffamily
+  \begin{footnotesize}
+    \begin{tabular}{l l p{10,2cm} p{2,1cm}}
+    \toprule
+    \textbf{\#} & \textbf{Subcategory} & \textbf{Description}& \textbf{Rating} \\
+    \midrule
+    \hyperref[quaMicro:s16]{16} & \hyperref[quaMicro:s16]{Modularity} & A developer wants to deploy a code change (no interface changes) affecting a single component on a productively running system. The change is tested and pushed into production in less than a day. Other components of the system do not need to be redeployed.
+ & Microservices + \\  \\
+     \hyperref[quaMicro:s17]{17} & \hyperref[quaMicro:s17]{Reusability} & Another project wants to reuse a logical component which is implemented in the system. The component can be reused in different contexts or programs.
+ & Microservices + \\  \\
+      \hyperref[quaMicro:s18]{18} & \hyperref[quaMicro:s18]{Modifiability} & A development team wishes to change a component with the best of breed in the given area. Technology stack and programming language should not be limiting factors for the choice. It will take less than one week to test and deploy the change into production.
+ & Microservices + \\  \\
+       \hyperref[quaMicro:s19]{19} & \hyperref[quaMicro:s19]{Modifiability} & A developer wishes to change the database technology which stores data for one functional area from a relational database to a graph database. It will take less than one week to change the database and to deploy it into production. & Microservices + \\  \\
+       \hyperref[quaMicro:s20]{20} & \hyperref[quaMicro:s20]{Testability} & A developer wants to perform a load test for a single service. The service can be tested individually. & Microservices + \\  \\ 
+       \hyperref[quaMicro:s21]{21} & \hyperref[quaMicro:s21]{Testability} & A developer wants to tests the entire system from an end-user perspective. He is reliably able to run end-to-end tests for each new release of the system. & Three-tier architecture + \\ 
+   \bottomrule
+    \end{tabular}
+  \end{footnotesize}
+  \rmfamily
+  \caption[Overview of the evaluated maintainability scenarios.]{Overview of the evaluated maintainability scenarios.}
+  \label{quaMicro:tableOverview}
+\end{table}
+
+\paragraph{Portability}
+\begin{itemize}
+\con Microservices loose some of its benefits when deployed on premise (\hyperref[quaMicro:s23]{23}).
+\end{itemize}
+
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.2}
+  \centering
+  \sffamily
+  \begin{footnotesize}
+    \begin{tabular}{l l p{10,2cm} p{2,1cm}}
+    \toprule
+    \textbf{\#} & \textbf{Subcategory} & \textbf{Description}& \textbf{Rating} \\
+    \midrule
+       \hyperref[quaMicro:s22]{22} & \hyperref[quaMicro:s22]{Adaptability} & An algorithm wishes to scale a productively running component according to varying incoming request load. Without human interaction the system scales the component horizontally and it takes less than 5 minutes until it is scaled. & Microservices + \\  \\ 
+       \hyperref[quaMicro:s23]{23} & \hyperref[quaMicro:s23]{Installability} & A customer wants to decide whether he deploys the system on premise. The system can be deployed on the local infrastructure of the customer. & Three-tier architecture + \\
+   \bottomrule
+    \end{tabular}
+  \end{footnotesize}
+  \rmfamily
+  \caption[Overview of the evaluated portability scenarios.]{Overview of the evaluated portability scenarios.}
+  \label{quaMicro:tableOverview}
+\end{table}
