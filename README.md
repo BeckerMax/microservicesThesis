@@ -1,7 +1,7 @@
 # microservicesThesis
-Title: Are Microservices for You? Discussing Trade-offs of Microservice-based Software Systems
+Title: Are Microservices for You? Discussing Trade-offs of Microservice-based Software Systems.
 
-This is a masterthesis originally written by Max Becker in October 2017 for the university of Applied Sciences in cooperation with SAP SE. 
+This thesis was originally written by Max Becker in October 2017 for the University of Applied Sciences Mannheim in cooperation with SAP SE.
 
 This thesis is licensed under the Creative Commons BY-SA 4.0 license.
 This means you are free to remix, tweak, and build upon the work even for commercial purposes, as long as you credit the original author and license the new creations under the identical terms.
