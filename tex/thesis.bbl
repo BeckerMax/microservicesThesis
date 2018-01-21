@@ -161,14 +161,6 @@ Martin Fowler.
   2015.
 \newblock accessed last 2017-01-04.
 
-\bibitem[Fow15e]{FowlerTradeoffsSecondary2015}
-Martin Fowler.
-\newblock Microservices tradeoffs - secondary factors.
-\newblock
-  \url{https://martinfowler.com/articles/microservice-trade-offs.html#SecondaryFactors},
-  2015.
-\newblock accessed last 2017-01-04.
-
 \bibitem[FS15]{FowlerEvolutionDatabase2015}
 Fowler and Sadalage.
 \newblock Evolutionary database design.

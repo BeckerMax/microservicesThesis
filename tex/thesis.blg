@@ -67,8 +67,6 @@ Warning--entry type for "FowlerMSOverview" isn't style-file defined
 --line 1062 of file literature.bib
 Warning--entry type for "Cockcroft2014" isn't style-file defined
 --line 1071 of file literature.bib
-Warning--entry type for "FowlerTradeoffsSecondary2015" isn't style-file defined
---line 1081 of file literature.bib
 Warning--entry type for "NetflixMSAtScale2016" isn't style-file defined
 --line 1093 of file literature.bib
 Warning--entry type for "Saleh2000" isn't style-file defined
@@ -82,45 +80,45 @@ Warning--empty institution in Kendall1994
 Warning--empty journal in devopsReport2015
 Warning--empty publisher in Takada2013Abstractions
 Warning--empty publisher in Takada2013Replication
-You've used 68 entries,
+You've used 67 entries,
             2543 wiz_defined-function locations,
-            910 strings with 14464 characters,
-and the built_in function-call counts, 21261 in all, are:
-= -- 2092
-> -- 899
-< -- 47
-+ -- 295
-- -- 275
-* -- 1160
-:= -- 3523
-add.period$ -- 242
-call.type$ -- 68
-change.case$ -- 372
+            906 strings with 14280 characters,
+and the built_in function-call counts, 20985 in all, are:
+= -- 2064
+> -- 891
+< -- 46
++ -- 292
+- -- 273
+* -- 1149
+:= -- 3480
+add.period$ -- 238
+call.type$ -- 67
+change.case$ -- 367
 chr.to.int$ -- 53
-cite$ -- 75
-duplicate$ -- 861
-empty$ -- 1686
-format.name$ -- 385
-if$ -- 4384
-int.to.chr$ -- 16
+cite$ -- 74
+duplicate$ -- 850
+empty$ -- 1661
+format.name$ -- 381
+if$ -- 4325
+int.to.chr$ -- 15
 int.to.str$ -- 0
 missing$ -- 38
-newline$ -- 381
-num.names$ -- 204
-pop$ -- 557
+newline$ -- 375
+num.names$ -- 201
+pop$ -- 548
 preamble$ -- 1
-purify$ -- 448
+purify$ -- 442
 quote$ -- 0
-skip$ -- 748
+skip$ -- 738
 stack$ -- 0
-substring$ -- 627
-swap$ -- 85
-text.length$ -- 47
-text.prefix$ -- 44
+substring$ -- 620
+swap$ -- 84
+text.length$ -- 46
+text.prefix$ -- 43
 top$ -- 0
-type$ -- 492
+type$ -- 484
 warning$ -- 7
-while$ -- 173
-width$ -- 72
-write$ -- 904
-(There were 43 warnings)
+while$ -- 171
+width$ -- 71
+write$ -- 890
+(There were 42 warnings)

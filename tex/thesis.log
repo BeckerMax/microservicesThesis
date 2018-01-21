@@ -1,33 +1,33 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.7.27)  27 OCT 2017 11:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  21 JAN 2018 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **thesis.tex
 (./thesis.tex
 LaTeX2e <2017-04-15>
-Babel <3.12> and hyphenation patterns for 84 language(s) loaded.
+Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (./preambel.tex
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrbook.cls
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrbook.cls
 Document Class: scrbook 2017/04/13 v3.23 KOMA-Script document class (book)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrkbase.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrkbase.sty
 Package: scrkbase 2017/04/13 v3.23 KOMA-Script package (KOMA-Script-dependent b
 asics and keyval usage)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrbase.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrbase.sty
 Package: scrbase 2017/04/13 v3.23 KOMA-Script package (KOMA-Script-independent 
 basics and keyval usage)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrlfile.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2017/04/13 v3.23 KOMA-Script package (loading files)
 
 Package scrlfile, 2017/04/13 v3.23 KOMA-Script package (loading files)
                   Copyright (C) Markus Kohm
 
-))) (/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/tocbasic.sty
+))) (/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/tocbasic.sty
 Package: tocbasic 2017/04/13 v3.23 KOMA-Script package (handling toc-files)
 \scr@dte@tocline@numberwidth=\skip41
 \scr@dte@tocline@numbox=\box26
@@ -52,11 +52,11 @@ Package scrbook Info: You've used standard option `12pt'.
 Class scrbook Info: File `scrsize12pt.clo' used to setup font sizes on input li
 ne 2275.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrsize12pt.clo
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrsize12pt.clo
 File: scrsize12pt.clo 2017/04/13 v3.23 KOMA-Script font size class option (12pt
 )
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/typearea.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/typearea.sty
 Package: typearea 2017/04/13 v3.23 KOMA-Script package (type area)
 \ta@bcor=\skip42
 \ta@div=\count79
@@ -111,23 +111,23 @@ LaTeX Info: Redefining \textsubscript on input line 4843.
 Class scrbook Info: Redefining `\numberline' on input line 6000.
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrpage2.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrpage2.sty
 Package: scrpage2 2017/04/13 v3.23 KOMA-Script package (page head and foot)
 LaTeX Info: Redefining \pagemark on input line 174.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.dfu
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -368,7 +368,7 @@ File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ot1enc.dfu
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -409,7 +409,7 @@ File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omsenc.dfu
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -433,66 +433,67 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2017/06/24 v1.0g Graphics/color driver for pdftex
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count89
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2017/06/29 3.12 The Babel package
+(/usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2017/05/19 3.10 The Babel package
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2017/06/29 3.12 Babel switching mechanism
-)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel-german/ngerman.ldf
+(/usr/local/texlive/2017/texmf-dist/tex/generic/babel-german/ngerman.ldf
 Language: ngerman 2016/11/02 v2.9 German support for babel (new orthography)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel-german/ngermanb.ldf
+(/usr/local/texlive/2017/texmf-dist/tex/generic/babel-german/ngermanb.ldf
 Language: ngermanb 2016/11/02 v2.9 German support for babel (new orthography)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2017/06/29 3.12 Babel common definitions
-
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2017/06/29 3.12 Babel switching mechanism
-)
-\babel@savecnt=\count89
+(/usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2017/05/19 3.10 Babel common definitions
+\babel@savecnt=\count90
 \U@D=\dimen105
 )
 Package babel Info: Making " an active character on input line 125.
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/babel-english/english.ldf
-Language: english 2017/06/06 v3.3r English support from the babel system
+(/usr/local/texlive/2017/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/01/24 v3.3q English support from the babel system
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -506,33 +507,33 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/11/05 v2.16a AMS math features
 \@mathmargin=\skip56
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen106
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen107
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count90
+\inf@bad=\count91
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count91
-\leftroot@=\count92
+\uproot@=\count92
+\leftroot@=\count93
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count93
-\DOTSCASE@=\count94
+\classnum@=\count94
+\DOTSCASE@=\count95
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
@@ -541,15 +542,15 @@ LaTeX Info: Redefining \cdots on input line 596.
 \big@size=\dimen108
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count95
-\c@MaxMatrixCols=\count96
+\macc@depth=\count96
+\c@MaxMatrixCols=\count97
 \dotsspace@=\muskip10
-\c@parentequation=\count97
-\dspbrk@lvl=\count98
+\c@parentequation=\count98
+\dspbrk@lvl=\count99
 \tag@help=\toks18
-\row@=\count99
-\column@=\count100
-\maxfields@=\count101
+\row@=\count100
+\column@=\count101
+\maxfields@=\count102
 \andhelp@=\toks19
 \eqnshift@=\dimen109
 \alignsep@=\dimen110
@@ -564,25 +565,25 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/float/float.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count102
+\c@float@type=\count103
 \float@exts=\toks22
 \float@box=\box30
 \@float@everytoks=\toks23
 \@floatcapt=\box31
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/booktabs/booktabs.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \heavyrulewidth=\dimen115
 \lightrulewidth=\dimen116
@@ -594,76 +595,70 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \cmidrulesep=\dimen122
 \cmidrulekern=\dimen123
 \defaultaddspace=\dimen124
-\@cmidla=\count103
-\@cmidlb=\count104
+\@cmidla=\count104
+\@cmidlb=\count105
 \@aboverulesep=\dimen125
 \@belowrulesep=\dimen126
-\@thisruleclass=\count105
-\@lastruleclass=\count106
+\@thisruleclass=\count106
+\@lastruleclass=\count107
 \@thisrulewidth=\dimen127
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/acronym/acronym.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/acronym/acronym.sty
 Package: acronym 2015/03/21 v1.41 Support for acronyms (Tobias Oetiker)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/bigfoot/suffix.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/bigfoot/suffix.sty
 Package: suffix 2006/07/15 1.5a Variant command support
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/xstring/xstring.sty
-(/usr/local/texlive/2016/texmf-dist/tex/generic/xstring/xstring.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xstring/xstring.tex
 \@xs@message=\write3
-\integerpart=\count107
-\decimalpart=\count108
+\integerpart=\count108
+\decimalpart=\count109
 )
 Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 )
 \AC@clearlist=\toks24
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/makeidx.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count109
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count110
 \lst@gtempboxa=\box32
 \lst@token=\toks25
-\lst@length=\count110
+\lst@length=\count111
 \lst@currlwidth=\dimen128
-\lst@column=\count111
-\lst@pos=\count112
+\lst@column=\count112
+\lst@pos=\count113
 \lst@lostspace=\dimen129
 \lst@width=\dimen130
-\lst@newlines=\count113
-\lst@lineno=\count114
+\lst@newlines=\count114
+\lst@lineno=\count115
 \lst@maxwidth=\dimen131
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count115
-\lst@skipnumbers=\count116
+\c@lstnumber=\count116
+\lst@skipnumbers=\count117
 \lst@framebox=\box33
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
 Package: listingsutf8 2016/05/16 v1.3 Allow UTF-8 in listings input (HO)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
@@ -671,17 +666,17 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/stringenc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/stringenc.sty
 Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
 )
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdfescape.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdfescape.sty
 Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
 )))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption3.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen132
@@ -693,18 +688,18 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@hangindent=\dimen138
 )
 Package caption Info: KOMA-Script document class.
-\c@ContinuedFloat=\count117
+\c@ContinuedFloat=\count118
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/helvet.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/textpos/textpos.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/textpos/textpos.sty
 Package: textpos 2016/06/07 v1.8
 
 Package: textpos 2016/06/07 1.8, absolute positioning of text on the page
-(/usr/local/texlive/2016/texmf-dist/tex/latex/ms/everyshi.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 )
 \TP@textbox=\box34
@@ -721,57 +716,57 @@ Grid set 16 x 16 = 37.34424pt x 52.81543pt
 \TP@tbargs=\toks26
 \TP@prevdepth=\dimen146
 TextBlockOrigin set to 0pt x 0pt
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/calc.sty
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count118
-\calc@Bcount=\count119
+\calc@Acount=\count119
+\calc@Bcount=\count120
 \calc@Adimen=\dimen147
 \calc@Bdimen=\dimen148
 \calc@Askip=\skip59
 \calc@Bskip=\skip60
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count120
+\calc@Ccount=\count121
 \calc@Cskip=\skip61
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/blindtext/blindtext.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/blindtext/blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/xspace.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-\c@blindtext=\count121
-\c@Blindtext=\count122
-\c@blind@countparstart=\count123
-\blind@countxx=\count124
-\blindtext@numBlindtext=\count125
-\blind@countyy=\count126
-\c@blindlist=\count127
-\c@blindlistlevel=\count128
-\c@blindlist@level=\count129
-\blind@listitem=\count130
-\c@blind@listcount=\count131
-\c@blind@levelcount=\count132
-\blind@mathformula=\count133
-\blind@Mathformula=\count134
-\c@blind@randomcount=\count135
-\c@blind@randommax=\count136
-\c@blind@pangramcount=\count137
-\c@blind@pangrammax=\count138
+\c@blindtext=\count122
+\c@Blindtext=\count123
+\c@blind@countparstart=\count124
+\blind@countxx=\count125
+\blindtext@numBlindtext=\count126
+\blind@countyy=\count127
+\c@blindlist=\count128
+\c@blindlistlevel=\count129
+\c@blindlist@level=\count130
+\blind@listitem=\count131
+\c@blind@listcount=\count132
+\c@blind@levelcount=\count133
+\blind@mathformula=\count134
+\blind@Mathformula=\count135
+\c@blind@randomcount=\count136
+\c@blind@randommax=\count137
+\c@blind@pangramcount=\count138
+\c@blind@pangrammax=\count139
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count139
-\Gm@cntv=\count140
-\c@Gm@tempcnt=\count141
+\Gm@cnth=\count140
+\Gm@cntv=\count141
+\c@Gm@tempcnt=\count142
 \Gm@bindingoffset=\dimen149
 \Gm@wd@mp=\dimen150
 \Gm@odd@mp=\dimen151
@@ -782,51 +777,50 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen156
 \Gm@dimlist=\toks27
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/natbib/natbib.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip62
 \bibsep=\skip63
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count142
+\c@NAT@ctr=\count143
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/etaremune/etaremune.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/etaremune/etaremune.sty
 Package: etaremune 2005/06/01 v1.2 Reversed enumerate (HA)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/local/texlive/2016/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks28
 \XKV@tempa@toks=\toks29
 )
-\XKV@depth=\count143
+\XKV@depth=\count144
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-\c@EM@itemctr=\count144
-\c@EM@etaremunectr=\count145
+\c@EM@itemctr=\count145
+\c@EM@etaremunectr=\count146
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/setspace/setspace.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/scrhack.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrhack.sty
 Package: scrhack 2017/04/13 v3.23 KOMA-Script package 
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/xpatch/xpatch.sty
-(/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2017/07/19 L3 programming layer (loader) 
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xpatch/xpatch.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2017/05/13 L3 programming layer (loader) 
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-Package: expl3 2017/07/19 L3 programming layer (code)
-\c_max_int=\count146
-\l_tmpa_int=\count147
-\l_tmpb_int=\count148
-\g_tmpa_int=\count149
-\g_tmpb_int=\count150
-\g__intarray_font_int=\count151
+(/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2017/05/13 L3 programming layer (code)
+\c_max_int=\count147
+\l_tmpa_int=\count148
+\l_tmpb_int=\count149
+\g_tmpa_int=\count150
+\g_tmpb_int=\count151
 \g__prg_map_int=\count152
 \c_log_iow=\count153
 \l_iow_line_count_int=\count154
@@ -875,53 +869,6 @@ Package: expl3 2017/07/19 L3 programming layer (code)
 \l__sort_A_int=\count179
 \l__sort_B_int=\count180
 \l__sort_C_int=\count181
-\l__tl_build_start_index_int=\count182
-\l__tl_build_index_int=\count183
-\l__tl_analysis_normal_int=\count184
-\l__tl_analysis_index_int=\count185
-\l__tl_analysis_nesting_int=\count186
-\l__tl_analysis_type_int=\count187
-\l__regex_internal_a_int=\count188
-\l__regex_internal_b_int=\count189
-\l__regex_internal_c_int=\count190
-\l__regex_balance_int=\count191
-\l__regex_group_level_int=\count192
-\l__regex_mode_int=\count193
-\c__regex_cs_in_class_mode_int=\count194
-\c__regex_cs_mode_int=\count195
-\l__regex_catcodes_int=\count196
-\l__regex_default_catcodes_int=\count197
-\c__regex_catcode_D_int=\count198
-\c__regex_catcode_S_int=\count199
-\c__regex_catcode_L_int=\count266
-\c__regex_catcode_O_int=\count267
-\c__regex_catcode_A_int=\count268
-\c__regex_all_catcodes_int=\count269
-\l__regex_show_lines_int=\count270
-\l__regex_min_state_int=\count271
-\l__regex_max_state_int=\count272
-\l__regex_left_state_int=\count273
-\l__regex_right_state_int=\count274
-\l__regex_capturing_group_int=\count275
-\l__regex_min_pos_int=\count276
-\l__regex_max_pos_int=\count277
-\l__regex_curr_pos_int=\count278
-\l__regex_start_pos_int=\count279
-\l__regex_success_pos_int=\count280
-\l__regex_curr_char_int=\count281
-\l__regex_curr_catcode_int=\count282
-\l__regex_last_char_int=\count283
-\l__regex_case_changed_char_int=\count284
-\l__regex_curr_state_int=\count285
-\l__regex_step_int=\count286
-\l__regex_min_active_int=\count287
-\l__regex_max_active_int=\count288
-\l__regex_replacement_csnames_int=\count289
-\l__regex_match_count_int=\count290
-\l__regex_min_submatch_int=\count291
-\l__regex_submatch_int=\count292
-\l__regex_zeroth_submatch_int=\count293
-\g__debug_trace_regex_int=\count294
 \c_empty_box=\box36
 \l_tmpa_box=\box37
 \l_tmpb_box=\box38
@@ -963,24 +910,24 @@ Package: expl3 2017/07/19 L3 programming layer (code)
 \l__coffin_scaled_total_height_dim=\dimen186
 \l__coffin_scaled_width_dim=\dimen187
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
 File: l3pdfmode.def 2017/03/18 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count295
+\l__driver_color_stack_int=\count182
 \l__driver_tmp_box=\box51
 ))
 Package: xpatch 2012/10/02 v0.3 Extending etoolbox patching commands
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2017/07/19 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count296
-\g__xparse_grabber_int=\count297
-\l__xparse_m_args_int=\count298
-\l__xparse_mandatory_args_int=\count299
-\l__xparse_v_nesting_int=\count300
+(/usr/local/texlive/2017/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2017/05/13 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count183
+\g__xparse_grabber_int=\count184
+\l__xparse_m_args_int=\count185
+\l__xparse_mandatory_args_int=\count186
+\l__xparse_v_nesting_int=\count187
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count301
+\etb@tempcnta=\count188
 )
 .................................................
 . LaTeX info: "xparse/define-command"
@@ -1165,7 +1112,7 @@ Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
 )
 Package scrhack Info: loading float hack on input line 165.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/float.hak
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/float.hak
 File: float.hak 2017/04/13 v3.23 KOMA-Script package (hacking package float)
 Package scrhack Info: redefining \newfloat on input line 161.
 Package scrhack Info: redefining \listof on input line 161.
@@ -1173,7 +1120,7 @@ Package scrhack Info: undefining \float@addtolists on input line 161.
 )
 Package scrhack Info: loading listings hack on input line 179.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/listings.hak
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/listings.hak
 File: listings.hak 2017/04/13 v3.23 KOMA-Script package (hacking package listin
 gs)
 Package tocbasic Info: setting babel extension for `lol' on input line 137.
@@ -1181,7 +1128,7 @@ Package scrhack Info: redefining \lstlistoflistings on input line 137.
 )
 Package scrhack Info: loading setspace hack on input line 193.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/setspace.hak
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/setspace.hak
 File: setspace.hak 2017/04/13 v3.23 KOMA-Script package (hacking package setspa
 ce)
 ))
@@ -1189,14 +1136,14 @@ Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
 (scrhack)             need that hack, on input line 48.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2017/03/14 v6.85a Hypertext links for LaTeX
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -1228,24 +1175,24 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/auxhook.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen188
-\Hy@linkcounter=\count302
-\Hy@pagecounter=\count303
+\Hy@linkcounter=\count189
+\Hy@pagecounter=\count190
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/pd1enc.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count304
+\Hy@SavedSpaceFactor=\count191
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4498.
@@ -1255,15 +1202,15 @@ Package hyperref Info: Plain pages OFF on input line 4513.
 Package hyperref Info: Backreferencing OFF on input line 4518.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4751.
-\c@Hy@tempcnt=\count305
+\c@Hy@tempcnt=\count192
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5104.
 \XeTeXLinkMargin=\dimen189
-\Fld@menulength=\count306
+\Fld@menulength=\count193
 \Field@Width=\dimen190
 \Fld@charsize=\dimen191
 Package hyperref Info: Hyper figures OFF on input line 6358.
@@ -1275,58 +1222,58 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6383.
 Package hyperref Info: PDF/A mode OFF on input line 6388.
 LaTeX Info: Redefining \ref on input line 6428.
 LaTeX Info: Redefining \pageref on input line 6432.
-\Hy@abspage=\count307
-\c@Item=\count308
-\c@Hfootnote=\count309
+\Hy@abspage=\count194
+\c@Item=\count195
+\c@Hfootnote=\count196
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
-\Fld@listcount=\count310
-\c@bookmark@seq@number=\count311
+\Fld@listcount=\count197
+\c@bookmark@seq@number=\count198
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip70
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/hypcap.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/hypcap.sty
 Package: hypcap 2016/05/16 v1.12 Adjusting the anchors of captions (HO)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/todonotes/todonotes.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/todonotes/todonotes.sty
 Package: todonotes 2015/07/09 .dtx Todonotes source and documentation.
 Package: todonotes 2012/07/25
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
 \pgfutil@everybye=\toks30
 \pgfutil@tempdima=\dimen192
 \pgfutil@tempdimb=\dimen193
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
 sts.tex))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box52
-) (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+) (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
 ))
 Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
- (/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks31
 \pgfkeys@temptoks=\toks32
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
 ode.tex
 \pgfkeys@tmptoks=\toks33
 ))
@@ -1340,72 +1287,72 @@ ode.tex
 \pgf@yc=\dimen257
 \w@pgf@writea=\write4
 \r@pgf@reada=\read1
-\c@pgf@counta=\count312
-\c@pgf@countb=\count313
-\c@pgf@countc=\count314
-\c@pgf@countd=\count315
+\c@pgf@counta=\count199
+\c@pgf@countb=\count266
+\c@pgf@countc=\count267
+\c@pgf@countd=\count268
 \t@pgf@toka=\toks34
 \t@pgf@tokb=\toks35
 \t@pgf@tokc=\toks36
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
 ef
 File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
 df.def
 File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 )))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count316
-\pgfsyssoftpath@bigbuffer@items=\count317
+\pgfsyssoftpath@smallbuffer@items=\count269
+\pgfsyssoftpath@bigbuffer@items=\count270
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
 code.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen258
-\pgfmath@count=\count318
+\pgfmath@count=\count271
 \pgfmath@box=\box53
 \pgfmath@toks=\toks37
 \pgfmath@stack@operand=\toks38
 \pgfmath@stack@operation=\toks39
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
 tex
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
 .code.tex)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
 nometric.code.tex)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
 m.code.tex)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
 rison.code.tex)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
 code.tex)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
 .code.tex)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
 code.tex)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
 erarithmetics.code.tex)))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count319
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count272
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
 de.tex
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@picminx=\dimen259
@@ -1423,123 +1370,123 @@ File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@zx=\dimen271
 \pgf@zy=\dimen272
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
 ruct.code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
 \pgf@path@lastx=\dimen273
 \pgf@path@lasty=\dimen274
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
 .code.tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
 \pgf@shorten@end@additional=\dimen275
 \pgf@shorten@start@additional=\dimen276
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
 de.tex
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box54
 \pgf@hbox=\box55
 \pgf@layerbox@main=\box56
-\pgf@picture@serial@count=\count320
+\pgf@picture@serial@count=\count273
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
 ate.code.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
 \pgflinewidth=\dimen277
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
 ations.code.tex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
 \pgf@pt@x=\dimen278
 \pgf@pt@y=\dimen279
 \pgf@pt@temp=\dimen280
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
 e.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
 ode.tex
 File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
 ssing.code.tex
 File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
 de.tex
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 \pgfarrowsep=\dimen281
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
 e.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen282
-\pgf@sys@shading@range@num=\count321
+\pgf@sys@shading@range@num=\count274
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
 e.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
 code.tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
 \pgfexternal@startupbox=\box57
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
 de.tex
 File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
 ncy.code.tex
 File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
 code.tex
 File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 )))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
 e.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
 \pgfnodeparttextbox=\box58
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
 tex
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
 \pgf@nodesepstart=\dimen283
 \pgf@nodesepend=\dimen284
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -1-18.sty
 Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen285
 \pgffor@skip=\dimen286
 \pgffor@stack=\toks40
 \pgffor@toks=\toks41
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
 e.tex
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count322
+\pgf@plot@mark@count=\count275
 \pgfplotmarksize=\dimen287
 )
 \tikz@lastx=\dimen288
@@ -1552,81 +1499,81 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikz@figbox@bg=\box60
 \tikz@tempbox=\box61
 \tikz@tempbox@bg=\box62
-\tikztreelevel=\count323
-\tikznumberofchildren=\count324
-\tikznumberofcurrentchild=\count325
-\tikz@fig@count=\count326
+\tikztreelevel=\count276
+\tikznumberofchildren=\count277
+\tikznumberofcurrentchild=\count278
+\tikz@fig@count=\count279
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count327
-\pgfmatrixcurrentcolumn=\count328
-\pgf@matrix@numberofcolumns=\count329
+\pgfmatrixcurrentrow=\count280
+\pgfmatrixcurrentcolumn=\count281
+\pgf@matrix@numberofcolumns=\count282
 )
-\tikz@expandcount=\count330
+\tikz@expandcount=\count283
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
-\c@@todonotes@numberoftodonotes=\count331
+\c@@todonotes@numberoftodonotes=\count284
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/forest/forest.sty
-Package: forest 2017/07/14 v2.1.5 Drawing (linguistic) trees
+(/usr/local/texlive/2017/texmf-dist/tex/latex/forest/forest.sty
+Package: forest 2017/02/02 v2.1.4 Drawing (linguistic) trees
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryshapes.code.tex
 File: tikzlibraryshapes.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryshapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1
 )
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
 shapes.geometric.code.tex
 File: pgflibraryshapes.geometric.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
 
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryshapes.misc.code.tex
 File: tikzlibraryshapes.misc.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
 shapes.misc.code.tex
 File: pgflibraryshapes.misc.code.tex 2013/07/18 v3.0.1a (rcs-revision 1.5)
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryshapes.symbols.code.tex
 File: tikzlibraryshapes.symbols.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
 shapes.symbols.code.tex
 File: pgflibraryshapes.symbols.code.tex 2013/09/11 v3.0.1a (rcs-revision 1.6)
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryshapes.arrows.code.tex
 File: tikzlibraryshapes.arrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
 shapes.arrows.code.tex
 File: pgflibraryshapes.arrows.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryshapes.callouts.code.tex
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
 shapes.callouts.code.tex))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryshapes.multipart.code.tex
 File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1
 )
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
 shapes.multipart.code.tex
 File: pgflibraryshapes.multipart.code.tex 2010/01/07 v3.0.1a (rcs-revision 1.2)
 
@@ -1651,37 +1598,37 @@ File: pgflibraryshapes.multipart.code.tex 2010/01/07 v3.0.1a (rcs-revision 1.2)
 \pgfnodepartsixbox=\box81
 \pgfnodepartfivebox=\box82
 )))
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryfit.code.tex
 File: tikzlibraryfit.code.tex 2013/07/12 v3.0.1a (rcs-revision 1.5)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryinterse
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryinterse
 ctions.code.tex
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.cod
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.cod
 e.tex)
-\pgf@intersect@solutions=\count332
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/pgfopts/pgfopts.sty
+\pgf@intersect@solutions=\count285
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/pgfopts/pgfopts.sty
 Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
 \pgfopts@list@add@a@toks=\toks42
 \pgfopts@list@add@b@toks=\toks43
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/elocalloc/elocalloc.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/elocalloc/elocalloc.sty
 Package: elocalloc 2016/12/15 v0.03 local allocation for LaTeX 2015+ (DPC)
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/environ/environ.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/inlinedef/inlinedef.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inlinedef/inlinedef.sty
 Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
 \ID@toks=\toks44
-\ID@count=\count333
+\ID@count=\count286
 )
 \ID@usercommands=\toks45
 .................................................
@@ -1694,26 +1641,26 @@ Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
 . 
 . Defining command \ProvidesForestLibrary with sig. 'm O{}' on line 176.
 .................................................
-\safeloop@depth=\count334
-\safeRKloop@depth=\count335
+\safeloop@depth=\count287
+\safeRKloop@depth=\count288
 \forest@temp@dimen=\dimen294
-\forest@temp@count=\count336
-\forest@n=\count337
-\forest@temp@global@count=\count338
+\forest@temp@count=\count289
+\forest@n=\count290
+\forest@temp@global@count=\count291
 \forest@temp@toks=\toks46
-\forest@temparray@M=\count339
-\forest@temparray@N=\count340
-\forest@global@temparray@M=\count341
-\forest@global@temparray@N=\count342
-\forest@isnum@count=\count343
-\forest@isdim@nonintpart=\count344
+\forest@temparray@M=\count292
+\forest@temparray@N=\count293
+\forest@global@temparray@M=\count294
+\forest@global@temparray@N=\count295
+\forest@isnum@count=\count296
+\forest@isdim@nonintpart=\count297
 \forest@isdim@dimen=\dimen295
-\forest@sort@m=\count345
-\forest@sort@k=\count346
-\forest@sort@p=\count347
+\forest@sort@m=\count298
+\forest@sort@k=\count299
+\forest@sort@p=\count300
 \bracket@content=\toks47
 \bracket@afterthought=\toks48
-\forest@node@maxid=\count348
+\forest@node@maxid=\count301
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
@@ -1725,15 +1672,15 @@ Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
 . Defining command \forestdebugtypeouttree with sig. 'd() O{\forest@cn }' on
 . line 2348.
 .................................................
-\forest@process@left@M=\count349
-\forest@process@left@N=\count350
-\forest@process@right@M=\count351
-\forest@process@right@N=\count352
-\forest@process@saved@M=\count353
-\forest@process@saved@N=\count354
-\forest@process@result@M=\count355
-\forest@process@result@N=\count356
-\forest@process@n=\count357
+\forest@process@left@M=\count302
+\forest@process@left@N=\count303
+\forest@process@right@M=\count304
+\forest@process@right@N=\count305
+\forest@process@saved@M=\count306
+\forest@process@saved@N=\count307
+\forest@process@result@M=\count308
+\forest@process@result@N=\count309
+\forest@process@n=\count310
 \forest@nodewalk@branch@toks=\toks49
 \forest@nodewalk@shortsteps@resolution=\toks50
 \forest@do@dynamics=\toks51
@@ -1751,17 +1698,17 @@ Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
 .................................................
 . LaTeX info: "xparse/define-environment"
 . 
-. Defining environment 'forest' with sig. 'D(){}' on line 8510.
+. Defining environment 'forest' with sig. 'D(){}' on line 8503.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Forest with sig. 's D(){} m' on line 8515.
+. Defining command \Forest with sig. 's D(){} m' on line 8508.
 .................................................
-\forest@externalize@max@outer@n=\count358
-\forest@externalize@inner@n=\count359
+\forest@externalize@max@outer@n=\count311
+\forest@externalize@inner@n=\count312
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/array.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/array.sty
 Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \col@sep=\dimen300
 \extrarowheight=\dimen301
@@ -1769,22 +1716,22 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \extratabsurround=\skip71
 \backup@length=\skip72
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryshadows.code.tex
 File: tikzlibraryshadows.code.tex 2008/01/13 v3.0.1a (rcs-revision 1.3)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryfadings.code.tex
 File: tikzlibraryfadings.code.tex 2009/11/15 v3.0.1a (rcs-revision 1.2)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings
 .code.tex
 File: pgflibraryfadings.code.tex 2008/02/07 v3.0.1a (rcs-revision 1.3)
 )))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/tkz-kiviat/tkz-kiviat.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tkz-kiviat/tkz-kiviat.sty
 Package: tkz-kiviat 2011/06/07 v0.1
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/etex-pkg/etex.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/etex-pkg/etex.sty
 Package: etex 2016/08/01 v2.7 eTeX basic definition package (PEB,DPC)
 
 
@@ -1795,18 +1742,18 @@ Package etex Warning: Extended allocation already in use.
 (etex)                at the start of the document.
 
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarybackgrounds.code.tex
 File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.1a (rcs-revision 1.3)
 \pgf@layerbox@background=\box84
 \pgf@layerboxsaved@background=\box85
 ))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/numprint/numprint.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/numprint/numprint.sty
 Package: numprint 2012/08/20 v1.39 Print numbers (HH)
-\c@nprt@mantissa@digitsbefore=\count360
-\c@nprt@mantissa@digitsafter=\count361
-\c@nprt@exponent@digitsbefore=\count362
-\c@nprt@exponent@digitsafter=\count363
+\c@nprt@mantissa@digitsbefore=\count313
+\c@nprt@mantissa@digitsafter=\count314
+\c@nprt@exponent@digitsbefore=\count315
+\c@nprt@exponent@digitsafter=\count316
 \nprt@digitwidth=\skip73
 \nprt@sepwidth=\skip74
 \nprt@decimalwidth=\skip75
@@ -1814,47 +1761,47 @@ Package: numprint 2012/08/20 v1.39 Print numbers (HH)
 \nprt@digittoks=\toks57
 \nprt@pretoks=\toks58
 \nprt@posttoks=\toks59
-\nprt@thisdigit=\count364
-\nprt@curpos=\count365
-\nprt@rndpos=\count366
-\c@nprt@digitsfirstblock=\count367
-\c@nprt@blockcnt=\count368
-\c@nprt@cntprint=\count369
+\nprt@thisdigit=\count317
+\nprt@curpos=\count318
+\nprt@rndpos=\count319
+\c@nprt@digitsfirstblock=\count320
+\c@nprt@blockcnt=\count321
+\c@nprt@cntprint=\count322
 
 No configuration file `numprint.cfg' found.)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/preprint/fullpage.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/preprint/fullpage.sty
 Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip77
 )
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
 code.tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
 \arrowsize=\dimen302
-)) (/usr/local/texlive/2016/texmf-dist/tex/latex/appendix/appendix.sty
+)) (/usr/local/texlive/2017/texmf-dist/tex/latex/appendix/appendix.sty
 Package: appendix 2009/09/02 v1.2b extra appendix facilities
-\c@@pps=\count370
-\c@@ppsavesec=\count371
-\c@@ppsaveapp=\count372
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2017/07/14 v0.5j Insert pages of external PDF documents (AM)
+\c@@pps=\count323
+\c@@ppsavesec=\count324
+\c@@ppsaveapp=\count325
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2017/01/14 v0.5h Insert pages of external PDF documents (AM)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
 )
 \AM@pagewidth=\dimen303
 \AM@pageheight=\dimen304
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pdfpages/pppdftex.def
-File: pppdftex.def 2017/07/14 v0.5j Pdfpages driver for pdfTeX (AM)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2017/01/14 v0.5h Pdfpages driver for pdfTeX (AM)
 )
 \AM@pagebox=\box86
 \AM@global@opts=\toks60
 \AM@toc@title=\toks61
-\c@AM@survey=\count373
+\c@AM@survey=\count326
 \AM@templatesizebox=\box87
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 97.
@@ -1928,37 +1875,37 @@ Package scrpage2 Warning: seems you are using a very small headheight.
 (scrpage2)                into the preamble of your document.
 (scrpage2)                A better solution would be to use typearea package.
 
-(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count374
+\scratchcounter=\count327
 \scratchdimen=\dimen305
 \scratchbox=\box88
-\nofMPsegments=\count375
-\nofMParguments=\count376
+\nofMPsegments=\count328
+\nofMParguments=\count329
 \everyMPshowfont=\toks62
-\MPscratchCnt=\count377
+\MPscratchCnt=\count330
 \MPscratchDim=\dimen306
-\MPnumerator=\count378
-\makeMPintoPDFobject=\count379
+\MPnumerator=\count331
+\makeMPintoPDFobject=\count332
 \everyMPtoPDFconversion=\toks63
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 38.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count380
+\c@lstlisting=\count333
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: hypcap package is loaded.
@@ -2002,13 +1949,13 @@ ABD: EveryShipout initializing macros
 Package scrhack Info: undefining \float@addtolists on input line 7.
 \AtBeginShipoutBox=\box89
 Package hyperref Info: Link coloring ON on input line 7.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count381
+\c@section@level=\count334
 )
 LaTeX Info: Redefining \ref on input line 7.
 LaTeX Info: Redefining \pageref on input line 7.
@@ -2019,15 +1966,15 @@ LaTeX Info: Redefining \nameref on input line 7.
 \openout7 = `thesis.out'.
 
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/lscape.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package scrhack Info: loading lscape hack on input line 76.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/koma-script/lscape.hak
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/lscape.hak
 File: lscape.hak 2017/04/13 v3.23 KOMA-Script package (hacking package lscape)
 Package scrhack Info: \landscape patched to make \textheight change optional on
  input line 90.
@@ -2037,7 +1984,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 12.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/t1ptm.fd
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) (./frontpage.tex
 
@@ -2051,20 +1998,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 \bindekorrektur=\skip79
 \seitenanfang=\skip80
 \seitenbreite=\skip81
-<pictures/hsma-logo.pdf, id=252, pagebox=cropbox, 642.4pt x 177.66376pt>
+<pictures/hsma-logo.pdf, id=252, 642.4pt x 177.66376pt>
 File: pictures/hsma-logo.pdf Graphic file (type pdf)
+
 <use pictures/hsma-logo.pdf>
-Package pdftex.def Info: pictures/hsma-logo.pdf  used on input line 327. on inp
-ut line 327.
-Package pdftex.def Info: Requested size: 199.16928pt x 55.08331pt on input line
- 327.
+Package pdftex.def Info: pictures/hsma-logo.pdf used on input line 327.
+(pdftex.def)             Requested size: 199.16928pt x 55.08331pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
 
 LaTeX Font Info:    Try loading font information for T1+phv on input line 331.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/t1phv.fd
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
@@ -2077,7 +2023,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 13.67995pt on input line 338.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 10.40245pt on input line 346.
- [0{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ [0{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
@@ -2124,12 +2070,12 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 ] (./thesis.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 4.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [5
 
@@ -2139,7 +2085,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout8 = `thesis.toc'.
 
  [6]
-\c@frontmatterpage=\count382
+\c@frontmatterpage=\count335
 
 (./text/1_introduction.tex
 chapter 1.
@@ -2166,7 +2112,7 @@ although it is yet undefined on input line 7.
 Package acronym Info: Label `acro:SOA' newly defined as it shall be overridden
 although it is yet undefined on input line 15.
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 19.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omsptm.fd
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
@@ -2232,11 +2178,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [17] [18] [19]
 <pictures/background/Aggregate.png, id=783, 823.57687pt x 485.56406pt>
 File: pictures/background/Aggregate.png Graphic file (type png)
+
 <use pictures/background/Aggregate.png>
-Package pdftex.def Info: pictures/background/Aggregate.png  used on input line 
-531. on input line 531.
-Package pdftex.def Info: Requested size: 398.33858pt x 234.85368pt on input lin
-e 531.
+Package pdftex.def Info: pictures/background/Aggregate.png used on input line 5
+31.
+(pdftex.def)             Requested size: 398.33858pt x 234.85368pt.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 8.54997pt on input line 531.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
@@ -2262,11 +2208,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ]
 <pictures/background/CloudComputing.png, id=870, 748.7975pt x 424.58624pt>
 File: pictures/background/CloudComputing.png Graphic file (type png)
+
 <use pictures/background/CloudComputing.png>
-Package pdftex.def Info: pictures/background/CloudComputing.png  used on input 
-line 694. on input line 694.
-Package pdftex.def Info: Requested size: 398.33858pt x 225.87186pt on input lin
-e 694.
+Package pdftex.def Info: pictures/background/CloudComputing.png used on input l
+ine 694.
+(pdftex.def)             Requested size: 398.33858pt x 225.87186pt.
 Package acronym Info: Label `acro:SaaS' newly defined as it shall be overridden
 
 although it is yet undefined on input line 700.
@@ -2312,11 +2258,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [31]
 <pictures/qualities/qualityAttributes.png, id=976, 501.875pt x 204.765pt>
 File: pictures/qualities/qualityAttributes.png Graphic file (type png)
+
 <use pictures/qualities/qualityAttributes.png>
-Package pdftex.def Info: pictures/qualities/qualityAttributes.png  used on inpu
-t line 85. on input line 85.
-Package pdftex.def Info: Requested size: 398.33858pt x 162.53117pt on input lin
-e 85.
+Package pdftex.def Info: pictures/qualities/qualityAttributes.png used on input
+ line 85.
+(pdftex.def)             Requested size: 398.33858pt x 162.53117pt.
 Package acronym Info: Label `acro:ISO' newly defined as it shall be overridden
 although it is yet undefined on input line 93.
 Package acronym Info: Label `acro:IEC' newly defined as it shall be overridden
@@ -2382,11 +2328,11 @@ chapter 4.
 [45]
 <pictures/qualities/netweaver_layers.png, id=1128, 794.97pt x 599.23875pt>
 File: pictures/qualities/netweaver_layers.png Graphic file (type png)
+
 <use pictures/qualities/netweaver_layers.png>
-Package pdftex.def Info: pictures/qualities/netweaver_layers.png  used on input
- line 59. on input line 59.
-Package pdftex.def Info: Requested size: 284.52756pt x 214.4731pt on input line
- 59.
+Package pdftex.def Info: pictures/qualities/netweaver_layers.png used on input 
+line 59.
+(pdftex.def)             Requested size: 284.52756pt x 214.4731pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -2554,30 +2500,27 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <pictures/questionnaire/architecturalScenario.png, id=1696, 1587.9325pt x 325.2
 15pt>
 File: pictures/questionnaire/architecturalScenario.png Graphic file (type png)
-<use pictures/questionnaire/architecturalScenario.png>
-Package pdftex.def Info: pictures/questionnaire/architecturalScenario.png  used
- on input line 41. on input line 41.
-Package pdftex.def Info: Requested size: 398.33858pt x 81.58144pt on input line
- 41.
-
-[78 <./pictures/questionnaire/architecturalScenario.png>]
+ <use pictures/questionnaire/architecturalScenario.png>
+Package pdftex.def Info: pictures/questionnaire/architecturalScenario.png used 
+on input line 41.
+(pdftex.def)             Requested size: 398.33858pt x 81.58144pt.
+ [78 <./pictures/questionnaire/architecturalScenario.png>]
 <pictures/questionnaire/organizationalRequirement.png, id=1707, 1392.20125pt x 
 332.24126pt>
 File: pictures/questionnaire/organizationalRequirement.png Graphic file (type p
 ng)
-<use pictures/questionnaire/organizationalRequirement.png>
-Package pdftex.def Info: pictures/questionnaire/organizationalRequirement.png  
-used on input line 54. on input line 54.
-Package pdftex.def Info: Requested size: 398.33858pt x 95.05981pt on input line
- 54.
+ <use pictures/questionnaire/organizationalRequirement.png>
+Package pdftex.def Info: pictures/questionnaire/organizationalRequirement.png u
+sed on input line 54.
+(pdftex.def)             Requested size: 398.33858pt x 95.05981pt.
+
 <pictures/questionnaire/applicationRating.png, id=1710, 984.67876pt x 800.9925p
 t>
 File: pictures/questionnaire/applicationRating.png Graphic file (type png)
-<use pictures/questionnaire/applicationRating.png>
-Package pdftex.def Info: pictures/questionnaire/applicationRating.png  used on 
-input line 72. on input line 72.
-Package pdftex.def Info: Requested size: 398.33858pt x 324.03352pt on input lin
-e 72.
+ <use pictures/questionnaire/applicationRating.png>
+Package pdftex.def Info: pictures/questionnaire/applicationRating.png used on i
+nput line 72.
+(pdftex.def)             Requested size: 398.33858pt x 324.03352pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -2669,337 +2612,260 @@ chapter without number
 [13] [14] [15] [16]) [17] [18
 
 
-]
-No file thesis.ind.
-(./text/questionnaireAppendix.tex
+] (./thesis.ind) (./text/questionnaireAppendix.tex
 chapter A.
-<pdf/questionnaire.pdf, id=2009, pagebox=cropbox, 614.295pt x 794.97pt>
+<pdf/questionnaire.pdf, id=2006, 614.295pt x 794.97pt>
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf>
-Package pdftex.def Info: pdf/questionnaire.pdf  used on input line 3. on input 
-line 3.
-Package pdftex.def Info: Requested size: 614.29349pt x 794.96806pt on input lin
-e 3.
-File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf>
-Package pdftex.def Info: pdf/questionnaire.pdf  used on input line 3. on input 
-line 3.
-Package pdftex.def Info: Requested size: 614.29349pt x 794.96806pt on input lin
-e 3.
-<pdf/questionnaire.pdf, id=2012, page=1, pagebox=cropbox, 614.295pt x 794.97pt>
 
+<use pdf/questionnaire.pdf>
+Package pdftex.def Info: pdf/questionnaire.pdf used on input line 3.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 1>
-Package pdftex.def Info: pdf/questionnaire.pdf , page1 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 614.29349pt x 794.96806pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf>
+Package pdftex.def Info: pdf/questionnaire.pdf used on input line 3.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+
+<pdf/questionnaire.pdf, id=2009, page=1, 614.295pt x 794.97pt>
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 1>
-Package pdftex.def Info: pdf/questionnaire.pdf , page1 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page1 used on input line 3.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: pdf/questionnaire.pdf Graphic file (type pdf)
+ <use pdf/questionnaire.pdf, page 1>
+Package pdftex.def Info: pdf/questionnaire.pdf, page1 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+
 [19
 
 
 ]
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 1>
-Package pdftex.def Info: pdf/questionnaire.pdf , page1 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 1>
+Package pdftex.def Info: pdf/questionnaire.pdf, page1 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 1>
-Package pdftex.def Info: pdf/questionnaire.pdf , page1 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 1>
+Package pdftex.def Info: pdf/questionnaire.pdf, page1 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 1>
-Package pdftex.def Info: pdf/questionnaire.pdf , page1 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page1 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [20 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2037, page=2, pagebox=cropbox, 614.295pt x 794.97pt>
+<pdf/questionnaire.pdf, id=2034, page=2, 614.295pt x 794.97pt>
+File: pdf/questionnaire.pdf Graphic file (type pdf)
 
-File: pdf/questionnaire.pdf Graphic file (type pdf)
 <use pdf/questionnaire.pdf, page 2>
-Package pdftex.def Info: pdf/questionnaire.pdf , page2 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page2 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 2>
-Package pdftex.def Info: pdf/questionnaire.pdf , page2 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 2>
+Package pdftex.def Info: pdf/questionnaire.pdf, page2 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 2>
-Package pdftex.def Info: pdf/questionnaire.pdf , page2 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page2 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [21 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2050, page=3, pagebox=cropbox, 614.295pt x 794.97pt>
+<pdf/questionnaire.pdf, id=2047, page=3, 614.295pt x 794.97pt>
+File: pdf/questionnaire.pdf Graphic file (type pdf)
 
-File: pdf/questionnaire.pdf Graphic file (type pdf)
 <use pdf/questionnaire.pdf, page 3>
-Package pdftex.def Info: pdf/questionnaire.pdf , page3 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page3 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 3>
-Package pdftex.def Info: pdf/questionnaire.pdf , page3 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 3>
+Package pdftex.def Info: pdf/questionnaire.pdf, page3 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 3>
-Package pdftex.def Info: pdf/questionnaire.pdf , page3 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page3 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [22 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2116, page=4, pagebox=cropbox, 614.295pt x 794.97pt>
+<pdf/questionnaire.pdf, id=2113, page=4, 614.295pt x 794.97pt>
+File: pdf/questionnaire.pdf Graphic file (type pdf)
 
-File: pdf/questionnaire.pdf Graphic file (type pdf)
 <use pdf/questionnaire.pdf, page 4>
-Package pdftex.def Info: pdf/questionnaire.pdf , page4 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page4 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 4>
-Package pdftex.def Info: pdf/questionnaire.pdf , page4 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 4>
+Package pdftex.def Info: pdf/questionnaire.pdf, page4 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 4>
-Package pdftex.def Info: pdf/questionnaire.pdf , page4 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page4 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [23 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2221, page=5, pagebox=cropbox, 614.295pt x 794.97pt>
+<pdf/questionnaire.pdf, id=2218, page=5, 614.295pt x 794.97pt>
+File: pdf/questionnaire.pdf Graphic file (type pdf)
 
-File: pdf/questionnaire.pdf Graphic file (type pdf)
 <use pdf/questionnaire.pdf, page 5>
-Package pdftex.def Info: pdf/questionnaire.pdf , page5 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page5 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 5>
-Package pdftex.def Info: pdf/questionnaire.pdf , page5 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 5>
+Package pdftex.def Info: pdf/questionnaire.pdf, page5 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 5>
-Package pdftex.def Info: pdf/questionnaire.pdf , page5 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page5 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [24 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2246, page=6, pagebox=cropbox, 614.295pt x 794.97pt>
+<pdf/questionnaire.pdf, id=2243, page=6, 614.295pt x 794.97pt>
+File: pdf/questionnaire.pdf Graphic file (type pdf)
 
-File: pdf/questionnaire.pdf Graphic file (type pdf)
 <use pdf/questionnaire.pdf, page 6>
-Package pdftex.def Info: pdf/questionnaire.pdf , page6 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page6 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 6>
-Package pdftex.def Info: pdf/questionnaire.pdf , page6 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 6>
+Package pdftex.def Info: pdf/questionnaire.pdf, page6 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 6>
-Package pdftex.def Info: pdf/questionnaire.pdf , page6 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page6 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [25 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2333, page=7, pagebox=cropbox, 614.295pt x 794.97pt>
+<pdf/questionnaire.pdf, id=2330, page=7, 614.295pt x 794.97pt>
+File: pdf/questionnaire.pdf Graphic file (type pdf)
 
-File: pdf/questionnaire.pdf Graphic file (type pdf)
 <use pdf/questionnaire.pdf, page 7>
-Package pdftex.def Info: pdf/questionnaire.pdf , page7 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page7 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 7>
-Package pdftex.def Info: pdf/questionnaire.pdf , page7 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 7>
+Package pdftex.def Info: pdf/questionnaire.pdf, page7 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 7>
-Package pdftex.def Info: pdf/questionnaire.pdf , page7 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page7 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [26 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2418, page=8, pagebox=cropbox, 614.295pt x 794.97pt>
+<pdf/questionnaire.pdf, id=2415, page=8, 614.295pt x 794.97pt>
+File: pdf/questionnaire.pdf Graphic file (type pdf)
 
-File: pdf/questionnaire.pdf Graphic file (type pdf)
 <use pdf/questionnaire.pdf, page 8>
-Package pdftex.def Info: pdf/questionnaire.pdf , page8 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page8 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 8>
-Package pdftex.def Info: pdf/questionnaire.pdf , page8 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 8>
+Package pdftex.def Info: pdf/questionnaire.pdf, page8 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 8>
-Package pdftex.def Info: pdf/questionnaire.pdf , page8 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page8 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [27 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2463, page=9, pagebox=cropbox, 614.295pt x 794.97pt>
+<pdf/questionnaire.pdf, id=2460, page=9, 614.295pt x 794.97pt>
+File: pdf/questionnaire.pdf Graphic file (type pdf)
 
-File: pdf/questionnaire.pdf Graphic file (type pdf)
 <use pdf/questionnaire.pdf, page 9>
-Package pdftex.def Info: pdf/questionnaire.pdf , page9 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page9 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 9>
-Package pdftex.def Info: pdf/questionnaire.pdf , page9 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 9>
+Package pdftex.def Info: pdf/questionnaire.pdf, page9 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 9>
-Package pdftex.def Info: pdf/questionnaire.pdf , page9 used on input line 3. on
- input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page9 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [28 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2468, page=10, pagebox=cropbox, 614.295pt x 794.97pt
->
+<pdf/questionnaire.pdf, id=2465, page=10, 614.295pt x 794.97pt>
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 10>
-Package pdftex.def Info: pdf/questionnaire.pdf , page10 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
-File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 10>
-Package pdftex.def Info: pdf/questionnaire.pdf , page10 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
-File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 10>
-Package pdftex.def Info: pdf/questionnaire.pdf , page10 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
- [29 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2510, page=11, pagebox=cropbox, 614.295pt x 794.97pt
->
-File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 11>
-Package pdftex.def Info: pdf/questionnaire.pdf , page11 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
-File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 11>
-Package pdftex.def Info: pdf/questionnaire.pdf , page11 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
-File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 11>
-Package pdftex.def Info: pdf/questionnaire.pdf , page11 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
 
-[30 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2515, page=12, pagebox=cropbox, 614.295pt x 794.97pt
->
+<use pdf/questionnaire.pdf, page 10>
+Package pdftex.def Info: pdf/questionnaire.pdf, page10 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 12>
-Package pdftex.def Info: pdf/questionnaire.pdf , page12 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 10>
+Package pdftex.def Info: pdf/questionnaire.pdf, page10 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 12>
-Package pdftex.def Info: pdf/questionnaire.pdf , page12 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+
+<use pdf/questionnaire.pdf, page 10>
+Package pdftex.def Info: pdf/questionnaire.pdf, page10 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+ [29 <./pdf/questionnaire.pdf>]
+<pdf/questionnaire.pdf, id=2507, page=11, 614.295pt x 794.97pt>
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
+<use pdf/questionnaire.pdf, page 11>
+Package pdftex.def Info: pdf/questionnaire.pdf, page11 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: pdf/questionnaire.pdf Graphic file (type pdf)
+ <use pdf/questionnaire.pdf, page 11>
+Package pdftex.def Info: pdf/questionnaire.pdf, page11 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: pdf/questionnaire.pdf Graphic file (type pdf)
+
+<use pdf/questionnaire.pdf, page 11>
+Package pdftex.def Info: pdf/questionnaire.pdf, page11 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+ [30 <./pdf/questionnaire.pdf>]
+<pdf/questionnaire.pdf, id=2512, page=12, 614.295pt x 794.97pt>
+File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 12>
-Package pdftex.def Info: pdf/questionnaire.pdf , page12 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page12 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: pdf/questionnaire.pdf Graphic file (type pdf)
+ <use pdf/questionnaire.pdf, page 12>
+Package pdftex.def Info: pdf/questionnaire.pdf, page12 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: pdf/questionnaire.pdf Graphic file (type pdf)
+
+<use pdf/questionnaire.pdf, page 12>
+Package pdftex.def Info: pdf/questionnaire.pdf, page12 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [31 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2557, page=13, pagebox=cropbox, 614.295pt x 794.97pt
->
+<pdf/questionnaire.pdf, id=2554, page=13, 614.295pt x 794.97pt>
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 13>
-Package pdftex.def Info: pdf/questionnaire.pdf , page13 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page13 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 13>
-Package pdftex.def Info: pdf/questionnaire.pdf , page13 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 13>
+Package pdftex.def Info: pdf/questionnaire.pdf, page13 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 13>
-Package pdftex.def Info: pdf/questionnaire.pdf , page13 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page13 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [32 <./pdf/questionnaire.pdf>]
-<pdf/questionnaire.pdf, id=2562, page=14, pagebox=cropbox, 614.295pt x 794.97pt
->
+<pdf/questionnaire.pdf, id=2559, page=14, 614.295pt x 794.97pt>
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 14>
-Package pdftex.def Info: pdf/questionnaire.pdf , page14 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page14 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
-<use pdf/questionnaire.pdf, page 14>
-Package pdftex.def Info: pdf/questionnaire.pdf , page14 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+ <use pdf/questionnaire.pdf, page 14>
+Package pdftex.def Info: pdf/questionnaire.pdf, page14 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: pdf/questionnaire.pdf Graphic file (type pdf)
+
 <use pdf/questionnaire.pdf, page 14>
-Package pdftex.def Info: pdf/questionnaire.pdf , page14 used on input line 3. o
-n input line 3.
-Package pdftex.def Info: Requested size: 597.78697pt x 773.60669pt on input lin
-e 3.
+Package pdftex.def Info: pdf/questionnaire.pdf, page14 used on input line 3.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [33 <./pdf/questionnaire.pdf>])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
- (./thesis.aux)
+
+(./thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 111.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
@@ -3010,27 +2876,27 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 46921 strings out of 492990
- 985767 string characters out of 6132636
- 1148385 words of memory out of 5000000
- 49309 multiletter control sequences out of 15000+600000
- 597451 words of font info for 92 fonts, out of 8000000 for 9000
+ 46190 strings out of 492995
+ 967133 string characters out of 6132704
+ 1128951 words of memory out of 5000000
+ 48576 multiletter control sequences out of 15000+600000
+ 70819 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 126i,18n,161p,10492b,1683s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
-/2016/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2016/t
-exmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2016/texmf-dist/fon
-ts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/u
-rw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/u
+ 123i,18n,161p,10492b,1684s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
+live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
+e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2017/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2017/t
+exmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2017/texmf-d
+ist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2017/texmf-dist/fon
+ts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/u
 tmri8a.pfb>
-Output written on thesis.pdf (129 pages, 1501411 bytes).
+Output written on thesis.pdf (129 pages, 1501433 bytes).
 PDF statistics:
- 2697 PDF objects out of 2984 (max. 8388607)
- 2249 compressed objects within 23 object streams
- 440 named destinations out of 1000 (max. 500000)
+ 2694 PDF objects out of 2984 (max. 8388607)
+ 2246 compressed objects within 23 object streams
+ 439 named destinations out of 1000 (max. 500000)
  674 words of extra memory for PDF output out of 10000 (max. 10000000)
 
